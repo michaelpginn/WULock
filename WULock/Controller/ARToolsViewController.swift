@@ -30,13 +30,13 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else{
-            return
-        }
+        
         
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravity
-        configuration.detectionImages = referenceImages
+        if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else{
+           configuration.detectionImages = referenceImages
+        }
         sceneView.session.run(configuration)
 
     }

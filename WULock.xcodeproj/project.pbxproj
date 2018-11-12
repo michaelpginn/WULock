@@ -16,6 +16,8 @@
 		95F9B3EB219A40D800F61CE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3EA219A40D800F61CE7 /* Item.swift */; };
 		95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */; };
 		95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */; };
+		95F9B3F4219A429300F61CE7 /* IDScanDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */; };
+		95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		95F9B3EA219A40D800F61CE7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDScannerViewController.swift; sourceTree = "<group>"; };
 		95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARToolsViewController.swift; sourceTree = "<group>"; };
+		95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDScanDialog.xib; sourceTree = "<group>"; };
+		95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDScannerAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 			children = (
 				95F9B3D9219A40C300F61CE7 /* Main.storyboard */,
 				95F9B3E1219A40C600F61CE7 /* LaunchScreen.storyboard */,
+				95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -94,8 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3D7219A40C300F61CE7 /* ViewController.swift */,
-				95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */,
 				95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */,
+				95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */,
+				95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 				95F9B3E3219A40C600F61CE7 /* LaunchScreen.storyboard in Resources */,
 				95F9B3E0219A40C600F61CE7 /* Assets.xcassets in Resources */,
 				95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */,
+				95F9B3F4219A429300F61CE7 /* IDScanDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +183,7 @@
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
 				95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */,
 				95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */,
+				95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */,
 				95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
