@@ -57,18 +57,21 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate {
             let rects = detector.features(in: ciimage)
             if let rect = rects.first as? CIRectangleFeature{
                 //self.drawRectFeature(rect)
-                let result = self.drawHighlightOverlayForPoints(image: ciimage, topLeft: rect.topLeft, topRight: rect.topRight, bottomLeft: rect.bottomLeft, bottomRight: rect.bottomRight)
-                let uiimage = UIImage(ciImage: result)
-                DispatchQueue.main.sync {
-                    let overlay = UIImageView(frame: self.view.bounds)
-                    overlay.image = uiimage
-                    self.view.addSubview(overlay)
-                }
-                print(result)
+                displayAlertController(rect: rect)
             }
         }
     }
     
+    private func displayAlertController(rect:CIRectangleFeature){
+        let result = self.drawHighlightOverlayForPoints(image: ciimage, topLeft: rect.topLeft, topRight: rect.topRight, bottomLeft: rect.bottomLeft, bottomRight: rect.bottomRight)
+        let uiimage = UIImage(ciImage: result)
+        DispatchQueue.main.sync {
+            let overlay = UIImageView(frame: self.view.bounds)
+            overlay.image = uiimage
+            self.view.addSubview(overlay)
+        }
+        print(result)
+    }
     
     
     func drawHighlightOverlayForPoints(image: UIKit.CIImage, topLeft: CGPoint, topRight: CGPoint,
