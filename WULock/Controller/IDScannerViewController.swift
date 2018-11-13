@@ -57,20 +57,26 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate {
             let rects = detector.features(in: ciimage)
             if let rect = rects.first as? CIRectangleFeature{
                 //self.drawRectFeature(rect)
-                displayAlertController(rect: rect)
+                self.displayAlertController(rect: rect, ciimage:ciimage)
             }
         }
     }
     
-    private func displayAlertController(rect:CIRectangleFeature){
-        let result = self.drawHighlightOverlayForPoints(image: ciimage, topLeft: rect.topLeft, topRight: rect.topRight, bottomLeft: rect.bottomLeft, bottomRight: rect.bottomRight)
-        let uiimage = UIImage(ciImage: result)
+    private func displayAlertController(rect:CIRectangleFeature, ciimage:CIImage){
         DispatchQueue.main.sync {
-            let overlay = UIImageView(frame: self.view.bounds)
-            overlay.image = uiimage
-            self.view.addSubview(overlay)
+            //get the image using a perspective transform
+            var rectCoords: [String:Any] = [:]
+            rectCoords["inputTopLeft"] = CIVector(cgPoint: rect.bottomLeft)
+            rectCoords["inputTopRight"] = CIVector(cgPoint: rect.topLeft)
+            rectCoords["inputBottomLeft"] = CIVector(cgPoint: rect.bottomRight)
+            rectCoords["inputBottomRight"] = CIVector(cgPoint: rect.topRight)
+            let filteredImage = ciimage.applyingFilter("CIPerspectiveCorrection", parameters: rectCoords)
+            
+            let alertController = IDScannerAlertViewController(image: UIImage(ciImage: filteredImage))
+            
+            self.present(alertController, animated: true, completion: nil)
         }
-        print(result)
+
     }
     
     

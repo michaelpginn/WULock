@@ -34,7 +34,7 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravity
-        if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else{
+        if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
            configuration.detectionImages = referenceImages
         }
         sceneView.session.run(configuration)

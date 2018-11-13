@@ -12,60 +12,71 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IDScannerAlertViewController" customModule="WULock" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="cEP-t1-Zud" id="Akd-bg-xb1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="mfi-Xv-ped"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="298" height="261"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-t1-Zud">
-                    <rect key="frame" x="8" y="8" width="282" height="161"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7q-ca-Nwc">
+                    <rect key="frame" x="24" y="211" width="327" height="245"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-t1-Zud">
+                            <rect key="frame" x="8" y="8" width="311" height="177.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="311" id="S6a-y2-2pM"/>
+                                <constraint firstAttribute="width" secondItem="cEP-t1-Zud" secondAttribute="height" multiplier="7:4" id="kto-km-8fL"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyW-2j-CkS">
+                            <rect key="frame" x="167.5" y="193.5" width="151.5" height="43.5"/>
+                            <state key="normal" title="Accept">
+                                <color key="titleColor" red="0.125808686" green="0.80186527969999999" blue="0.4711295962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-yf-mga">
+                            <rect key="frame" x="8" y="193.5" width="151.5" height="43.5"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="0.90980392160000001" green="0.28627450980000002" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelWithSender:" destination="-1" eventType="touchUpInside" id="VUG-B4-veh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="311" id="S6a-y2-2pM"/>
-                        <constraint firstAttribute="width" secondItem="cEP-t1-Zud" secondAttribute="height" multiplier="7:4" id="kto-km-8fL"/>
+                        <constraint firstItem="pyW-2j-CkS" firstAttribute="width" secondItem="Jnr-yf-mga" secondAttribute="width" id="4Ra-WE-r0k"/>
+                        <constraint firstItem="Jnr-yf-mga" firstAttribute="top" secondItem="cEP-t1-Zud" secondAttribute="bottom" constant="8" id="6c5-9v-JwH"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="327" id="6rW-0I-Edd"/>
+                        <constraint firstItem="cEP-t1-Zud" firstAttribute="leading" secondItem="f7q-ca-Nwc" secondAttribute="leading" priority="750" constant="8" id="79V-8f-mCT"/>
+                        <constraint firstItem="cEP-t1-Zud" firstAttribute="top" secondItem="f7q-ca-Nwc" secondAttribute="top" constant="8" id="Joz-sJ-AeT"/>
+                        <constraint firstAttribute="width" secondItem="f7q-ca-Nwc" secondAttribute="height" multiplier="4:3" id="Kkl-el-nkf"/>
+                        <constraint firstAttribute="trailing" secondItem="pyW-2j-CkS" secondAttribute="trailing" constant="8" id="NCl-9B-x74"/>
+                        <constraint firstItem="cEP-t1-Zud" firstAttribute="centerX" secondItem="f7q-ca-Nwc" secondAttribute="centerX" id="WiQ-UP-CnV"/>
+                        <constraint firstItem="pyW-2j-CkS" firstAttribute="leading" secondItem="Jnr-yf-mga" secondAttribute="trailing" constant="8" id="WrV-oZ-UT0"/>
+                        <constraint firstItem="Jnr-yf-mga" firstAttribute="leading" secondItem="f7q-ca-Nwc" secondAttribute="leading" constant="8" id="ZQI-Dt-hp5"/>
+                        <constraint firstAttribute="bottom" secondItem="pyW-2j-CkS" secondAttribute="bottom" constant="8" id="hua-YL-RLu"/>
+                        <constraint firstItem="pyW-2j-CkS" firstAttribute="top" secondItem="cEP-t1-Zud" secondAttribute="bottom" constant="8" id="ofe-0B-ss6"/>
+                        <constraint firstAttribute="bottom" secondItem="Jnr-yf-mga" secondAttribute="bottom" constant="8" id="pPK-6C-Sjw"/>
+                        <constraint firstAttribute="trailing" secondItem="cEP-t1-Zud" secondAttribute="trailing" priority="750" constant="8" id="yPh-eo-5NS"/>
                     </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyW-2j-CkS">
-                    <rect key="frame" x="157" y="177" width="133" height="76"/>
-                    <state key="normal" title="Accept">
-                        <color key="titleColor" red="0.125808686" green="0.80186527969999999" blue="0.4711295962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-yf-mga">
-                    <rect key="frame" x="8" y="177" width="133" height="76"/>
-                    <state key="normal" title="Cancel">
-                        <color key="titleColor" red="0.90980392160000001" green="0.28627450980000002" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                </button>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="pyW-2j-CkS" firstAttribute="top" secondItem="cEP-t1-Zud" secondAttribute="bottom" constant="8" id="7PG-eP-GNu"/>
-                <constraint firstItem="Jnr-yf-mga" firstAttribute="leading" secondItem="cEP-t1-Zud" secondAttribute="leading" id="IeB-5h-c79"/>
-                <constraint firstItem="pyW-2j-CkS" firstAttribute="trailing" secondItem="cEP-t1-Zud" secondAttribute="trailing" id="KQg-sD-Pwo"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cEP-t1-Zud" secondAttribute="trailing" priority="750" constant="8" id="RrR-cp-KDq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pyW-2j-CkS" secondAttribute="bottom" constant="8" id="UK8-6n-HRa"/>
-                <constraint firstItem="pyW-2j-CkS" firstAttribute="leading" secondItem="Jnr-yf-mga" secondAttribute="trailing" constant="16" id="WO1-cl-of2"/>
-                <constraint firstItem="cEP-t1-Zud" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XrN-14-gYn"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Jnr-yf-mga" secondAttribute="bottom" constant="8" id="fSz-JT-axT"/>
-                <constraint firstItem="cEP-t1-Zud" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="8" id="hcS-k1-1oc"/>
-                <constraint firstItem="Jnr-yf-mga" firstAttribute="top" secondItem="cEP-t1-Zud" secondAttribute="bottom" constant="8" id="pLF-cW-w4p"/>
-                <constraint firstItem="cEP-t1-Zud" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="pig-BB-hie"/>
-                <constraint firstItem="pyW-2j-CkS" firstAttribute="width" secondItem="Jnr-yf-mga" secondAttribute="width" id="zA0-U3-vJW"/>
+                <constraint firstItem="f7q-ca-Nwc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="H8A-y9-7vZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f7q-ca-Nwc" secondAttribute="trailing" priority="750" constant="16" id="PKN-Y1-atj"/>
+                <constraint firstItem="f7q-ca-Nwc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qml-hi-uQy"/>
+                <constraint firstItem="f7q-ca-Nwc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="16" id="Yrl-Nl-AEN"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="76.799999999999997" y="-29.23538230884558"/>
+            <point key="canvasLocation" x="143.19999999999999" y="219.04047976011995"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZQO-TF-3jW">
-            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" title="Button"/>
-            <point key="canvasLocation" x="-275" y="-180"/>
-        </button>
     </objects>
 </document>
