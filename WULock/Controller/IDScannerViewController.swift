@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-class IDScannerViewController: UIViewController, ARSCNViewDelegate {
+class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAlertViewControllerDelegate {
     @IBOutlet weak var sceneView:ARSCNView!
     
     var searchingForRects = false
@@ -73,12 +73,15 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate {
             let filteredImage = ciimage.applyingFilter("CIPerspectiveCorrection", parameters: rectCoords)
             
             let alertController = IDScannerAlertViewController(image: UIImage(ciImage: filteredImage))
-            
+            alertController.delegate = self
             self.present(alertController, animated: true, completion: nil)
         }
 
     }
     
+    func didAccept(image: UIImage) {
+        
+    }
     
     func drawHighlightOverlayForPoints(image: UIKit.CIImage, topLeft: CGPoint, topRight: CGPoint,
                                        bottomLeft: CGPoint, bottomRight: CGPoint) -> UIKit.CIImage {

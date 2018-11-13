@@ -18,32 +18,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nr6-95-ltu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSL-jr-2ty">
                                 <rect key="frame" x="8" y="88.5" width="359" height="191.5"/>
+                                <color key="backgroundColor" white="0.93620708630000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="nr6-95-ltu" secondAttribute="height" multiplier="15:8" id="4lD-aQ-P1O"/>
+                                    <constraint firstAttribute="width" secondItem="fSL-jr-2ty" secondAttribute="height" multiplier="15:8" id="C1a-nL-gfp"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vpk-1u-Lb3">
+                                <state key="normal" title="Front"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qo-kG-57D">
                                 <rect key="frame" x="8" y="288" width="359" height="191"/>
+                                <color key="backgroundColor" white="0.93620708630000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Vpk-1u-Lb3" secondAttribute="height" multiplier="15:8" id="4bD-ef-yjz"/>
+                                    <constraint firstAttribute="width" secondItem="5Qo-kG-57D" secondAttribute="height" multiplier="15:8" id="Zoo-wP-YAC"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" title="Back"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vpk-1u-Lb3" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="8" id="L0D-Dv-fnQ"/>
-                            <constraint firstItem="nr6-95-ltu" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="8" id="R4C-U9-Wr5"/>
-                            <constraint firstItem="Vpk-1u-Lb3" firstAttribute="width" secondItem="Vpk-1u-Lb3" secondAttribute="height" multiplier="15:8" id="RrE-R5-jBq"/>
-                            <constraint firstItem="Vpk-1u-Lb3" firstAttribute="centerY" secondItem="NfG-Kb-GsP" secondAttribute="centerY" constant="50" id="Szh-Zk-wmE"/>
-                            <constraint firstItem="Vpk-1u-Lb3" firstAttribute="top" secondItem="nr6-95-ltu" secondAttribute="bottom" constant="8" id="YlD-m6-QB7"/>
-                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="nr6-95-ltu" secondAttribute="trailing" constant="8" id="b20-nx-cqK"/>
-                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="Vpk-1u-Lb3" secondAttribute="trailing" constant="8" id="dOU-Kf-kTg"/>
+                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="5Qo-kG-57D" secondAttribute="trailing" constant="8" id="Bit-yN-Kje"/>
+                            <constraint firstItem="5Qo-kG-57D" firstAttribute="centerY" secondItem="NfG-Kb-GsP" secondAttribute="centerY" constant="50" id="FFs-pE-2R0"/>
+                            <constraint firstItem="5Qo-kG-57D" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="8" id="Z7x-K9-oBD"/>
+                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="fSL-jr-2ty" secondAttribute="trailing" constant="8" id="gsE-IF-8pT"/>
+                            <constraint firstItem="fSL-jr-2ty" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="8" id="mbq-FP-udG"/>
+                            <constraint firstItem="5Qo-kG-57D" firstAttribute="top" secondItem="fSL-jr-2ty" secondAttribute="bottom" constant="8" id="qFV-GH-9eN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="njZ-V5-IvZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Virtual ID" id="Slx-vy-J80"/>
+                    <connections>
+                        <segue destination="tLN-6g-Et4" kind="presentation" identifier="showCamera" id="Gjy-wf-xMI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VD-Ou-kOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,7 +127,7 @@
                     <connections>
                         <segue destination="jtb-iB-7MU" kind="relationship" relationship="viewControllers" id="KSV-4e-DGW"/>
                         <segue destination="Gzu-L4-6Y3" kind="relationship" relationship="viewControllers" id="vWO-GG-XKJ"/>
-                        <segue destination="tLN-6g-Et4" kind="relationship" relationship="viewControllers" id="byO-bo-ARx"/>
+                        <segue destination="F5g-YU-oQ1" kind="relationship" relationship="viewControllers" id="yfy-vi-3We"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb1-kc-MsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
