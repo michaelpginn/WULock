@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */; };
-		95F9B3D8219A40C300F61CE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D7219A40C300F61CE7 /* ViewController.swift */; };
 		95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3D9219A40C300F61CE7 /* Main.storyboard */; };
 		95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */; };
 		95F9B3E0219A40C600F61CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3DF219A40C600F61CE7 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		95F9B3D2219A40C300F61CE7 /* WULock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WULock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95F9B3D7219A40C300F61CE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		95F9B3DA219A40C300F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95F9B3DD219A40C300F61CE7 /* WULock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WULock.xcdatamodel; sourceTree = "<group>"; };
 		95F9B3DF219A40C600F61CE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		95F9B3F2219A41B500F61CE7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95F9B3D7219A40C300F61CE7 /* ViewController.swift */,
 				95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */,
 				95F9B3F9219B75B000F61CE7 /* Virtual ID */,
 			);
@@ -196,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F9B3EB219A40D800F61CE7 /* Item.swift in Sources */,
-				95F9B3D8219A40C300F61CE7 /* ViewController.swift in Sources */,
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
 				95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */,
 				95F9B412219B7E1500F61CE7 /* CardImage+CoreDataClass.swift in Sources */,
