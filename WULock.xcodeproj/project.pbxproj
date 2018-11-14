@@ -19,6 +19,8 @@
 		95F9B3F4219A429300F61CE7 /* IDScanDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */; };
 		95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */; };
 		95F9B3F8219B70B900F61CE7 /* IDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3F7219B70B900F61CE7 /* IDViewController.swift */; };
+		95F9B412219B7E1500F61CE7 /* CardImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */; };
+		95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDScanDialog.xib; sourceTree = "<group>"; };
 		95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDScannerAlertViewController.swift; sourceTree = "<group>"; };
 		95F9B3F7219B70B900F61CE7 /* IDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDViewController.swift; sourceTree = "<group>"; };
+		95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardImage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				95F9B3EA219A40D800F61CE7 /* Item.swift */,
 				95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */,
 				95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */,
+				95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */,
+				95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,11 +108,19 @@
 			children = (
 				95F9B3D7219A40C300F61CE7 /* ViewController.swift */,
 				95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */,
+				95F9B3F9219B75B000F61CE7 /* Virtual ID */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		95F9B3F9219B75B000F61CE7 /* Virtual ID */ = {
+			isa = PBXGroup;
+			children = (
 				95F9B3F7219B70B900F61CE7 /* IDViewController.swift */,
 				95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */,
 				95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */,
 			);
-			path = Controller;
+			path = "Virtual ID";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +199,8 @@
 				95F9B3D8219A40C300F61CE7 /* ViewController.swift in Sources */,
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
 				95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */,
+				95F9B412219B7E1500F61CE7 /* CardImage+CoreDataClass.swift in Sources */,
+				95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */,
 				95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */,
 				95F9B3F8219B70B900F61CE7 /* IDViewController.swift in Sources */,
 				95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */,

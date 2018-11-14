@@ -42,8 +42,12 @@ class IDScannerAlertViewController: UIViewController {
     }
 
     @IBAction func accept(sender:UIButton!){
-        if let delegate = delegate, let image = image{
-            delegate.didAccept(image: image)
+        self.dismiss(animated: true) {
+            if let delegate = self.delegate, let image = self.image{
+                delegate.didAccept(image: image)
+            }
         }
+        
+        
     }
 }

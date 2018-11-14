@@ -36,6 +36,9 @@
                             <state key="normal" title="Accept">
                                 <color key="titleColor" red="0.125808686" green="0.80186527969999999" blue="0.4711295962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="acceptWithSender:" destination="-1" eventType="touchUpInside" id="e2x-BJ-xSG"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-yf-mga">
                             <rect key="frame" x="8" y="193.5" width="151.5" height="43.5"/>

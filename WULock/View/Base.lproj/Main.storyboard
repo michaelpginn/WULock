@@ -13,41 +13,49 @@
         <!--Virtual ID-->
         <scene sceneID="ukV-PJ-vkq">
             <objects>
-                <viewController id="F5g-YU-oQ1" sceneMemberID="viewController">
+                <viewController id="F5g-YU-oQ1" customClass="IDViewController" customModule="WULock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NfG-Kb-GsP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSL-jr-2ty">
-                                <rect key="frame" x="8" y="88.5" width="359" height="191.5"/>
+                                <rect key="frame" x="16" y="73.5" width="343" height="196"/>
                                 <color key="backgroundColor" white="0.93620708630000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fSL-jr-2ty" secondAttribute="height" multiplier="15:8" id="C1a-nL-gfp"/>
+                                    <constraint firstAttribute="width" secondItem="fSL-jr-2ty" secondAttribute="height" multiplier="7:4" id="C1a-nL-gfp"/>
                                 </constraints>
                                 <state key="normal" title="Front"/>
+                                <connections>
+                                    <action selector="frontTappedWithSender:" destination="F5g-YU-oQ1" eventType="touchUpInside" id="o9i-vF-fuP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qo-kG-57D">
-                                <rect key="frame" x="8" y="288" width="359" height="191"/>
+                                <rect key="frame" x="16" y="285.5" width="343" height="196"/>
                                 <color key="backgroundColor" white="0.93620708630000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="5Qo-kG-57D" secondAttribute="height" multiplier="15:8" id="Zoo-wP-YAC"/>
+                                    <constraint firstAttribute="width" secondItem="5Qo-kG-57D" secondAttribute="height" multiplier="7:4" id="Zoo-wP-YAC"/>
                                 </constraints>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backTappedWithSender:" destination="F5g-YU-oQ1" eventType="touchUpInside" id="AKY-5R-Y1d"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="5Qo-kG-57D" secondAttribute="trailing" constant="8" id="Bit-yN-Kje"/>
+                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="5Qo-kG-57D" secondAttribute="trailing" constant="16" id="Bit-yN-Kje"/>
                             <constraint firstItem="5Qo-kG-57D" firstAttribute="centerY" secondItem="NfG-Kb-GsP" secondAttribute="centerY" constant="50" id="FFs-pE-2R0"/>
-                            <constraint firstItem="5Qo-kG-57D" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="8" id="Z7x-K9-oBD"/>
-                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="fSL-jr-2ty" secondAttribute="trailing" constant="8" id="gsE-IF-8pT"/>
-                            <constraint firstItem="fSL-jr-2ty" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="8" id="mbq-FP-udG"/>
-                            <constraint firstItem="5Qo-kG-57D" firstAttribute="top" secondItem="fSL-jr-2ty" secondAttribute="bottom" constant="8" id="qFV-GH-9eN"/>
+                            <constraint firstItem="5Qo-kG-57D" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="16" id="Z7x-K9-oBD"/>
+                            <constraint firstItem="njZ-V5-IvZ" firstAttribute="trailing" secondItem="fSL-jr-2ty" secondAttribute="trailing" constant="16" id="gsE-IF-8pT"/>
+                            <constraint firstItem="fSL-jr-2ty" firstAttribute="leading" secondItem="njZ-V5-IvZ" secondAttribute="leading" constant="16" id="mbq-FP-udG"/>
+                            <constraint firstItem="5Qo-kG-57D" firstAttribute="top" secondItem="fSL-jr-2ty" secondAttribute="bottom" constant="16" id="qFV-GH-9eN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="njZ-V5-IvZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Virtual ID" id="Slx-vy-J80"/>
                     <connections>
+                        <outlet property="cardBackImageButton" destination="5Qo-kG-57D" id="g8F-yG-4ai"/>
+                        <outlet property="cardFrontImageButton" destination="fSL-jr-2ty" id="dCm-bb-mlK"/>
                         <segue destination="tLN-6g-Et4" kind="presentation" identifier="showCamera" id="Gjy-wf-xMI"/>
                     </connections>
                 </viewController>
