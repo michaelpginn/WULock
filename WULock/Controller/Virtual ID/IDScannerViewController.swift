@@ -55,8 +55,13 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAle
         searchingForRects = true
         DispatchQueue.global(qos: .background).async {
             let ciimage = CIImage(cvPixelBuffer: currentFrame.capturedImage)
+            let focalLength = currentFrame.camera.intrinsics.columns.0.x
             
-            let rects = detector.features(in: ciimage)
+            let options:[String:Any] = [CIDetectorAspectRatio: 1.75, CIDetectorFocalLength: focalLength]
+            
+            
+            
+            let rects = detector.features(in: ciimage, options: options)
             if let rect = rects.first as? CIRectangleFeature{
                 //self.drawRectFeature(rect)
                 self.displayAlertController(rect: rect, ciimage:ciimage)
