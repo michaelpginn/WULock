@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9507AFEC21A48CB50043B924 /* VirtualID.storyboard */; };
 		95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */; };
 		95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3D9219A40C300F61CE7 /* Main.storyboard */; };
 		95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9507AFED21A48CB50043B924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WULock/View/Base.lproj/VirtualID.storyboard; sourceTree = "<group>"; };
 		95F9B3D2219A40C300F61CE7 /* WULock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WULock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95F9B3DA219A40C300F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3D9219A40C300F61CE7 /* Main.storyboard */,
+				9507AFEC21A48CB50043B924 /* VirtualID.storyboard */,
 				95F9B3E1219A40C600F61CE7 /* LaunchScreen.storyboard */,
 				95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */,
 			);
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F9B3E3219A40C600F61CE7 /* LaunchScreen.storyboard in Resources */,
+				9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */,
 				95F9B3E0219A40C600F61CE7 /* Assets.xcassets in Resources */,
 				95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */,
 				95F9B3F4219A429300F61CE7 /* IDScanDialog.xib in Resources */,
@@ -207,6 +211,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9507AFEC21A48CB50043B924 /* VirtualID.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9507AFED21A48CB50043B924 /* Base */,
+			);
+			name = VirtualID.storyboard;
+			sourceTree = "<group>";
+		};
 		95F9B3D9219A40C300F61CE7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
