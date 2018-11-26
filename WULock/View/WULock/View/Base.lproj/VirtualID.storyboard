@@ -135,7 +135,7 @@
         <scene sceneID="r4N-Es-JbB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DrQ-bE-iwc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Virtual ID" id="Slx-vy-J80"/>
+                    <tabBarItem key="tabBarItem" title="Virtual ID" image="tab_id" selectedImage="tab_id_filled" id="Slx-vy-J80"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="rRH-hS-A9l">
@@ -153,4 +153,8 @@
             <point key="canvasLocation" x="-306.39999999999998" y="738.98050974512751"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_id" width="37.5" height="37.5"/>
+        <image name="tab_id_filled" width="37.5" height="37.5"/>
+    </resources>
 </document>

@@ -31,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YGp-bM-GGd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="AR" id="oIo-r6-pYI"/>
+                    <tabBarItem key="tabBarItem" title="AR" image="tab_glasses" selectedImage="tab_glasses_filled" id="oIo-r6-pYI"/>
                     <connections>
                         <outlet property="sceneView" destination="vDd-tl-gmd" id="G3d-Uw-ppb"/>
                     </connections>
@@ -110,7 +110,7 @@
                     <navigationItem key="navigationItem" title="Secure Vault" id="vCf-QW-5Hd">
                         <barButtonItem key="rightBarButtonItem" largeContentSizeImage="add button" systemItem="add" id="qj7-Za-vEV">
                             <connections>
-                                <segue destination="Rpg-1P-jKP" kind="presentation" modalPresentationStyle="overCurrentContext" id="dT1-z0-sNL"/>
+                                <segue destination="I37-e2-GdX" kind="presentation" modalPresentationStyle="overFullScreen" id="KTh-f3-Ghc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -120,143 +120,81 @@
             <point key="canvasLocation" x="1148" y="-728.18590704647681"/>
         </scene>
         <!--Add Item View Controller-->
-        <scene sceneID="jqt-xU-s3M">
+        <scene sceneID="KWT-8a-ti3">
             <objects>
-                <viewController id="Rpg-1P-jKP" customClass="AddItemViewController" customModule="WULock" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kZl-Kj-TE0">
+                <viewController id="I37-e2-GdX" customClass="AddItemViewController" customModule="WULock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Acx-5v-tt4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRv-io-qTq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rk-pD-92Z">
-                                        <rect key="frame" x="0.0" y="40" width="375" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="a0X-Hi-00A">
-                                        <rect key="frame" x="16" y="91" width="343" height="50"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCt-5p-VRC" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Student ID"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_studentID"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyG-Cm-pgf" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mailbox"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_mailbox"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="gUf-Mw-eAh"/>
-                                            <constraint firstItem="oyG-Cm-pgf" firstAttribute="width" secondItem="sCt-5p-VRC" secondAttribute="width" id="p9F-l7-Gbo"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="X0R-ht-Ywg">
-                                        <rect key="frame" x="16" y="153" width="343" height="50"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7v-oe-gO9" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Gym Locker"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_gym"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isS-Uj-KsO" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Online"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_online"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="isS-Uj-KsO" firstAttribute="width" secondItem="d7v-oe-gO9" secondAttribute="width" id="ALI-PG-Wmz"/>
-                                            <constraint firstAttribute="height" constant="50" id="ulA-U8-dac"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="rr5-hB-9lZ">
-                                        <rect key="frame" x="16" y="215" width="343" height="50"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCw-5J-ycK" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Housing"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_housing"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDR-xu-aUo" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                                <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Other"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_other"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="9fp-6m-5sH"/>
-                                            <constraint firstItem="wDR-xu-aUo" firstAttribute="width" secondItem="zCw-5J-ycK" secondAttribute="width" id="MLB-4c-l9L"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="0Rk-pD-92Z" secondAttribute="trailing" id="0wl-Kp-leC"/>
-                                    <constraint firstAttribute="trailing" secondItem="rr5-hB-9lZ" secondAttribute="trailing" constant="16" id="8Kb-LE-hRJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="a0X-Hi-00A" secondAttribute="trailing" constant="16" id="AAh-Rg-fjw"/>
-                                    <constraint firstItem="X0R-ht-Ywg" firstAttribute="top" secondItem="a0X-Hi-00A" secondAttribute="bottom" constant="12" id="Ihm-bm-438"/>
-                                    <constraint firstItem="X0R-ht-Ywg" firstAttribute="leading" secondItem="gRv-io-qTq" secondAttribute="leading" constant="16" id="OAi-4t-a5Y"/>
-                                    <constraint firstItem="a0X-Hi-00A" firstAttribute="top" secondItem="0Rk-pD-92Z" secondAttribute="bottom" constant="16" id="Pw2-1v-nxi"/>
-                                    <constraint firstAttribute="trailing" secondItem="X0R-ht-Ywg" secondAttribute="trailing" constant="16" id="XzW-TD-2Ct"/>
-                                    <constraint firstItem="a0X-Hi-00A" firstAttribute="leading" secondItem="gRv-io-qTq" secondAttribute="leading" constant="16" id="ccl-p3-AjB"/>
-                                    <constraint firstItem="X0R-ht-Ywg" firstAttribute="centerX" secondItem="gRv-io-qTq" secondAttribute="centerX" id="eBk-px-Ue0"/>
-                                    <constraint firstItem="0Rk-pD-92Z" firstAttribute="top" secondItem="gRv-io-qTq" secondAttribute="top" constant="40" id="ioG-p3-TUU"/>
-                                    <constraint firstItem="rr5-hB-9lZ" firstAttribute="top" secondItem="X0R-ht-Ywg" secondAttribute="bottom" constant="12" id="jBb-HM-Hj0"/>
-                                    <constraint firstItem="rr5-hB-9lZ" firstAttribute="leading" secondItem="gRv-io-qTq" secondAttribute="leading" constant="16" id="mXH-D7-5hy"/>
-                                    <constraint firstItem="0Rk-pD-92Z" firstAttribute="leading" secondItem="gRv-io-qTq" secondAttribute="leading" id="tmr-X8-ojn"/>
-                                </constraints>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7z3-QH-Lx5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="Wqv-J0-Ho2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <connections>
+                                        <segue destination="MyL-Q4-Ul7" kind="embed" id="Ezb-EQ-Gpt"/>
+                                    </connections>
+                                </containerView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="s1T-bA-SdL">
+                                        <rect key="frame" x="0.0" y="278" width="375" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s1T-bA-SdL" id="389-1I-Rgl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="I37-e2-GdX" id="3hy-4f-eC2"/>
+                                    <outlet property="delegate" destination="I37-e2-GdX" id="Qad-x0-Tj1"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbT-H2-6Eh">
+                                <rect key="frame" x="16" y="629" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="I37-e2-GdX" eventType="touchUpInside" id="IUd-Cb-3Gg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFa-FT-iN4">
+                                <rect key="frame" x="170" y="629" width="35" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="I37-e2-GdX" eventType="touchUpInside" id="2Om-5Z-5zQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="gRv-io-qTq" secondAttribute="bottom" id="1lh-RY-3Uo"/>
-                            <constraint firstItem="gRv-io-qTq" firstAttribute="trailing" secondItem="u9Z-FD-abC" secondAttribute="trailing" id="P8c-pS-Wdj"/>
-                            <constraint firstItem="0Rk-pD-92Z" firstAttribute="width" secondItem="kZl-Kj-TE0" secondAttribute="width" id="hFX-qZ-3Ef"/>
-                            <constraint firstItem="gRv-io-qTq" firstAttribute="leading" secondItem="u9Z-FD-abC" secondAttribute="leading" id="oBz-ph-A80"/>
-                            <constraint firstItem="gRv-io-qTq" firstAttribute="top" secondItem="kZl-Kj-TE0" secondAttribute="top" id="tNq-4W-UKI"/>
+                            <constraint firstItem="7z3-QH-Lx5" firstAttribute="trailing" secondItem="v9Y-ch-w4x" secondAttribute="trailing" id="6Bc-Ke-4dE"/>
+                            <constraint firstItem="7z3-QH-Lx5" firstAttribute="leading" secondItem="v9Y-ch-w4x" secondAttribute="leading" id="9Gz-YK-JX9"/>
+                            <constraint firstItem="v9Y-ch-w4x" firstAttribute="bottom" secondItem="CFa-FT-iN4" secondAttribute="bottom" constant="8" id="B8A-cI-26B"/>
+                            <constraint firstItem="HbT-H2-6Eh" firstAttribute="top" secondItem="7z3-QH-Lx5" secondAttribute="bottom" constant="8" id="Jd0-jd-BMY"/>
+                            <constraint firstItem="CFa-FT-iN4" firstAttribute="centerX" secondItem="Acx-5v-tt4" secondAttribute="centerX" id="Srn-8S-SJP"/>
+                            <constraint firstItem="7z3-QH-Lx5" firstAttribute="top" secondItem="Acx-5v-tt4" secondAttribute="top" id="afv-Xc-23N"/>
+                            <constraint firstItem="HbT-H2-6Eh" firstAttribute="leading" secondItem="v9Y-ch-w4x" secondAttribute="leading" constant="16" id="r2L-Sg-Fsv"/>
+                            <constraint firstItem="v9Y-ch-w4x" firstAttribute="bottom" secondItem="HbT-H2-6Eh" secondAttribute="bottom" constant="8" id="rWp-9y-o2s"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="u9Z-FD-abC"/>
+                        <viewLayoutGuide key="safeArea" id="v9Y-ch-w4x"/>
                     </view>
                     <connections>
-                        <outletCollection property="typeViews" destination="sCt-5p-VRC" collectionClass="NSMutableArray" id="pqh-5F-Pdn"/>
-                        <outletCollection property="typeViews" destination="oyG-Cm-pgf" collectionClass="NSMutableArray" id="Zdh-HN-cMG"/>
-                        <outletCollection property="typeViews" destination="d7v-oe-gO9" collectionClass="NSMutableArray" id="L9Y-nW-MOB"/>
-                        <outletCollection property="typeViews" destination="isS-Uj-KsO" collectionClass="NSMutableArray" id="609-hP-PjO"/>
-                        <outletCollection property="typeViews" destination="zCw-5J-ycK" collectionClass="NSMutableArray" id="4LL-Kg-giU"/>
-                        <outletCollection property="typeViews" destination="wDR-xu-aUo" collectionClass="NSMutableArray" id="SUC-WW-4uv"/>
+                        <outlet property="tableView" destination="7z3-QH-Lx5" id="czG-VI-tOF"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aHS-o8-L1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qKq-0B-Cfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808.8" y="-728.18590704647681"/>
+            <point key="canvasLocation" x="1821.5999999999999" y="-728.18590704647681"/>
         </scene>
         <!--Secure Vault-->
         <scene sceneID="zuk-eU-SfI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gzu-L4-6Y3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Secure Vault" id="GMX-5U-CVF"/>
+                    <tabBarItem key="tabBarItem" title="Secure Vault" image="tab_vault" selectedImage="tab_vault_filled" id="GMX-5U-CVF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="8mo-HC-I0d">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
@@ -281,6 +219,117 @@
             </objects>
             <point key="canvasLocation" x="-530" y="510"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="weS-cQ-3XE">
+            <objects>
+                <viewController id="MyL-Q4-Ul7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rUe-gV-g2L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6Za-y3-z9D">
+                                <rect key="frame" x="17" y="199" width="343" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-Nz-Wu6" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Housing"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_housing"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTX-pz-CEG" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Other"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_other"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="RTX-pz-CEG" firstAttribute="width" secondItem="TFe-Nz-Wu6" secondAttribute="width" id="CbQ-lG-bRv"/>
+                                    <constraint firstAttribute="height" constant="50" id="xCI-jz-1VH"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Add Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-WY-Dff">
+                                <rect key="frame" x="1" y="24" width="375" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mYO-Yl-bIn">
+                                <rect key="frame" x="17" y="137" width="343" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8FI-20-C3X" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Gym Locker"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_gym"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6f-qi-OVg" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Online"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_online"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Rg1-Vq-tcX"/>
+                                    <constraint firstItem="w6f-qi-OVg" firstAttribute="width" secondItem="8FI-20-C3X" secondAttribute="width" id="rGu-eC-hpa"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="DLx-hY-jHd">
+                                <rect key="frame" x="17" y="75" width="343" height="50"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bi5-KZ-SM1" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Student ID"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_studentID"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuK-Bc-bup" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mailbox"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_mailbox"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="AuK-Bc-bup" firstAttribute="width" secondItem="bi5-KZ-SM1" secondAttribute="width" id="03t-UR-rR4"/>
+                                    <constraint firstAttribute="height" constant="50" id="IH1-n9-U5l"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xeO-WY-Dff" firstAttribute="top" secondItem="rUe-gV-g2L" secondAttribute="top" constant="40" id="0Lf-5g-Fof"/>
+                            <constraint firstItem="xeO-WY-Dff" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" id="29C-sJ-2Oa"/>
+                            <constraint firstItem="6Za-y3-z9D" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" constant="16" id="3ut-h3-Mrs"/>
+                            <constraint firstItem="DLx-hY-jHd" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" constant="16" id="SHY-gX-bfm"/>
+                            <constraint firstAttribute="trailing" secondItem="DLx-hY-jHd" secondAttribute="trailing" constant="16" id="Syo-g2-3ra"/>
+                            <constraint firstItem="6Za-y3-z9D" firstAttribute="top" secondItem="mYO-Yl-bIn" secondAttribute="bottom" constant="12" id="T7p-ij-Omk"/>
+                            <constraint firstItem="DLx-hY-jHd" firstAttribute="top" secondItem="xeO-WY-Dff" secondAttribute="bottom" constant="16" id="iKJ-4H-wda"/>
+                            <constraint firstItem="mYO-Yl-bIn" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" constant="16" id="lTG-pk-crh"/>
+                            <constraint firstAttribute="trailing" secondItem="6Za-y3-z9D" secondAttribute="trailing" constant="16" id="oMQ-dx-p6S"/>
+                            <constraint firstAttribute="trailing" secondItem="mYO-Yl-bIn" secondAttribute="trailing" constant="16" id="qv3-k8-WcW"/>
+                            <constraint firstItem="mYO-Yl-bIn" firstAttribute="top" secondItem="DLx-hY-jHd" secondAttribute="bottom" constant="12" id="rgC-D8-cPT"/>
+                            <constraint firstAttribute="trailing" secondItem="xeO-WY-Dff" secondAttribute="trailing" id="s54-GP-Omh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAL-2F-4vX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2513" y="-728"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add button" width="16" height="16"/>
@@ -290,5 +339,9 @@
         <image name="icon_online" width="57" height="57"/>
         <image name="icon_other" width="57" height="57"/>
         <image name="icon_studentID" width="57" height="57"/>
+        <image name="tab_glasses" width="37.5" height="37.5"/>
+        <image name="tab_glasses_filled" width="37.5" height="37.5"/>
+        <image name="tab_vault" width="37.5" height="37.5"/>
+        <image name="tab_vault_filled" width="37.5" height="37.5"/>
     </resources>
 </document>
