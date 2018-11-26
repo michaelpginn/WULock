@@ -24,10 +24,10 @@ class IDViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         //cardFrontImageButton.layer.cornerRadius = CARD_CORNER_RADIUS
-        cardFrontImageButton.imageView?.layer.cornerRadius = CARD_CORNER_RADIUS
-        cardFrontImageButton.clipsToBounds = false
-        cardBackImageButton.imageView?.layer.cornerRadius = CARD_CORNER_RADIUS
-        cardBackImageButton.clipsToBounds = false
+        cardFrontImageButton.layer.cornerRadius = CARD_CORNER_RADIUS
+        cardFrontImageButton.clipsToBounds = true
+        cardBackImageButton.layer.cornerRadius = CARD_CORNER_RADIUS
+        cardBackImageButton.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(getImagesForCards), name: Notification.Name("coredata-updated"), object: nil)
         

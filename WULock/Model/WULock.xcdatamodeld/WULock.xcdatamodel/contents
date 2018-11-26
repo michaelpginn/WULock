@@ -4,7 +4,13 @@
         <attribute name="imagedata" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="fields" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="other_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CardImage" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Item" positionX="-63" positionY="0" width="128" height="90"/>
     </elements>
 </model>

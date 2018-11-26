@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9507AFEC21A48CB50043B924 /* VirtualID.storyboard */; };
+		9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507AFEF21A48EEA0043B924 /* CameraButton.swift */; };
+		958F5C8F21AC640300453BC9 /* VaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */; };
+		958F5C9121AC644700453BC9 /* VaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C9021AC644700453BC9 /* VaultTableViewController.swift */; };
+		958F5C9321AC6B7700453BC9 /* TypeOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */; };
+		958F5C9521AC6B8700453BC9 /* TypeOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */; };
+		95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */; };
 		95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */; };
 		95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3D9219A40C300F61CE7 /* Main.storyboard */; };
 		95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */; };
 		95F9B3E0219A40C600F61CE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3DF219A40C600F61CE7 /* Assets.xcassets */; };
 		95F9B3E3219A40C600F61CE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3E1219A40C600F61CE7 /* LaunchScreen.storyboard */; };
-		95F9B3EB219A40D800F61CE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3EA219A40D800F61CE7 /* Item.swift */; };
+		95F9B3EB219A40D800F61CE7 /* VaultItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3EA219A40D800F61CE7 /* VaultItem.swift */; };
 		95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */; };
 		95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */; };
 		95F9B3F4219A429300F61CE7 /* IDScanDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */; };
@@ -25,6 +31,12 @@
 
 /* Begin PBXFileReference section */
 		9507AFED21A48CB50043B924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WULock/View/Base.lproj/VirtualID.storyboard; sourceTree = "<group>"; };
+		9507AFEF21A48EEA0043B924 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
+		958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTableViewCell.swift; sourceTree = "<group>"; };
+		958F5C9021AC644700453BC9 /* VaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTableViewController.swift; sourceTree = "<group>"; };
+		958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOptionView.swift; sourceTree = "<group>"; };
+		958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeOptionView.xib; sourceTree = "<group>"; };
+		95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		95F9B3D2219A40C300F61CE7 /* WULock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WULock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95F9B3DA219A40C300F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,7 +44,7 @@
 		95F9B3DF219A40C600F61CE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95F9B3E2219A40C600F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95F9B3E4219A40C600F61CE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95F9B3EA219A40D800F61CE7 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		95F9B3EA219A40D800F61CE7 /* VaultItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VaultItem.swift; sourceTree = "<group>"; };
 		95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDScannerViewController.swift; sourceTree = "<group>"; };
 		95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARToolsViewController.swift; sourceTree = "<group>"; };
 		95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDScanDialog.xib; sourceTree = "<group>"; };
@@ -53,6 +65,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		958F5C9621AC6C0E00453BC9 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */,
+				9507AFEF21A48EEA0043B924 /* CameraButton.swift */,
+				958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */,
+				958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */,
+				958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
 		95F9B3C9219A40C300F61CE7 = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +108,7 @@
 		95F9B3F0219A41A100F61CE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				95F9B3EA219A40D800F61CE7 /* Item.swift */,
+				95F9B3EA219A40D800F61CE7 /* VaultItem.swift */,
 				95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */,
 				95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */,
 				95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */,
@@ -99,7 +123,7 @@
 				95F9B3D9219A40C300F61CE7 /* Main.storyboard */,
 				9507AFEC21A48CB50043B924 /* VirtualID.storyboard */,
 				95F9B3E1219A40C600F61CE7 /* LaunchScreen.storyboard */,
-				95F9B3F3219A429300F61CE7 /* IDScanDialog.xib */,
+				958F5C9621AC6C0E00453BC9 /* Custom Views */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */,
+				958F5C9021AC644700453BC9 /* VaultTableViewController.swift */,
+				95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */,
 				95F9B3F9219B75B000F61CE7 /* Virtual ID */,
 			);
 			path = Controller;
@@ -182,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95F9B3E3219A40C600F61CE7 /* LaunchScreen.storyboard in Resources */,
+				958F5C9521AC6B8700453BC9 /* TypeOptionView.xib in Resources */,
 				9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */,
 				95F9B3E0219A40C600F61CE7 /* Assets.xcassets in Resources */,
 				95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */,
@@ -196,13 +223,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95F9B3EB219A40D800F61CE7 /* Item.swift in Sources */,
+				95F9B3EB219A40D800F61CE7 /* VaultItem.swift in Sources */,
+				958F5C8F21AC640300453BC9 /* VaultTableViewCell.swift in Sources */,
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
+				9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */,
+				958F5C9121AC644700453BC9 /* VaultTableViewController.swift in Sources */,
 				95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */,
 				95F9B412219B7E1500F61CE7 /* CardImage+CoreDataClass.swift in Sources */,
+				958F5C9321AC6B7700453BC9 /* TypeOptionView.swift in Sources */,
 				95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */,
 				95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */,
 				95F9B3F8219B70B900F61CE7 /* IDViewController.swift in Sources */,
+				95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */,
 				95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */,
 				95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */,
 			);

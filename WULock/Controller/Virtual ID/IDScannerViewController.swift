@@ -12,6 +12,8 @@ import CoreData
 
 class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAlertViewControllerDelegate {
     @IBOutlet weak var sceneView:ARSCNView!
+    @IBOutlet weak var cameraButton: CameraButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var searchingForRects = false
     var rectDetector:CIDetector?
@@ -36,21 +38,21 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAle
         sceneView.session.run(configuration)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //adapted from https://github.com/mludowise/ARKitRectangleDetection
-        guard let touch = touches.first,
-            let currentFrame = sceneView.session.currentFrame else {
-                return
-        }
-        
-        let currentTouchLoc = touch.location(in: sceneView)
-        findRectangle(locationInScene: currentTouchLoc, frame: currentFrame)
+    //MARK: Interface methods
+    @IBAction func capture(sender: UIButton){
+        guard let currentFrame = sceneView.session.currentFrame else {return}
+        findRectangle(frame: currentFrame)
     }
     
+    @IBAction func cancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Rect Detection
     /**
      Takes a location and a frame and finds the rectangle in the scene (if it exists)
      */
-    private func findRectangle(locationInScene location: CGPoint, frame currentFrame: ARFrame){
+    private func findRectangle(frame currentFrame: ARFrame){
         guard let detector = rectDetector else{return}
         searchingForRects = true
         DispatchQueue.global(qos: .background).async {
@@ -134,6 +136,8 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAle
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    
 //    func drawHighlightOverlayForPoints(image: UIKit.CIImage, topLeft: CGPoint, topRight: CGPoint,
 //                                       bottomLeft: CGPoint, bottomRight: CGPoint) -> UIKit.CIImage {
 //
@@ -165,5 +169,7 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAle
 //        shapelayer.fillColor = UIColor.blue.cgColor
 //        self.view.layer.addSublayer(shapelayer)
 //    }
+    
+    
     
 }

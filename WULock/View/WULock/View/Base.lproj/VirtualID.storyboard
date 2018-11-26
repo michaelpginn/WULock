@@ -89,11 +89,32 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgL-Qe-aiQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0MJ-Ea-8hl" customClass="CameraButton" customModule="WULock" customModuleProvider="target">
+                                <rect key="frame" x="145" y="562" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="Uqs-e1-EOX"/>
+                                    <constraint firstAttribute="width" constant="85" id="ulx-Nj-4hf"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="captureWithSender:" destination="tLN-6g-Et4" eventType="touchUpInside" id="k3B-8z-KFx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8Y-mP-abV">
+                                <rect key="frame" x="16" y="617" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancel:" destination="tLN-6g-Et4" eventType="touchUpInside" id="p1j-Re-4ub"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7ER-m0-RJg" firstAttribute="trailing" secondItem="AgL-Qe-aiQ" secondAttribute="trailing" id="0kV-TQ-Dgn"/>
                             <constraint firstAttribute="bottom" secondItem="AgL-Qe-aiQ" secondAttribute="bottom" id="4c4-YT-MP3"/>
+                            <constraint firstItem="a8Y-mP-abV" firstAttribute="bottom" secondItem="0MJ-Ea-8hl" secondAttribute="bottom" id="8am-9A-qdY"/>
+                            <constraint firstItem="a8Y-mP-abV" firstAttribute="leading" secondItem="7ER-m0-RJg" secondAttribute="leading" constant="16" id="HNO-SF-xCG"/>
+                            <constraint firstItem="0MJ-Ea-8hl" firstAttribute="centerX" secondItem="fcV-Ww-GnF" secondAttribute="centerX" id="OfJ-BM-GjG"/>
+                            <constraint firstItem="7ER-m0-RJg" firstAttribute="bottom" secondItem="0MJ-Ea-8hl" secondAttribute="bottom" constant="20" id="cLu-bi-niq"/>
                             <constraint firstItem="AgL-Qe-aiQ" firstAttribute="leading" secondItem="7ER-m0-RJg" secondAttribute="leading" id="nOb-BX-oB4"/>
                             <constraint firstItem="AgL-Qe-aiQ" firstAttribute="top" secondItem="fcV-Ww-GnF" secondAttribute="top" id="z3Y-Ea-GeB"/>
                         </constraints>
@@ -101,6 +122,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="qTd-p6-qBL"/>
                     <connections>
+                        <outlet property="cameraButton" destination="0MJ-Ea-8hl" id="Zmw-xm-oLM"/>
+                        <outlet property="cancelButton" destination="a8Y-mP-abV" id="yLJ-HF-IrS"/>
                         <outlet property="sceneView" destination="AgL-Qe-aiQ" id="m0J-51-Lyy"/>
                     </connections>
                 </viewController>
