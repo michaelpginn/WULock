@@ -14,6 +14,8 @@
 		958F5C9321AC6B7700453BC9 /* TypeOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */; };
 		958F5C9521AC6B8700453BC9 /* TypeOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */; };
 		95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */; };
+		95B3F6EA21AC9599005AAC06 /* ItemTypePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B3F6E921AC9599005AAC06 /* ItemTypePickerView.xib */; };
+		95B83F9021AC9C340088FC3E /* ItemTypePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */; };
 		95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */; };
 		95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3D9219A40C300F61CE7 /* Main.storyboard */; };
 		95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */; };
@@ -37,6 +39,8 @@
 		958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOptionView.swift; sourceTree = "<group>"; };
 		958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeOptionView.xib; sourceTree = "<group>"; };
 		95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		95B3F6E921AC9599005AAC06 /* ItemTypePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTypePickerView.xib; sourceTree = "<group>"; };
+		95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypePickerController.swift; sourceTree = "<group>"; };
 		95F9B3D2219A40C300F61CE7 /* WULock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WULock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95F9B3DA219A40C300F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 				958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */,
 				958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */,
 				958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */,
+				95B3F6E921AC9599005AAC06 /* ItemTypePickerView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */,
 				958F5C9021AC644700453BC9 /* VaultTableViewController.swift */,
 				95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */,
+				95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */,
 				95F9B3F9219B75B000F61CE7 /* Virtual ID */,
 			);
 			path = Controller;
@@ -210,6 +216,7 @@
 				95F9B3E3219A40C600F61CE7 /* LaunchScreen.storyboard in Resources */,
 				958F5C9521AC6B8700453BC9 /* TypeOptionView.xib in Resources */,
 				9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */,
+				95B3F6EA21AC9599005AAC06 /* ItemTypePickerView.xib in Resources */,
 				95F9B3E0219A40C600F61CE7 /* Assets.xcassets in Resources */,
 				95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */,
 				95F9B3F4219A429300F61CE7 /* IDScanDialog.xib in Resources */,
@@ -234,6 +241,7 @@
 				95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */,
 				95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */,
 				95F9B3F8219B70B900F61CE7 /* IDViewController.swift in Sources */,
+				95B83F9021AC9C340088FC3E /* ItemTypePickerController.swift in Sources */,
 				95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */,
 				95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */,
 				95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */,

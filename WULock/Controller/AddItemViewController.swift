@@ -10,8 +10,7 @@ import UIKit
 
 class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    @IBOutlet var typeViews:[TypeOptionView]!
+    @IBOutlet weak var containerView: UIView!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,9 +20,17 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        for tv in typeViews{
-            
-        }
+        
+        //modified from https://stackoverflow.com/questions/37370801/how-to-add-a-container-view-programmatically
+        let pickerController = ItemTypePickerController()
+        addChild(pickerController)
+        pickerController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pickerController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            pickerController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            pickerController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
+            pickerController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            ])
     }
 
     @IBAction func save(_ sender: Any) {

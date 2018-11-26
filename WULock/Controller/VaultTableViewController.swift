@@ -49,7 +49,7 @@ class VaultTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let thisItem = items[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? VaultTableViewCell{
-            cell.label.text = thisItem.type == .other ? thisItem.otherType : thisItem.type.rawValue
+            //cell.label.text = thisItem.type == .other ? thisItem.otherType : thisItem.type.rawValue
             return cell
         }else{
             return UITableViewCell()

@@ -8,19 +8,19 @@
 
 import UIKit
 
-@IBDesignable
+
 class TypeOptionView: UIView {
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
     
-    @IBInspectable public var title:String = ""{
+    public var title:String = ""{
         didSet{
             titleLabel.text = title
         }
     }
     
-    @IBInspectable public var iconImage:UIImage? = nil{
+    public var iconImage:UIImage? = nil{
         didSet{
             iconImageView.image = iconImage
         }

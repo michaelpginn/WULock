@@ -130,16 +130,36 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7z3-QH-Lx5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="Wqv-J0-Ho2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                    <connections>
-                                        <segue destination="MyL-Q4-Ul7" kind="embed" id="Ezb-EQ-Gpt"/>
-                                    </connections>
-                                </containerView>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="6Ui-Hn-UHS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="285"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEX-5l-ZyS">
+                                            <rect key="frame" x="128" y="40" width="119" height="47"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cf0-ng-fU0">
+                                            <rect key="frame" x="16" y="103" width="343" height="174"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="174" id="8sf-6F-Vep"/>
+                                            </constraints>
+                                        </containerView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="vEX-5l-ZyS" firstAttribute="top" secondItem="6Ui-Hn-UHS" secondAttribute="top" constant="40" id="6Q5-9J-01s"/>
+                                        <constraint firstAttribute="bottom" secondItem="cf0-ng-fU0" secondAttribute="bottom" constant="8" id="B8E-lX-ykL"/>
+                                        <constraint firstItem="cf0-ng-fU0" firstAttribute="leading" secondItem="6Ui-Hn-UHS" secondAttribute="leading" constant="16" id="IeV-YT-zrk"/>
+                                        <constraint firstItem="vEX-5l-ZyS" firstAttribute="centerX" secondItem="6Ui-Hn-UHS" secondAttribute="centerX" id="V4o-mK-DdX"/>
+                                        <constraint firstAttribute="trailing" secondItem="cf0-ng-fU0" secondAttribute="trailing" constant="16" id="dAz-vc-r6a"/>
+                                        <constraint firstItem="cf0-ng-fU0" firstAttribute="top" secondItem="vEX-5l-ZyS" secondAttribute="bottom" constant="16" id="pMf-lf-uRh"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="54" id="s1T-bA-SdL">
-                                        <rect key="frame" x="0.0" y="278" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="313" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s1T-bA-SdL" id="389-1I-Rgl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
@@ -183,6 +203,7 @@
                         <viewLayoutGuide key="safeArea" id="v9Y-ch-w4x"/>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="cf0-ng-fU0" id="mLB-t7-Z0u"/>
                         <outlet property="tableView" destination="7z3-QH-Lx5" id="czG-VI-tOF"/>
                     </connections>
                 </viewController>
@@ -219,126 +240,9 @@
             </objects>
             <point key="canvasLocation" x="-530" y="510"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="weS-cQ-3XE">
-            <objects>
-                <viewController id="MyL-Q4-Ul7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rUe-gV-g2L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6Za-y3-z9D">
-                                <rect key="frame" x="17" y="199" width="343" height="50"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-Nz-Wu6" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Housing"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_housing"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTX-pz-CEG" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                        <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Other"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_other"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="RTX-pz-CEG" firstAttribute="width" secondItem="TFe-Nz-Wu6" secondAttribute="width" id="CbQ-lG-bRv"/>
-                                    <constraint firstAttribute="height" constant="50" id="xCI-jz-1VH"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Add Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeO-WY-Dff">
-                                <rect key="frame" x="1" y="24" width="375" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mYO-Yl-bIn">
-                                <rect key="frame" x="17" y="137" width="343" height="50"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8FI-20-C3X" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Gym Locker"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_gym"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6f-qi-OVg" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                        <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Online"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_online"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Rg1-Vq-tcX"/>
-                                    <constraint firstItem="w6f-qi-OVg" firstAttribute="width" secondItem="8FI-20-C3X" secondAttribute="width" id="rGu-eC-hpa"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="DLx-hY-jHd">
-                                <rect key="frame" x="17" y="75" width="343" height="50"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bi5-KZ-SM1" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="165.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Student ID"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_studentID"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuK-Bc-bup" customClass="TypeOptionView" customModule="WULock" customModuleProvider="target">
-                                        <rect key="frame" x="177.5" y="0.0" width="165.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mailbox"/>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icon_mailbox"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="AuK-Bc-bup" firstAttribute="width" secondItem="bi5-KZ-SM1" secondAttribute="width" id="03t-UR-rR4"/>
-                                    <constraint firstAttribute="height" constant="50" id="IH1-n9-U5l"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="xeO-WY-Dff" firstAttribute="top" secondItem="rUe-gV-g2L" secondAttribute="top" constant="40" id="0Lf-5g-Fof"/>
-                            <constraint firstItem="xeO-WY-Dff" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" id="29C-sJ-2Oa"/>
-                            <constraint firstItem="6Za-y3-z9D" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" constant="16" id="3ut-h3-Mrs"/>
-                            <constraint firstItem="DLx-hY-jHd" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" constant="16" id="SHY-gX-bfm"/>
-                            <constraint firstAttribute="trailing" secondItem="DLx-hY-jHd" secondAttribute="trailing" constant="16" id="Syo-g2-3ra"/>
-                            <constraint firstItem="6Za-y3-z9D" firstAttribute="top" secondItem="mYO-Yl-bIn" secondAttribute="bottom" constant="12" id="T7p-ij-Omk"/>
-                            <constraint firstItem="DLx-hY-jHd" firstAttribute="top" secondItem="xeO-WY-Dff" secondAttribute="bottom" constant="16" id="iKJ-4H-wda"/>
-                            <constraint firstItem="mYO-Yl-bIn" firstAttribute="leading" secondItem="rUe-gV-g2L" secondAttribute="leading" constant="16" id="lTG-pk-crh"/>
-                            <constraint firstAttribute="trailing" secondItem="6Za-y3-z9D" secondAttribute="trailing" constant="16" id="oMQ-dx-p6S"/>
-                            <constraint firstAttribute="trailing" secondItem="mYO-Yl-bIn" secondAttribute="trailing" constant="16" id="qv3-k8-WcW"/>
-                            <constraint firstItem="mYO-Yl-bIn" firstAttribute="top" secondItem="DLx-hY-jHd" secondAttribute="bottom" constant="12" id="rgC-D8-cPT"/>
-                            <constraint firstAttribute="trailing" secondItem="xeO-WY-Dff" secondAttribute="trailing" id="s54-GP-Omh"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HAL-2F-4vX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2513" y="-728"/>
-        </scene>
     </scenes>
     <resources>
         <image name="add button" width="16" height="16"/>
-        <image name="icon_gym" width="57" height="57"/>
-        <image name="icon_housing" width="57" height="57"/>
-        <image name="icon_mailbox" width="57" height="57"/>
-        <image name="icon_online" width="57" height="57"/>
-        <image name="icon_other" width="57" height="57"/>
-        <image name="icon_studentID" width="57" height="57"/>
         <image name="tab_glasses" width="37.5" height="37.5"/>
         <image name="tab_glasses_filled" width="37.5" height="37.5"/>
         <image name="tab_vault" width="37.5" height="37.5"/>
