@@ -17,6 +17,7 @@ class VaultTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadItems()
+        
     }
 
     private func loadItems(){

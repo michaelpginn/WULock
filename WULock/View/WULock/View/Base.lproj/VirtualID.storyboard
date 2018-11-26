@@ -114,6 +114,7 @@
                             <constraint firstItem="a8Y-mP-abV" firstAttribute="bottom" secondItem="0MJ-Ea-8hl" secondAttribute="bottom" id="8am-9A-qdY"/>
                             <constraint firstItem="a8Y-mP-abV" firstAttribute="leading" secondItem="7ER-m0-RJg" secondAttribute="leading" constant="16" id="HNO-SF-xCG"/>
                             <constraint firstItem="0MJ-Ea-8hl" firstAttribute="centerX" secondItem="fcV-Ww-GnF" secondAttribute="centerX" id="OfJ-BM-GjG"/>
+                            <constraint firstItem="0MJ-Ea-8hl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a8Y-mP-abV" secondAttribute="trailing" id="cCy-pf-3S2"/>
                             <constraint firstItem="7ER-m0-RJg" firstAttribute="bottom" secondItem="0MJ-Ea-8hl" secondAttribute="bottom" constant="20" id="cLu-bi-niq"/>
                             <constraint firstItem="AgL-Qe-aiQ" firstAttribute="leading" secondItem="7ER-m0-RJg" secondAttribute="leading" id="nOb-BX-oB4"/>
                             <constraint firstItem="AgL-Qe-aiQ" firstAttribute="top" secondItem="fcV-Ww-GnF" secondAttribute="top" id="z3Y-Ea-GeB"/>
@@ -157,4 +158,5 @@
         <image name="tab_id" width="37.5" height="37.5"/>
         <image name="tab_id_filled" width="37.5" height="37.5"/>
     </resources>
+    <color key="tintColor" red="0.6470588235294118" green="0.078431372549019607" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

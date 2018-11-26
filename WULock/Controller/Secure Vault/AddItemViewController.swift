@@ -8,13 +8,13 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemTypePickerControllerDelegate {
     @IBOutlet weak var containerView: UIView!
-
     @IBOutlet weak var tableView: UITableView!
     
     private var currentSelectedType:ItemType = .other
+    private var defaultFields:[ItemField] = []
+    private var userFields:[ItemField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         let pickerController = ItemTypePickerController()
         addChild(pickerController)
         pickerController.view.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(pickerController.view)
         NSLayoutConstraint.activate([
             pickerController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             pickerController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
@@ -33,6 +34,18 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             ])
     }
 
+    // MARK: ItemTypePickerControllerDelegate method
+    func optionSelected(title: String, reqFields: [String]) {
+        //reload the table view with the correct fields
+        currentSelectedType = ItemType(rawValue: title) ?? .other
+        defaultFields = []
+        for field in reqFields{
+            defaultFields.append((field, nil))
+        }
+        tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+    }
+    
+    // MARK: Interface methods
     @IBAction func save(_ sender: Any) {
     }
     
@@ -41,11 +54,22 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     //MARK: TableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2 //one for default fields, one for user entered ones
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if section == 0{
+            return defaultFields.count
+        }else if section == 1{
+            return userFields.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //if let cell = tableView.dequeueReusableCell(withIdentifier: <#T##String#>, for: <#T##IndexPath#>)
         return UITableViewCell()
     }
 }

@@ -19,7 +19,7 @@ enum ItemType:String{
     case none
 }
 
-typealias ItemField = (String, String)
+typealias ItemField = (String, String?)
 
 class VaultItem: NSObject {
     var type:ItemType

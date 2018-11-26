@@ -82,6 +82,16 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		95B83F9121ACA5A10088FC3E /* Secure Vault */ = {
+			isa = PBXGroup;
+			children = (
+				958F5C9021AC644700453BC9 /* VaultTableViewController.swift */,
+				95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */,
+				95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */,
+			);
+			path = "Secure Vault";
+			sourceTree = "<group>";
+		};
 		95F9B3C9219A40C300F61CE7 = {
 			isa = PBXGroup;
 			children = (
@@ -137,9 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3ED219A40F400F61CE7 /* ARToolsViewController.swift */,
-				958F5C9021AC644700453BC9 /* VaultTableViewController.swift */,
-				95B3F6E721AC765C005AAC06 /* AddItemViewController.swift */,
-				95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */,
+				95B83F9121ACA5A10088FC3E /* Secure Vault */,
 				95F9B3F9219B75B000F61CE7 /* Virtual ID */,
 			);
 			path = Controller;
