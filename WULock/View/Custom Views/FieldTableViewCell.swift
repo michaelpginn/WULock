@@ -23,15 +23,16 @@ class FieldTableViewCell: UITableViewCell, UITextFieldDelegate {
         if descTextField != nil{
             descTextField?.text = desc
         }else{
-            valueTextField.placeholder = desc
+            valueTextField.placeholder = ""
+            descLabel?.text = desc
         }
     }
 
     @IBAction func textChanged(_ sender: Any){
-        if valueTextField.text == ""{
-            descLabel?.text = ""
-        }else{
-            descLabel?.text = valueTextField.placeholder
-        }
+//        if valueTextField.text == ""{
+//            descLabel?.text = ""
+//        }else{
+//            descLabel?.text = valueTextField.placeholder
+//        }
     }
 }

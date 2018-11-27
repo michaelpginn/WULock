@@ -70,7 +70,17 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier:String = indexPath.section == 0 ? "setFieldCell" : "customFieldCell"
+        let identifier:String
+        
+        if indexPath.section == 0{
+            identifier = "setFieldCell"
+        }else if indexPath.section == 1 && indexPath.row == userFields.count{
+            identifier = "addFieldCell"
+            return tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) 
+        }else{
+            identifier = "customFieldCell"
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? FieldTableViewCell else{return UITableViewCell()}
         
         if indexPath.section == 0{

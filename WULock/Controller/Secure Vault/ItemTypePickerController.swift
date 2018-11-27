@@ -25,7 +25,15 @@ class ItemTypePickerController: UIViewController {
 
         // Do any additional setup after loading the view.
         setUpHardcodedVals()
-        setSelected(selectedView: optionViews.last!)
+        
+        //set last view
+        if let last = optionViews.last, let info = optionInfo.last{
+            self.setSelected(selectedView: last)
+            if delegate != nil{
+                delegate!.optionSelected(title: info.0, reqFields: info.2)
+            }
+        }
+        
     }
     
 
