@@ -19,6 +19,10 @@ enum ItemType:String{
     case none
 }
 
+/**
+ - parameter 0: The description for the field
+ - parameter 1: The value for the field
+ */
 typealias ItemField = (String, String?)
 
 class VaultItem: NSObject {

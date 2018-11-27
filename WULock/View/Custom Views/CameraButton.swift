@@ -35,9 +35,9 @@ class CameraButton: UIButton {
         innerBlackPath!.stroke()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let animation = CABasicAnimation(keyPath: "path")
-        
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let animation = CABasicAnimation(keyPath: "path")
+//        
+//    }
 
 }

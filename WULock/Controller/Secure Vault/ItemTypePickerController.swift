@@ -39,11 +39,11 @@ class ItemTypePickerController: UIViewController {
     private func setUpHardcodedVals(){
         optionInfo = []
         optionInfo.append(("Student ID", "icon_studentID", [
-            "Name", "ID Number", "Academic Division", "Date"]))
+            "Name", "ID Number", "Acad. Division", "Date"]))
         optionInfo.append(("Mailbox", "icon_mailbox", [
             "Mailbox Number", "Combination"]))
         optionInfo.append(("Gym Locker", "icon_gym", [
-            "Locker number", "Locker combination"]))
+            "Locker number", "Combination"]))
         optionInfo.append(("Online", "icon_online", [
             "Site", "Username", "Password"]))
         optionInfo.append(("Housing", "icon_housing", [

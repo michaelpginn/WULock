@@ -23,6 +23,7 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //modified from https://stackoverflow.com/questions/37370801/how-to-add-a-container-view-programmatically
         let pickerController = ItemTypePickerController()
+        pickerController.delegate = self
         addChild(pickerController)
         pickerController.view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(pickerController.view)
@@ -62,14 +63,20 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         if section == 0{
             return defaultFields.count
         }else if section == 1{
-            return userFields.count
+            return userFields.count + 1
         }else{
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //if let cell = tableView.dequeueReusableCell(withIdentifier: <#T##String#>, for: <#T##IndexPath#>)
-        return UITableViewCell()
+        let identifier:String = indexPath.section == 0 ? "setFieldCell" : "customFieldCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? FieldTableViewCell else{return UITableViewCell()}
+        
+        if indexPath.section == 0{
+            cell.setDescription(defaultFields[indexPath.row].0)
+        }
+        
+        return cell
     }
 }
