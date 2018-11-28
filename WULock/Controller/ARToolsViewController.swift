@@ -32,10 +32,9 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         // Create a session configuration
         
         
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.worldAlignment = .gravity
+        let configuration = ARImageTrackingConfiguration()
         if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
-           configuration.detectionImages = referenceImages
+           configuration.trackingImages = referenceImages
         }
         sceneView.session.run(configuration)
 
@@ -53,12 +52,28 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         print("got item")
     }
     
-//    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-//        // Create and configure a node for the anchor added to the view's session.
-//        if let imageAnchor = anchor as? ARImageAnchor{
-//            
-//        }
-//    }
+    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
+        // Create and configure a node for the anchor added to the view's session.
+        if let imageAnchor = anchor as? ARImageAnchor{
+            
+        }
+    }
+    
+    // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
+    // TODO: If the user has saved a locker or mail combo, display choice somewhere
+    /* Plan:
+     - Search for records of type gym locker or mail
+     - Display a button somewhere on ARKit, "Choose combination"
+     - When clicked, show a little popup that has, separated into two categories, mail room and gym
+     - For each, show all records matching, with selection indicator
+     - When one is selected, dismiss
+     - Detect reference image, check against known images
+     - If mail room: show mail room steps using curved arrows (animated?)
+     - If gym: show buttons using arrows
+     - User can advance to next step by tapping right side of screen, go back by tapping left side
+        *how to indicate?
+     - when done, show restart button
+     */
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

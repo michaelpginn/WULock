@@ -71,6 +71,8 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAle
         }
     }
     
+    
+    
     private func displayAlertController(rect:CIRectangleFeature, ciimage:CIImage){
         DispatchQueue.main.sync {
             //get the image using a perspective transform
@@ -118,7 +120,6 @@ class IDScannerViewController: UIViewController, ARSCNViewDelegate, IDScannerAle
         }
         
         imageRecord?.type = type
-        print(image.cgImage)
         if let imageData = image.pngData(){
             imageRecord?.imagedata = imageData as NSData
         }
