@@ -52,12 +52,12 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         print("got item")
     }
     
-    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        // Create and configure a node for the anchor added to the view's session.
-        if let imageAnchor = anchor as? ARImageAnchor{
-            
-        }
-    }
+//    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
+//        // Create and configure a node for the anchor added to the view's session.
+//        if let imageAnchor = anchor as? ARImageAnchor{
+//            
+//        }
+//    }
     
     // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
     // TODO: If the user has saved a locker or mail combo, display choice somewhere
