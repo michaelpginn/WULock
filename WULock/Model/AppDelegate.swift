@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import LocalAuthentication
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        authenticateUser()
         return true
+    }
+    
+    private func authenticateUser(){
+        let context = LAContext()
+        var error:NSError?
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error){
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate to use WULock") { (success, error) in
+                if success{
+                    
+                }else{
+                    
+                }
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

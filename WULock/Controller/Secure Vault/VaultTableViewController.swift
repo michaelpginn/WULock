@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class VaultTableViewController: UITableViewController {
     var items:[VaultItem] = []
     
@@ -18,8 +19,12 @@ class VaultTableViewController: UITableViewController {
 
         loadItems()
         NotificationCenter.default.addObserver(self, selector: #selector(loadItems), name: Notification.Name("vault_changed"), object: nil)
+        
+        
     }
 
+    
+    
     
     @objc private func loadItems(){
         items = []

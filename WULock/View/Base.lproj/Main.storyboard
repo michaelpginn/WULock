@@ -40,6 +40,21 @@
             </objects>
             <point key="canvasLocation" x="389.60000000000002" y="47.226386806596707"/>
         </scene>
+        <!--Vault Item Detail View Controller-->
+        <scene sceneID="N2s-pX-6Rv">
+            <objects>
+                <viewController id="5FQ-Kp-juU" customClass="VaultItemDetailViewController" customModule="WULock" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wCr-OO-B1C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cfG-UN-Wje"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VlU-ja-E2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="47"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OoO-8X-w9O">
             <objects>
@@ -58,6 +73,7 @@
                         <segue destination="jtb-iB-7MU" kind="relationship" relationship="viewControllers" id="KSV-4e-DGW"/>
                         <segue destination="Gzu-L4-6Y3" kind="relationship" relationship="viewControllers" id="vWO-GG-XKJ"/>
                         <segue destination="58J-Bn-LRs" kind="relationship" relationship="viewControllers" id="yfy-vi-3We"/>
+                        <segue destination="9xY-IU-9vW" kind="relationship" relationship="viewControllers" id="L4i-ic-fd6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lb1-kc-MsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,6 +121,7 @@
                                 <connections>
                                     <outlet property="iconImageView" destination="nMZ-AG-rNW" id="Qhb-jt-oQc"/>
                                     <outlet property="label" destination="fis-11-90u" id="bV1-6W-fGn"/>
+                                    <segue destination="5FQ-Kp-juU" kind="show" identifier="showDetail" id="ZER-Pn-zzV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -337,6 +354,81 @@
             </objects>
             <point key="canvasLocation" x="389.60000000000002" y="-728.18590704647681"/>
         </scene>
+        <!--About-->
+        <scene sceneID="0Kz-Jq-voy">
+            <objects>
+                <viewController id="9xY-IU-9vW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aTu-DI-Ojm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WULock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4L-Lx-n5W">
+                                <rect key="frame" x="112" y="60" width="151.5" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
+                                <color key="textColor" white="0.33107761150234738" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWX-t4-iG6">
+                                <rect key="frame" x="20" y="116" width="335" height="43"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Created by ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.6470588235294118" green="0.078431372549019607" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Michael Ginn, Tani Kay, Mitch Black, and Ben Novotny">
+                                        <attributes>
+                                            <color key="NSColor" white="0.33042070269584656" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqU-Ev-JVp">
+                                <rect key="frame" x="20" y="167" width="335" height="21.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Icons courtesy of ">
+                                        <attributes>
+                                            <color key="NSColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="icons8.com">
+                                        <attributes>
+                                            <color key="NSColor" red="0.6470588235294118" green="0.078431372549019607" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dqU-Ev-JVp" firstAttribute="leading" secondItem="lgu-uq-4lG" secondAttribute="leading" constant="20" id="8NT-iA-xEj"/>
+                            <constraint firstItem="dqU-Ev-JVp" firstAttribute="top" secondItem="eWX-t4-iG6" secondAttribute="bottom" constant="8" id="Ewq-s8-R1I"/>
+                            <constraint firstItem="g4L-Lx-n5W" firstAttribute="top" secondItem="lgu-uq-4lG" secondAttribute="top" constant="40" id="SUE-Ql-WTE"/>
+                            <constraint firstItem="eWX-t4-iG6" firstAttribute="top" secondItem="g4L-Lx-n5W" secondAttribute="bottom" constant="8" id="WyH-kp-0Ib"/>
+                            <constraint firstItem="g4L-Lx-n5W" firstAttribute="centerX" secondItem="aTu-DI-Ojm" secondAttribute="centerX" id="Zn4-2L-n7B"/>
+                            <constraint firstItem="eWX-t4-iG6" firstAttribute="centerX" secondItem="aTu-DI-Ojm" secondAttribute="centerX" id="gfY-p3-URf"/>
+                            <constraint firstItem="lgu-uq-4lG" firstAttribute="trailing" secondItem="dqU-Ev-JVp" secondAttribute="trailing" constant="20" id="jeA-r9-FyB"/>
+                            <constraint firstItem="eWX-t4-iG6" firstAttribute="leading" secondItem="aTu-DI-Ojm" secondAttribute="leading" constant="20" id="nwg-Gb-8Nc"/>
+                            <constraint firstAttribute="trailing" secondItem="eWX-t4-iG6" secondAttribute="trailing" constant="20" id="q2b-JX-lUY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lgu-uq-4lG"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" image="tab_info" selectedImage="tab_info_filled" id="maT-cx-aqr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vhW-OZ-5MX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-847" y="605"/>
+        </scene>
         <!--VirtualID-->
         <scene sceneID="Re8-Yl-keF">
             <objects>
@@ -345,7 +437,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ov-Jp-CLV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-530" y="510"/>
+            <point key="canvasLocation" x="27" y="521"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6QY-EZ-3Cw">
@@ -371,8 +463,10 @@
         <image name="add button" width="16" height="16"/>
         <image name="tab_glasses" width="37.5" height="37.5"/>
         <image name="tab_glasses_filled" width="37.5" height="37.5"/>
+        <image name="tab_info" width="37.5" height="37.5"/>
+        <image name="tab_info_filled" width="37.5" height="37.5"/>
         <image name="tab_vault" width="37.5" height="37.5"/>
         <image name="tab_vault_filled" width="37.5" height="37.5"/>
     </resources>
-    <color key="tintColor" red="0.64660269021987915" green="0.078960560262203217" blue="0.08771737664937973" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" red="0.6470588235294118" green="0.078431372549019607" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
