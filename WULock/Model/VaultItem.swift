@@ -9,31 +9,33 @@
 import UIKit
 import CoreData
 
-enum ItemType:String{
-    case studentID = "Student ID"
-    case mailbox = "Mailbox"
-    case gymLocker = "Gym Locker"
-    case housing = "Housing"
-    case online = "Online"
-    case other = "Other"
-    case none
-}
 
-/**
- - parameter 0: The description for the field
- - parameter 1: The value for the field
- */
-typealias ItemField = (String, String?)
 
 class VaultItem: NSObject {
     var type:ItemType
     private var fields:[ItemField]
     
+    static let ITEM_DESCRIPTION_KEY = "Item description"
     
+    /**
+     Initializes a VaultItem with a type and a list of fields, where each field has a description and value
+     - parameter type: The type of item
+     - parameter fields: An array of ItemField objects
+     */
     init(type:ItemType, fields:[ItemField]){
         self.type = type
         self.fields = fields
     }
+    
+    override var description: String {
+        if type != .other{
+            return type.rawValue
+        }else{
+            return self.get(desc: VaultItem.ITEM_DESCRIPTION_KEY) ?? ""
+        }
+    }
+    
+    //MARK: Core Data
     
     /**
      Initializes a VaultItem given an NSManagedObject, which should be of the "Item" entity. If it is not, fields are set to default values
@@ -42,9 +44,6 @@ class VaultItem: NSObject {
     init(managedObject:NSManagedObject){
         if let typeIndex = managedObject.value(forKey: "type") as? String{
             self.type = ItemType(rawValue: typeIndex) ?? .none
-            if self.type == .other{
-                //self.otherType = managedObject.value(forKey: "other_type") as? String ?? ""
-            }
         }else{
             self.type = .none
         }
@@ -57,11 +56,47 @@ class VaultItem: NSObject {
     }
     
     /**
+    Returns a managed object, inserted into the given context, for the current VaultItem object.
+     - parameter context: The NSManagedObjectContext into which the new item will be inserted
+     */
+    func getManagedObject(context:NSManagedObjectContext)->NSManagedObject{
+        if let entity = NSEntityDescription.entity(forEntityName: "Item", in: context) {
+            let newMO = NSManagedObject(entity: entity, insertInto: context)
+            newMO.setValue(type.rawValue, forKey: "type")
+            newMO.setValue(fields, forKey: "fields")
+            return newMO
+        }else{
+            return NSManagedObject(context: context)
+        }
+    }
+    
+    //MARK: Set/Get fields
+    
+    /**
      Adds a field given a description and a value
      - parameter desc: The description string for the field, i.e. "ID Number"
      - parameter val: The value of the field, i.e. "123456"
      */
     func addField(desc: String, val: String){
-        fields.append((desc, val))
+        fields.append(ItemField(fieldDescription: desc, fieldValue: val))
+    }
+    
+    /**
+    Adds a field given an Item Field object
+     */
+    func addField(field:ItemField){
+        fields.append(field)
+    }
+    
+    /**
+    Gets the value stored by the field with a given description. If multiple fields have the same description, the value from the first one will be returned.
+     */
+    func get(desc: String)->String?{
+        for field in fields{
+            if field.fieldDescription == desc{
+                return field.fieldValue
+            }
+        }
+        return nil
     }
 }

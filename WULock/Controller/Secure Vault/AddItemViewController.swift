@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemTypePickerControllerDelegate {
+class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ItemTypePickerControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,22 +36,70 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     // MARK: ItemTypePickerControllerDelegate method
-    func optionSelected(title: String, reqFields: [String]) {
+    func optionSelected(type:ItemType) {
         //reload the table view with the correct fields
-        currentSelectedType = ItemType(rawValue: title) ?? .other
+        currentSelectedType = type
         defaultFields = []
-        for field in reqFields{
-            defaultFields.append((field, nil))
+        for field in type.getDefaultFields(){
+            defaultFields.append(ItemField(fieldDescription: field, fieldValue: ""))
         }
         tableView.reloadSections(IndexSet(integer: 0), with: .fade)
     }
     
     // MARK: Interface methods
     @IBAction func save(_ sender: Any) {
+        //make sure to shift focus from all fields
+        self.view.endEditing(true)
+        //Create a new VaultItem object by getting data from each field
+        var fields:[ItemField] = []
+        for field in defaultFields{
+            fields.append(field)
+        }
+        for field in userFields{
+            if field.fieldDescription != ""{
+                fields.append(field)
+            }
+        }
+        
+        let newItem = VaultItem(type: currentSelectedType, fields: fields)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
+            let context = appDelegate.managedObjectContext
+            _ = newItem.getManagedObject(context: context)
+            do{
+                try context.save()
+                
+                let nc = NotificationCenter.default
+                nc.post(Notification(name: Notification.Name("vault_changed")))
+                
+                self.dismiss(animated: true, completion: nil)
+            }catch let e {
+                print(e.localizedDescription)
+            }
+        }
     }
     
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //Figure out what cell we're in
+        guard let cell = textField.superview?.superview as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) else{return}
+        
+        let newText = textField.text ?? ""
+        
+        if indexPath.section == 0{
+            //Text was entered in a default field
+            defaultFields[indexPath.row].fieldValue = newText
+        }else if indexPath.section == 1{
+            //Text was entered in a custom field, figure out if it was the first or second textbox
+            if textField.tag == 1{
+                userFields[indexPath.row].fieldDescription = newText
+            }else if textField.tag == 2{
+                userFields[indexPath.row].fieldValue = newText
+            }
+        }
     }
     
     //MARK: TableView
@@ -74,19 +122,31 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if indexPath.section == 0{
             identifier = "setFieldCell"
-        }else if indexPath.section == 1 && indexPath.row == userFields.count{
-            identifier = "addFieldCell"
-            return tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) 
-        }else{
+        }else if indexPath.section == 1 && indexPath.row != userFields.count{
             identifier = "customFieldCell"
+        }else{
+            identifier = "addFieldCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            if let button = cell.viewWithTag(1) as? UIButton{
+                button.addTarget(self, action: #selector(addCell), for: .touchUpInside)
+            }
+            return cell
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? FieldTableViewCell else{return UITableViewCell()}
         
         if indexPath.section == 0{
-            cell.setDescription(defaultFields[indexPath.row].0)
+            cell.setDescription(defaultFields[indexPath.row].fieldDescription)
         }
         
+        cell.valueTextField.delegate = self
+        cell.descTextField?.delegate = self
+        
         return cell
+    }
+    
+    @objc func addCell(){
+        userFields.append(ItemField(fieldDescription: "", fieldValue: ""))
+        tableView.reloadSections(IndexSet(integer: 1), with: .fade)
     }
 }

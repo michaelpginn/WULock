@@ -17,6 +17,8 @@
 		95B3F6EA21AC9599005AAC06 /* ItemTypePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B3F6E921AC9599005AAC06 /* ItemTypePickerView.xib */; };
 		95B83F9021AC9C340088FC3E /* ItemTypePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */; };
 		95B83F9321ACCE210088FC3E /* FieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B83F9221ACCE210088FC3E /* FieldTableViewCell.swift */; };
+		95B83F9721AE142B0088FC3E /* ItemField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B83F9621AE142B0088FC3E /* ItemField.swift */; };
+		95B83F9921AE1B270088FC3E /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B83F9821AE1B270088FC3E /* ItemType.swift */; };
 		95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */; };
 		95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3D9219A40C300F61CE7 /* Main.storyboard */; };
 		95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */; };
@@ -43,6 +45,8 @@
 		95B3F6E921AC9599005AAC06 /* ItemTypePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTypePickerView.xib; sourceTree = "<group>"; };
 		95B83F8F21AC9C340088FC3E /* ItemTypePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTypePickerController.swift; sourceTree = "<group>"; };
 		95B83F9221ACCE210088FC3E /* FieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTableViewCell.swift; sourceTree = "<group>"; };
+		95B83F9621AE142B0088FC3E /* ItemField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemField.swift; sourceTree = "<group>"; };
+		95B83F9821AE1B270088FC3E /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		95F9B3D2219A40C300F61CE7 /* WULock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WULock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95F9B3DA219A40C300F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3EA219A40D800F61CE7 /* VaultItem.swift */,
+				95B83F9821AE1B270088FC3E /* ItemType.swift */,
+				95B83F9621AE142B0088FC3E /* ItemField.swift */,
 				95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */,
 				95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */,
 				95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */,
@@ -243,6 +249,7 @@
 			files = (
 				95F9B3EB219A40D800F61CE7 /* VaultItem.swift in Sources */,
 				958F5C8F21AC640300453BC9 /* VaultTableViewCell.swift in Sources */,
+				95B83F9921AE1B270088FC3E /* ItemType.swift in Sources */,
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
 				9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */,
 				958F5C9121AC644700453BC9 /* VaultTableViewController.swift in Sources */,
@@ -252,6 +259,7 @@
 				95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */,
 				95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */,
 				95B83F9321ACCE210088FC3E /* FieldTableViewCell.swift in Sources */,
+				95B83F9721AE142B0088FC3E /* ItemField.swift in Sources */,
 				95F9B3F8219B70B900F61CE7 /* IDViewController.swift in Sources */,
 				95B83F9021AC9C340088FC3E /* ItemTypePickerController.swift in Sources */,
 				95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */,

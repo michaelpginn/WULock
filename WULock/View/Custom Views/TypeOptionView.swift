@@ -26,6 +26,15 @@ class TypeOptionView: UIView {
         }
     }
     
+    public var type:ItemType = .none{
+        didSet{
+            titleLabel.text = type.rawValue
+            if let image = UIImage(named: type.getImageName() ?? ""){
+                iconImageView.image = image
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
