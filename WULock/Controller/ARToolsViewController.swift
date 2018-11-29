@@ -9,21 +9,16 @@
 import UIKit
 import ARKit
 
-class ARToolsViewController: UIViewController, ARSKViewDelegate {
-    @IBOutlet weak var sceneView: ARSKView!
+class ARToolsViewController: UIViewController, ARSCNViewDelegate {
+    @IBOutlet weak var sceneView: ARSCNView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and node count
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
-        
-        let scene = SKScene()
-        sceneView.presentScene(scene)
+        let scene = SCNScene()
+        sceneView.scene = scene
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,33 +42,23 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         sceneView.session.pause()
     }
     
-    // MARK: - ARSKViewDelegate
-    func view(_ view: ARSKView, didAdd node: SKNode, for anchor: ARAnchor) {
-        print("got item")
-    }
+    //MARK: ARSCNView Delegate
     
-    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        // Create and configure a node for the anchor added to the view's session.
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
         if let imageAnchor = anchor as? ARImageAnchor{
-            //figure out which type of image it is
-            let overlay = SKSpriteNode(color: UIColor.white.withAlphaComponent(0.5), size: imageAnchor.referenceImage.physicalSize)
+            let referenceImage = imageAnchor.referenceImage
             
-            if imageAnchor.referenceImage.name == "mailbox"{
-                //return createMailboxNode(anchor: imageAnchor)
-            }else if imageAnchor.referenceImage.name == "gym_s40"{
-                
-            }else if imageAnchor.referenceImage.name == "gym_sumers"{
-                
-            }
-            return overlay
+            //figure out which type of image it is
+            let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.opacity = 0.20
+            planeNode.eulerAngles.x = -.pi / 2
+            node.addChildNode(planeNode)
         }
-        return SKNode()
     }
     
-    private func createMailboxNode(anchor: ARImageAnchor)->SKNode{
-        let overlay = SKSpriteNode(color: UIColor.white.withAlphaComponent(1.0), size: anchor.referenceImage.physicalSize)
-        return overlay
-    }
+    
     
     // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
     // TODO: If the user has saved a locker or mail combo, display choice somewhere

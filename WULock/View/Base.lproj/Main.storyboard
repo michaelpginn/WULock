@@ -18,22 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arskView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDd-tl-gmd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </arskView>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKD-RV-pHb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vDd-tl-gmd" firstAttribute="leading" secondItem="Wpd-hv-2ej" secondAttribute="leading" id="CKh-q4-Ivz"/>
-                            <constraint firstAttribute="bottom" secondItem="vDd-tl-gmd" secondAttribute="bottom" id="pJS-8U-7lZ"/>
-                            <constraint firstItem="vDd-tl-gmd" firstAttribute="trailing" secondItem="YGp-bM-GGd" secondAttribute="trailing" id="q7a-qY-VBB"/>
-                            <constraint firstItem="vDd-tl-gmd" firstAttribute="top" secondItem="Wpd-hv-2ej" secondAttribute="top" id="vfX-3z-2Nn"/>
+                            <constraint firstItem="gKD-RV-pHb" firstAttribute="leading" secondItem="YGp-bM-GGd" secondAttribute="leading" id="W86-qR-SlK"/>
+                            <constraint firstItem="YGp-bM-GGd" firstAttribute="trailing" secondItem="gKD-RV-pHb" secondAttribute="trailing" id="kW6-AO-ydT"/>
+                            <constraint firstItem="YGp-bM-GGd" firstAttribute="bottom" secondItem="gKD-RV-pHb" secondAttribute="bottom" id="lTC-cT-tgL"/>
+                            <constraint firstItem="gKD-RV-pHb" firstAttribute="top" secondItem="YGp-bM-GGd" secondAttribute="top" id="yGh-de-9ve"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YGp-bM-GGd"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="AR" image="tab_glasses" selectedImage="tab_glasses_filled" id="oIo-r6-pYI"/>
                     <connections>
-                        <outlet property="sceneView" destination="vDd-tl-gmd" id="G3d-Uw-ppb"/>
+                        <outlet property="sceneView" destination="gKD-RV-pHb" id="Q5S-VB-LGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUO-Zh-sdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
