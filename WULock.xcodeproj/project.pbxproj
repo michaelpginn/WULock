@@ -34,6 +34,7 @@
 		95F9B3F8219B70B900F61CE7 /* IDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3F7219B70B900F61CE7 /* IDViewController.swift */; };
 		95F9B412219B7E1500F61CE7 /* CardImage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */; };
 		95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */; };
+		EC0AE19521B0B0D800AC302C /* VaultItemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AE19421B0B0D800AC302C /* VaultItemDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		95F9B3F7219B70B900F61CE7 /* IDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDViewController.swift; sourceTree = "<group>"; };
 		95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardImage+CoreDataClass.swift"; sourceTree = "<group>"; };
 		95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EC0AE19421B0B0D800AC302C /* VaultItemDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultItemDetailCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				958F5C9421AC6B8700453BC9 /* TypeOptionView.xib */,
 				95B3F6E921AC9599005AAC06 /* ItemTypePickerView.xib */,
 				95B83F9221ACCE210088FC3E /* FieldTableViewCell.swift */,
+				EC0AE19421B0B0D800AC302C /* VaultItemDetailCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				95B83F9021AC9C340088FC3E /* ItemTypePickerController.swift in Sources */,
 				95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */,
 				95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */,
+				EC0AE19521B0B0D800AC302C /* VaultItemDetailCell.swift in Sources */,
 				95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
