@@ -21,6 +21,8 @@
 		95B83F9921AE1B270088FC3E /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B83F9821AE1B270088FC3E /* ItemType.swift */; };
 		95D8DA1521AF16D800DC1A52 /* TODO LIST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8DA1421AF16D800DC1A52 /* TODO LIST.swift */; };
 		95D8DA1721AF199500DC1A52 /* VaultItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8DA1621AF199500DC1A52 /* VaultItemDetailViewController.swift */; };
+		95D8DA1B21B0A0CC00DC1A52 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8DA1A21B0A0CC00DC1A52 /* Instruction.swift */; };
+		95D8DA1F21B0A40700DC1A52 /* Instruction+InstructionHardcoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8DA1E21B0A40700DC1A52 /* Instruction+InstructionHardcoder.swift */; };
 		95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */; };
 		95F9B3DB219A40C300F61CE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F9B3D9219A40C300F61CE7 /* Main.storyboard */; };
 		95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */; };
@@ -51,6 +53,8 @@
 		95B83F9821AE1B270088FC3E /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
 		95D8DA1421AF16D800DC1A52 /* TODO LIST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TODO LIST.swift"; sourceTree = "<group>"; };
 		95D8DA1621AF199500DC1A52 /* VaultItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultItemDetailViewController.swift; sourceTree = "<group>"; };
+		95D8DA1A21B0A0CC00DC1A52 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
+		95D8DA1E21B0A40700DC1A52 /* Instruction+InstructionHardcoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instruction+InstructionHardcoder.swift"; sourceTree = "<group>"; };
 		95F9B3D2219A40C300F61CE7 /* WULock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WULock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95F9B3DA219A40C300F61CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +108,26 @@
 			path = "Secure Vault";
 			sourceTree = "<group>";
 		};
+		95D8DA1821B0A07300DC1A52 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */,
+				95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */,
+				95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		95D8DA1921B0A08600DC1A52 /* Vault */ = {
+			isa = PBXGroup;
+			children = (
+				95F9B3EA219A40D800F61CE7 /* VaultItem.swift */,
+				95B83F9821AE1B270088FC3E /* ItemType.swift */,
+				95B83F9621AE142B0088FC3E /* ItemField.swift */,
+			);
+			path = Vault;
+			sourceTree = "<group>";
+		};
 		95F9B3C9219A40C300F61CE7 = {
 			isa = PBXGroup;
 			children = (
@@ -137,12 +161,10 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */,
-				95F9B3EA219A40D800F61CE7 /* VaultItem.swift */,
-				95B83F9821AE1B270088FC3E /* ItemType.swift */,
-				95B83F9621AE142B0088FC3E /* ItemField.swift */,
-				95F9B3DC219A40C300F61CE7 /* WULock.xcdatamodeld */,
-				95F9B410219B7E1500F61CE7 /* CardImage+CoreDataClass.swift */,
-				95F9B411219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift */,
+				95D8DA1921B0A08600DC1A52 /* Vault */,
+				95D8DA1821B0A07300DC1A52 /* CoreData */,
+				95D8DA1A21B0A0CC00DC1A52 /* Instruction.swift */,
+				95D8DA1E21B0A40700DC1A52 /* Instruction+InstructionHardcoder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,6 +278,8 @@
 				95F9B3EB219A40D800F61CE7 /* VaultItem.swift in Sources */,
 				958F5C8F21AC640300453BC9 /* VaultTableViewCell.swift in Sources */,
 				95B83F9921AE1B270088FC3E /* ItemType.swift in Sources */,
+				95D8DA1F21B0A40700DC1A52 /* Instruction+InstructionHardcoder.swift in Sources */,
+				95D8DA1B21B0A0CC00DC1A52 /* Instruction.swift in Sources */,
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
 				9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */,
 				95D8DA1521AF16D800DC1A52 /* TODO LIST.swift in Sources */,
