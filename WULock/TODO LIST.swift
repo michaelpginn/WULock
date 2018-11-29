@@ -14,7 +14,7 @@ import Foundation
  Just a list of stuff we either need to or could do. Feel free to add.
  
  - AR Tools:
-    ( ) get good reference images
+    (x) get good reference images
     ( ) let user select combinations to use
     ( ) display instructions
     ( ) allow instruction navigation

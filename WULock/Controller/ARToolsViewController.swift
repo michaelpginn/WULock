@@ -12,6 +12,18 @@ import ARKit
 class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     
+    var currentPlane:SCNNode? = nil
+    
+    var instructionLists: [String: InstructionList] = [:]
+    var currentInstructionListKey:String = "gym_s40" // TODO: Change this
+    var currentInstructionList:InstructionList? {
+        get{
+            return instructionLists[currentInstructionListKey]
+        }
+    }
+    var currentInstructionListIndex = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +31,8 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         let scene = SCNScene()
         sceneView.scene = scene
+        
+        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: [1,2,3,4])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,16 +63,29 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         if let imageAnchor = anchor as? ARImageAnchor{
             let referenceImage = imageAnchor.referenceImage
             
-            //figure out which type of image it is
+            //get the plane of the anchor
             let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
+            let material = SCNMaterial()
+            material.diffuse.contents = UIColor.clear
+            plane.materials = [material]
             let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 0.20
+            planeNode.opacity = 1.0
+            planeNode
             planeNode.eulerAngles.x = -.pi / 2
             node.addChildNode(planeNode)
+            self.currentPlane = planeNode
+            displayInstruction(index: currentInstructionListIndex)
         }
     }
     
-    
+    func displayInstruction(index:Int){
+        if let current = currentInstructionList{
+            let instruction = current[index]
+            for node in instruction.nodes{
+                self.currentPlane?.addChildNode(node)
+            }
+        }
+    }
     
     // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
     // TODO: If the user has saved a locker or mail combo, display choice somewhere
