@@ -52,12 +52,28 @@ class ARToolsViewController: UIViewController, ARSKViewDelegate {
         print("got item")
     }
     
-//    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-//        // Create and configure a node for the anchor added to the view's session.
-//        if let imageAnchor = anchor as? ARImageAnchor{
-//            
-//        }
-//    }
+    func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
+        // Create and configure a node for the anchor added to the view's session.
+        if let imageAnchor = anchor as? ARImageAnchor{
+            //figure out which type of image it is
+            let overlay = SKSpriteNode(color: UIColor.white.withAlphaComponent(0.5), size: imageAnchor.referenceImage.physicalSize)
+            
+            if imageAnchor.referenceImage.name == "mailbox"{
+                //return createMailboxNode(anchor: imageAnchor)
+            }else if imageAnchor.referenceImage.name == "gym_s40"{
+                
+            }else if imageAnchor.referenceImage.name == "gym_sumers"{
+                
+            }
+            return overlay
+        }
+        return SKNode()
+    }
+    
+    private func createMailboxNode(anchor: ARImageAnchor)->SKNode{
+        let overlay = SKSpriteNode(color: UIColor.white.withAlphaComponent(1.0), size: anchor.referenceImage.physicalSize)
+        return overlay
+    }
     
     // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
     // TODO: If the user has saved a locker or mail combo, display choice somewhere
