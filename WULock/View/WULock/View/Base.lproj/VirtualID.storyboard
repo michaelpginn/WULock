@@ -84,6 +84,9 @@
                                     <constraint firstAttribute="height" constant="30" id="1L9-YK-tc4"/>
                                 </constraints>
                                 <state key="normal" title="Retake"/>
+                                <connections>
+                                    <action selector="cameraBtn:" destination="f5R-84-4Ym" eventType="touchUpInside" id="oG5-Hl-uSE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
