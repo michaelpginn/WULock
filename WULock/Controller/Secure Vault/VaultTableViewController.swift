@@ -65,6 +65,15 @@ class VaultTableViewController: UITableViewController {
         }
     }
  
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let cell = sender as! VaultTableViewCell
+            let itemTableViewController = segue.destination as! VaultItemDetailViewController
+            guard let index = tableView.indexPath(for: cell) else {
+                return
+            }
+            itemTableViewController.setData(i: items[index.row])
+        }
+    }
 
 }

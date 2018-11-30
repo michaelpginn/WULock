@@ -99,4 +99,7 @@ class VaultItem: NSObject {
         }
         return nil
     }
+    func getWithoutDescription()-> [ItemField]{
+        return fields
+    }
 }

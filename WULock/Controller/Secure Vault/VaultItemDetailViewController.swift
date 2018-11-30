@@ -7,25 +7,43 @@
 //
 
 import UIKit
+import CoreData
 
-class VaultItemDetailViewController: UIViewController {
-
+class VaultItemDetailViewController: UITableViewController {
+    var item: VaultItem!
+    var descriptions: [ItemField] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.navigationItem.largeTitleDisplayMode = .never
+    
+    }
+    func setData(i: VaultItem) {
+        self.item = i
+        self.descriptions = i.getWithoutDescription()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.descriptions.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let thisItem = descriptions[indexPath.row]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "vaultDetailCell", for: indexPath) as? VaultItemDetailCell{
+            cell.label.text = thisItem.fieldDescription + ": " + thisItem.fieldValue
+            return cell
+        }else{
+            return UITableViewCell()
+        }
+    }
+    
+    
+    
 }
