@@ -13,6 +13,9 @@ class IDViewController: UIViewController {
     @IBOutlet weak var cardFrontImageButton:UIButton!
     @IBOutlet weak var cardBackImageButton:UIButton!
     
+    private var frontImage:UIImage?
+    private var backImage:UIImage?
+    
     var typeForSegue:String?
     var frontBackSet = (false, false)
     
@@ -53,10 +56,12 @@ class IDViewController: UIViewController {
         if record.type == CardImage.FRONT_IMAGE_TYPE{
             frontBackSet.0 = true
             cardFrontImageButton.setBackgroundImage(image, for: .normal)
+            frontImage = image
             cardFrontImageButton.setTitle(nil, for: .normal)
         }else if record.type == CardImage.BACK_IMAGE_TYPE{
             frontBackSet.1 = true
             cardBackImageButton.setBackgroundImage(image, for: .normal)
+            backImage = image
             cardBackImageButton.setTitle(nil, for: .normal)
         }
     }
@@ -64,7 +69,8 @@ class IDViewController: UIViewController {
     @IBAction func frontTapped(sender:UIButton!){
         if frontBackSet.0{
             //here I'm making it that when you click the front, 1) it enlarges the picture and also 2) there will be a button to allow for a retake picture and also 3) another button to close the picture and go back to the previous screen
-            
+            typeForSegue = CardImage.FRONT_IMAGE_TYPE
+            self.performSegue(withIdentifier: "showDetail", sender: self)
             
             
             // for the buttun to retake the picture, just copy the code a few lines down
@@ -87,6 +93,8 @@ class IDViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCamera", let destVC = segue.destination as? IDScannerViewController{
             destVC.typeOfCard = self.typeForSegue
+        }else if segue.identifier == "showDetail", let destVC = segue.destination as? IDDetailedViewController{
+            destVC.imgCard = frontImage
         }
     }
 }
