@@ -33,6 +33,7 @@ class IDViewController: UIViewController {
         cardBackImageButton.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(getImagesForCards), name: Notification.Name("coredata-updated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showCamera), name: Notification.Name("show-camera"), object: nil)
         
         getImagesForCards()
     }
@@ -83,18 +84,26 @@ class IDViewController: UIViewController {
 
     @IBAction func backTapped(sender:UIButton!){
         if frontBackSet.1{
-            
+            typeForSegue = CardImage.BACK_IMAGE_TYPE
+            self.performSegue(withIdentifier: "showDetail", sender: self)
         }else{
             typeForSegue = CardImage.BACK_IMAGE_TYPE
             self.performSegue(withIdentifier: "showCamera", sender: self)
         }
     }
     
+    @objc private func showCamera(){
+        self.performSegue(withIdentifier: "showCamera", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCamera", let destVC = segue.destination as? IDScannerViewController{
             destVC.typeOfCard = self.typeForSegue
         }else if segue.identifier == "showDetail", let destVC = segue.destination as? IDDetailedViewController{
-            destVC.imgCard = frontImage
+            if (typeForSegue == CardImage.FRONT_IMAGE_TYPE) {
+                destVC.imgCard = frontImage
+            }
+            else {destVC.imgCard = backImage}
         }
     }
 }
