@@ -5,19 +5,22 @@
   },
   "resources" : [
     {
-      "filename" : "gym_s40.arreferenceimage"
+      "filename" : "gyms40_1.arreferenceimage"
     },
     {
-      "filename" : "mailbox_lighting1.arreferenceimage"
+      "filename" : "gyms40_2.arreferenceimage"
     },
     {
-      "filename" : "mailbox_lighting2.arreferenceimage"
+      "filename" : "mailbox_1.arreferenceimage"
     },
     {
-      "filename" : "mailbox_lighting3.arreferenceimage"
+      "filename" : "mailbox_2.arreferenceimage"
     },
     {
-      "filename" : "mailbox_lighting4.arreferenceimage"
+      "filename" : "mailbox_3.arreferenceimage"
+    },
+    {
+      "filename" : "mailbox_4.arreferenceimage"
     }
   ]
 }

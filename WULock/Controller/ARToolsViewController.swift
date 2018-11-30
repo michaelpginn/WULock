@@ -62,14 +62,12 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
         if let imageAnchor = anchor as? ARImageAnchor{
             let referenceImage = imageAnchor.referenceImage
-            
+            guard let refName = referenceImage.name else{return}
             //figure out what we're seeing
-            if referenceImage.name == "gym_s40"{
+            if refName.range(of: "gyms40") != nil{
                 currentInstructionListKey = "gym_s40"
-            }else if referenceImage.name?.range(of: "mailbox") != nil{
+            }else if refName.range(of: "mailbox") != nil{
                 currentInstructionListKey = "mailbox"
-            }else if referenceImage.name == "gym_rec"{
-                currentInstructionListKey = "gym_rec"
             }
             
             //get the plane of the anchor
