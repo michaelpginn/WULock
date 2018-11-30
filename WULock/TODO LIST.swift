@@ -14,7 +14,7 @@ import Foundation
  Just a list of stuff we either need to or could do. Feel free to add.
  
  - AR Tools:
-    (X) get good reference images
+    (x) get good reference images
     ( ) let user select combinations to use
     ( ) display instructions
     ( ) allow instruction navigation
@@ -32,7 +32,7 @@ import Foundation
     ( ) display overlay while taking picture so user knows what rectangle is being selected
     ( ) maybe link with vault? so id type record could have image?
  - General/Misc:
-    ( ) touch id or passcode to lock vault
+    ( ) touch id or passcode to lock vault - setting to
     ( ) hide passwords
     ( ) maybe implement Password AutoFill API? https://developer.apple.com/documentation/security/password_autofill/
     ( ) sync vault with icloud (this is a last priority)
