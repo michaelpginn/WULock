@@ -57,26 +57,61 @@
                         <outlet property="cardBackImageButton" destination="5Qo-kG-57D" id="g8F-yG-4ai"/>
                         <outlet property="cardFrontImageButton" destination="fSL-jr-2ty" id="dCm-bb-mlK"/>
                         <segue destination="tLN-6g-Et4" kind="presentation" identifier="showCamera" id="Gjy-wf-xMI"/>
+                        <segue destination="f5R-84-4Ym" kind="presentation" id="Hcg-pu-fxm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VD-Ou-kOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="414" y="739"/>
         </scene>
-        <!--View Controller-->
+        <!--Detailed View Controller-->
         <scene sceneID="23r-uq-XgO">
             <objects>
-                <viewController id="f5R-84-4Ym" sceneMemberID="viewController">
+                <viewController id="f5R-84-4Ym" customClass="IDDetailedViewController" customModule="WULock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t05-KW-VRs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-jr-z6c">
+                                <rect key="frame" x="67" y="122.5" width="241" height="422"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LWK-jr-z6c" secondAttribute="height" multiplier="4:7" id="gHB-IX-fWg"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIU-qW-Axv">
+                                <rect key="frame" x="164" y="580" width="47" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1L9-YK-tc4"/>
+                                </constraints>
+                                <state key="normal" title="Retake"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k43-HA-WUb">
+                                <rect key="frame" x="168" y="68" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LWK-jr-z6c" firstAttribute="centerY" secondItem="t05-KW-VRs" secondAttribute="centerY" id="KHg-Tv-IIF"/>
+                            <constraint firstItem="PIU-qW-Axv" firstAttribute="centerX" secondItem="LWK-jr-z6c" secondAttribute="centerX" id="NVU-Ms-jOC"/>
+                            <constraint firstItem="LWK-jr-z6c" firstAttribute="top" secondItem="k43-HA-WUb" secondAttribute="bottom" constant="24.5" id="V5c-Pr-ViT"/>
+                            <constraint firstItem="PIU-qW-Axv" firstAttribute="top" secondItem="LWK-jr-z6c" secondAttribute="bottom" constant="35.5" id="Yw9-Jx-wLH"/>
+                            <constraint firstItem="k43-HA-WUb" firstAttribute="centerX" secondItem="t05-KW-VRs" secondAttribute="centerX" id="gxp-AK-3aQ"/>
+                            <constraint firstItem="PIU-qW-Axv" firstAttribute="centerX" secondItem="t05-KW-VRs" secondAttribute="centerX" id="i1f-WN-Z6w"/>
+                            <constraint firstItem="LWK-jr-z6c" firstAttribute="centerX" secondItem="t05-KW-VRs" secondAttribute="centerX" id="lQ8-rG-cc1"/>
+                            <constraint firstItem="LWK-jr-z6c" firstAttribute="leading" secondItem="Tmg-ZU-dc4" secondAttribute="leading" constant="67" id="od6-dj-r8q"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Tmg-ZU-dc4"/>
                     </view>
+                    <connections>
+                        <outlet property="cardImg" destination="LWK-jr-z6c" id="o6b-G8-uHD"/>
+                        <outlet property="closeButton" destination="k43-HA-WUb" id="suy-fX-pSU"/>
+                        <outlet property="retakeButton" destination="PIU-qW-Axv" id="7yp-ri-pGl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zih-mT-3zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="1442"/>
+            <point key="canvasLocation" x="413.60000000000002" y="1479.3103448275863"/>
         </scene>
         <!--Item-->
         <scene sceneID="JRP-4h-tum">

@@ -63,6 +63,11 @@ class IDViewController: UIViewController {
     
     @IBAction func frontTapped(sender:UIButton!){
         if frontBackSet.0{
+            //here I'm making it that when you click the front, 1) it enlarges the picture and also 2) there will be a button to allow for a retake picture and also 3) another button to close the picture and go back to the previous screen
+            
+            
+            
+            // for the buttun to retake the picture, just copy the code a few lines down
             
         }else{
             typeForSegue = CardImage.FRONT_IMAGE_TYPE

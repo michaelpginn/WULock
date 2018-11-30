@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85D4BAC221B0A951001495F9 /* IDDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D4BAC121B0A951001495F9 /* IDDetailedViewController.swift */; };
 		9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9507AFEC21A48CB50043B924 /* VirtualID.storyboard */; };
 		9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507AFEF21A48EEA0043B924 /* CameraButton.swift */; };
 		958F5C8F21AC640300453BC9 /* VaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85D4BAC121B0A951001495F9 /* IDDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDDetailedViewController.swift; sourceTree = "<group>"; };
 		9507AFED21A48CB50043B924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WULock/View/Base.lproj/VirtualID.storyboard; sourceTree = "<group>"; };
 		9507AFEF21A48EEA0043B924 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				95F9B3F7219B70B900F61CE7 /* IDViewController.swift */,
 				95F9B3EC219A40F400F61CE7 /* IDScannerViewController.swift */,
 				95F9B3F5219A459D00F61CE7 /* IDScannerAlertViewController.swift */,
+				85D4BAC121B0A951001495F9 /* IDDetailedViewController.swift */,
 			);
 			path = "Virtual ID";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */,
 				95F9B412219B7E1500F61CE7 /* CardImage+CoreDataClass.swift in Sources */,
 				958F5C9321AC6B7700453BC9 /* TypeOptionView.swift in Sources */,
+				85D4BAC221B0A951001495F9 /* IDDetailedViewController.swift in Sources */,
 				95F9B413219B7E1500F61CE7 /* CardImage+CoreDataProperties.swift in Sources */,
 				95F9B3DE219A40C300F61CE7 /* WULock.xcdatamodeld in Sources */,
 				95B83F9321ACCE210088FC3E /* FieldTableViewCell.swift in Sources */,
@@ -427,7 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9GVS3YU4CR;
+				DEVELOPMENT_TEAM = HPDR8259LK;
 				INFOPLIST_FILE = WULock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,7 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9GVS3YU4CR;
+				DEVELOPMENT_TEAM = HPDR8259LK;
 				INFOPLIST_FILE = WULock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
