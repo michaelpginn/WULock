@@ -12,11 +12,11 @@ import SceneKit
 typealias InstructionList = [Instruction]
 
 class Instruction: NSObject {
-    var nodes:[SCNNode] = []
+    var node:SCNNode
     var text:String
     
-    init(nodes:[SCNNode], text:String){
-        self.nodes = nodes
+    init(node:SCNNode, text:String){
+        self.node = node
         self.text = text
     }
 }

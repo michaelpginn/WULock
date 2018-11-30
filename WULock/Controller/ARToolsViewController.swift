@@ -32,7 +32,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         sceneView.scene = scene
         
-        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: [1,2,3,4])
+        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: ["1","2","3","4"])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,20 +70,23 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             plane.materials = [material]
             let planeNode = SCNNode(geometry: plane)
             planeNode.opacity = 1.0
-            planeNode
             planeNode.eulerAngles.x = -.pi / 2
             node.addChildNode(planeNode)
             self.currentPlane = planeNode
-            displayInstruction(index: currentInstructionListIndex)
+            displayInstruction()
         }
     }
     
-    func displayInstruction(index:Int){
+    func displayInstruction(index:Int = -1){
+        //clear current instructions
+        currentPlane?.enumerateChildNodes({ (node, stop) in
+            node.removeFromParentNode()
+        })
+        
+        let theIndex = index == -1 ? currentInstructionListIndex : index
         if let current = currentInstructionList{
-            let instruction = current[index]
-            for node in instruction.nodes{
-                self.currentPlane?.addChildNode(node)
-            }
+            let instruction = current[theIndex]
+            self.currentPlane?.addChildNode(instruction.node)
         }
     }
     
@@ -118,4 +121,16 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let currentList = currentInstructionList{
+            guard let touch = touches.first else{return}
+            let location = touch.location(in: self.view)
+            if location.x > view.bounds.width / 2 && currentInstructionListIndex < currentList.count - 1{
+                currentInstructionListIndex += 1
+            }else if location.x < view.bounds.width / 2 && currentInstructionListIndex > 0{
+                currentInstructionListIndex -= 1
+            }
+            displayInstruction()
+        }
+    }
 }
