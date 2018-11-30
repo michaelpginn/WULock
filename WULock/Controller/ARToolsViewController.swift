@@ -62,16 +62,18 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
         if let imageAnchor = anchor as? ARImageAnchor{
             let referenceImage = imageAnchor.referenceImage
-            
+            guard let refName = referenceImage.name else{return}
             //figure out what we're seeing
-            if let refName = referenceImage.name{
-                currentInstructionListKey = refName
+            if refName.range(of: "gyms40") != nil{
+                currentInstructionListKey = "gym_s40"
+            }else if refName.range(of: "mailbox") != nil{
+                currentInstructionListKey = "mailbox"
             }
             
             //get the plane of the anchor
             let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
             let material = SCNMaterial()
-            //material.diffuse.contents = UIColor.clear
+            material.diffuse.contents = UIColor.clear
             plane.materials = [material]
             let planeNode = SCNNode(geometry: plane)
             planeNode.opacity = 1.0
