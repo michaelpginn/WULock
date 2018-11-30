@@ -59,7 +59,7 @@ extension Instruction{
         
         func s40Pos()->(Float, Float){
             var xs:[Float] = [-0.02, 0.018]
-            var ys:[Float] = [-0.013, -0.005, 0.0059, 0.016, 0.026, 0.035]
+            var ys:[Float] = [-0.013, -0.005, 0.0059, 0.016, 0.026, 0.036]
             let x = xs[self.s40index().0]
             let y = ys[self.s40index().1]
             return (x,y)
@@ -67,42 +67,25 @@ extension Instruction{
     }
     
     class func createS40InstructionList(numbers:[String])->InstructionList{
-        
-        
         var instructions:InstructionList = []
         
-        let inst_c = Instruction(node: createArrowNode(xyPos: Button.cButton.s40Pos(), facingRight: true), text: "Press the c button")
+        let inst_c = Instruction(node: NodeCreationManager.createArrowNode(xyPos: Button.cButton.s40Pos(), facingRight: true), text: "Press the c button")
         instructions.append(inst_c)
         
         //next, get the numbered steps (should be four numbers)
         for number in numbers{
             if let button = Button(rawValue: number){
                 let facingRight = button.s40index().0 == 0
-                let inst_n = Instruction(node: createArrowNode(xyPos: button.s40Pos(), facingRight: facingRight), text: "Press " + number)
+                let inst_n = Instruction(node: NodeCreationManager.createArrowNode(xyPos: button.s40Pos(), facingRight: facingRight), text: "Press " + number)
                 instructions.append(inst_n)
             }
         }
         
-        let inst_l = Instruction(node: createArrowNode(xyPos: Button.lockButton.s40Pos(), facingRight: false), text: "Press the lock button")
+        let inst_l = Instruction(node: NodeCreationManager.createArrowNode(xyPos: Button.lockButton.s40Pos(), facingRight: false), text: "Press the lock button")
         instructions.append(inst_l)
         
         return instructions
     }
     
-    private class func createArrowNode(xyPos: (Float, Float), facingRight:Bool)->SCNNode{
-        let rightArrowPlane = SCNPlane(width: 0.02, height: 0.02)
-        let arrowMaterial = SCNMaterial()
-        
-        if facingRight{
-            arrowMaterial.diffuse.contents = UIImage(named: "rightArrow")
-        }else{
-            arrowMaterial.diffuse.contents = UIImage(named: "leftArrow")
-        }
-        rightArrowPlane.materials = [arrowMaterial]
-        let arrow = SCNNode(geometry: rightArrowPlane)
-        arrow.position.z = 0.01
-        arrow.position.x = xyPos.0
-        arrow.position.y = xyPos.1
-        return arrow
-    }
+    
 }

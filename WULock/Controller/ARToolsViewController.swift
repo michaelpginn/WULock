@@ -32,7 +32,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         sceneView.scene = scene
         
-        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: ["1","2","3","4"])
+        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: ["1","2","3","4"]) //should come from record
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,10 +63,15 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         if let imageAnchor = anchor as? ARImageAnchor{
             let referenceImage = imageAnchor.referenceImage
             
+            //figure out what we're seeing
+            if let refName = referenceImage.name{
+                currentInstructionListKey = refName
+            }
+            
             //get the plane of the anchor
             let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
             let material = SCNMaterial()
-            material.diffuse.contents = UIColor.clear
+            //material.diffuse.contents = UIColor.clear
             plane.materials = [material]
             let planeNode = SCNNode(geometry: plane)
             planeNode.opacity = 1.0
@@ -87,8 +92,12 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         if let current = currentInstructionList{
             let instruction = current[theIndex]
             self.currentPlane?.addChildNode(instruction.node)
+            //create text node
+            self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text))
         }
     }
+    
+    
     
     // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
     // TODO: If the user has saved a locker or mail combo, display choice somewhere
