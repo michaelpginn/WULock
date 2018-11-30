@@ -5,19 +5,19 @@
   },
   "resources" : [
     {
-      "filename" : "brightlock.arreferenceimage"
-    },
-    {
-      "filename" : "brightlock2.arreferenceimage"
-    },
-    {
       "filename" : "gym_s40.arreferenceimage"
     },
     {
-      "filename" : "IMG_4105.arreferenceimage"
+      "filename" : "mailbox_lighting1.arreferenceimage"
     },
     {
-      "filename" : "mailbox.arreferenceimage"
+      "filename" : "mailbox_lighting2.arreferenceimage"
+    },
+    {
+      "filename" : "mailbox_lighting3.arreferenceimage"
+    },
+    {
+      "filename" : "mailbox_lighting4.arreferenceimage"
     }
   ]
 }
