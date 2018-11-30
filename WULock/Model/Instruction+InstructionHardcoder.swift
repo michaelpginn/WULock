@@ -59,7 +59,7 @@ extension Instruction{
         
         func s40Pos()->(Float, Float){
             var xs:[Float] = [-0.02, 0.018]
-            var ys:[Float] = [-0.014, -0.004, 0.0057, 0.0154, 0.0251, 0.0348]
+            var ys:[Float] = [-0.013, -0.005, 0.0059, 0.016, 0.026, 0.035]
             let x = xs[self.s40index().0]
             let y = ys[self.s40index().1]
             return (x,y)
