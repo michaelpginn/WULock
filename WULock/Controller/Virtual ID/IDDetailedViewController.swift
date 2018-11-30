@@ -12,13 +12,16 @@ class IDDetailedViewController: UIViewController {
 
     @IBOutlet weak var cardImg: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
+    var imgCard: UIImage?
+//    @IBOutlet weak var closeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardImg.image = imgCard
+        cardImg.transform = CGAffineTransform(rotationAngle: (90.0 * .pi) / 180.0)
         
-        closeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        retakeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+ //       closeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
+ //       retakeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
         
         
         
