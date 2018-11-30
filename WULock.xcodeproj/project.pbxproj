@@ -123,16 +123,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		95D8DA1921B0A08600DC1A52 /* Vault */ = {
-			isa = PBXGroup;
-			children = (
-				95F9B3EA219A40D800F61CE7 /* VaultItem.swift */,
-				95B83F9821AE1B270088FC3E /* ItemType.swift */,
-				95B83F9621AE142B0088FC3E /* ItemField.swift */,
-			);
-			path = Vault;
-			sourceTree = "<group>";
-		};
 		95F9B3C9219A40C300F61CE7 = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				95F9B3D5219A40C300F61CE7 /* AppDelegate.swift */,
-				95D8DA1921B0A08600DC1A52 /* Vault */,
+				95F9B3EA219A40D800F61CE7 /* VaultItem.swift */,
+				95B83F9821AE1B270088FC3E /* ItemType.swift */,
+				95B83F9621AE142B0088FC3E /* ItemField.swift */,
 				95D8DA1821B0A07300DC1A52 /* CoreData */,
 				95D8DA1A21B0A0CC00DC1A52 /* Instruction.swift */,
 				95D8DA1E21B0A40700DC1A52 /* Instruction+InstructionHardcoder.swift */,
