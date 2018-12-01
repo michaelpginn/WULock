@@ -73,7 +73,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             //get the plane of the anchor
             let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
             let material = SCNMaterial()
-            material.diffuse.contents = UIColor.clear
+            //material.diffuse.contents = UIColor.clear
             plane.materials = [material]
             let planeNode = SCNNode(geometry: plane)
             planeNode.opacity = 1.0

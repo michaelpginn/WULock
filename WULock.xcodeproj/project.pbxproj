@@ -11,6 +11,7 @@
 		9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9507AFEC21A48CB50043B924 /* VirtualID.storyboard */; };
 		9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507AFEF21A48EEA0043B924 /* CameraButton.swift */; };
 		953E01B021B115AB0013D49A /* NodeCreationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E01AF21B115AB0013D49A /* NodeCreationManager.swift */; };
+		953E01B221B1B6920013D49A /* HOW TO GIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E01B121B1B6920013D49A /* HOW TO GIT.swift */; };
 		958F5C8F21AC640300453BC9 /* VaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */; };
 		958F5C9121AC644700453BC9 /* VaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C9021AC644700453BC9 /* VaultTableViewController.swift */; };
 		958F5C9321AC6B7700453BC9 /* TypeOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */; };
@@ -46,6 +47,7 @@
 		9507AFED21A48CB50043B924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WULock/View/Base.lproj/VirtualID.storyboard; sourceTree = "<group>"; };
 		9507AFEF21A48EEA0043B924 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		953E01AF21B115AB0013D49A /* NodeCreationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCreationManager.swift; sourceTree = "<group>"; };
+		953E01B121B1B6920013D49A /* HOW TO GIT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HOW TO GIT.swift"; sourceTree = "<group>"; };
 		958F5C8E21AC640300453BC9 /* VaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTableViewCell.swift; sourceTree = "<group>"; };
 		958F5C9021AC644700453BC9 /* VaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultTableViewController.swift; sourceTree = "<group>"; };
 		958F5C9221AC6B7700453BC9 /* TypeOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOptionView.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				95F9B3E4219A40C600F61CE7 /* Info.plist */,
 				95F9B3DF219A40C600F61CE7 /* Assets.xcassets */,
 				95D8DA1421AF16D800DC1A52 /* TODO LIST.swift */,
+				953E01B121B1B6920013D49A /* HOW TO GIT.swift */,
 			);
 			path = WULock;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				95F9B3D6219A40C300F61CE7 /* AppDelegate.swift in Sources */,
 				9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */,
 				95D8DA1521AF16D800DC1A52 /* TODO LIST.swift in Sources */,
+				953E01B221B1B6920013D49A /* HOW TO GIT.swift in Sources */,
 				958F5C9121AC644700453BC9 /* VaultTableViewController.swift in Sources */,
 				95D8DA1721AF199500DC1A52 /* VaultItemDetailViewController.swift in Sources */,
 				95F9B3EF219A40F400F61CE7 /* ARToolsViewController.swift in Sources */,
