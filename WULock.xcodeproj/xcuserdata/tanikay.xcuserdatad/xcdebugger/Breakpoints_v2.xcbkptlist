@@ -9,164 +9,43 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WULock/Controller/Virtual ID/IDViewController.swift"
-            timestampString = "565293813.175818"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDViewController.prepare(for: __C.UIStoryboardSegue, sender: Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "WULock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDViewController.swift"
-                  timestampString = "565292996.612352"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "544">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDViewController.prepare(for: __C.UIStoryboardSegue, sender: Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "WULock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDViewController.swift"
-                  timestampString = "565292996.61518"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "564">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WULock/Controller/Virtual ID/IDViewController.swift"
-            timestampString = "565293813.175873"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WULock/Controller/Virtual ID/IDDetailedViewController.swift"
-            timestampString = "565293813.175916"
+            timestampString = "565295661.061553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "cameraBtn(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WULock/Controller/Virtual ID/IDDetailedViewController.swift"
-            timestampString = "565293813.176201"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "IDDetailedViewController"
-            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDDetailedViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; WULock.IDDetailedViewController"
+                  symbolName = "WULock.IDDetailedViewController.cameraBtn(Any) -&gt; ()"
                   moduleName = "WULock"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDDetailedViewController.swift"
-                  timestampString = "565293218.561276"
+                  timestampString = "565295457.5037169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDDetailedViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; WULock.IDDetailedViewController"
+                  symbolName = "closure #1 () -&gt; () in WULock.IDDetailedViewController.cameraBtn(Any) -&gt; ()"
                   moduleName = "WULock"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDDetailedViewController.swift"
-                  timestampString = "565293218.563287"
+                  timestampString = "565295457.505923"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDDetailedViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;WULock.IDDetailedViewController&gt;"
-                  moduleName = "WULock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDDetailedViewController.swift"
-                  timestampString = "565293218.564988"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDDetailedViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;WULock.IDDetailedViewController&gt;"
-                  moduleName = "WULock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDDetailedViewController.swift"
-                  timestampString = "565293218.566947"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WULock.IDDetailedViewController.__deallocating_deinit"
-                  moduleName = "WULock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tanikay/Desktop/WuLock/WULock/Controller/Virtual%20ID/IDDetailedViewController.swift"
-                  timestampString = "565293218.568866"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>

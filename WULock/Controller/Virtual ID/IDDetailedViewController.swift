@@ -19,14 +19,22 @@ class IDDetailedViewController: UIViewController {
         super.viewDidLoad()
         cardImg.image = imgCard
         cardImg.transform = CGAffineTransform(rotationAngle: (90.0 * .pi) / 180.0)
-        
- //       closeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
- //       retakeButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2)
-        
-        
+
         
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func cameraBtn(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        
+        let nc = NotificationCenter.default
+        nc.post(Notification(name: Notification.Name(rawValue: "show-camera")))
+        
+//        self.dismiss(animated: true) {
+//            super.performSegue(withIdentifier: "showCamera", sender: self.superclass)
+//        }
+    }
+
     
     //hello
 
