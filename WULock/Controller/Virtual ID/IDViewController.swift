@@ -20,16 +20,20 @@ class IDViewController: UIViewController {
     var frontBackSet = (false, false)
     
     let defaults = UserDefaults.standard
-    let CARD_CORNER_RADIUS: CGFloat = 10.0
+    var cardCornerRadius:CGFloat{
+        get{
+            return self.cardFrontImageButton.frame.width / 34.0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         //cardFrontImageButton.layer.cornerRadius = CARD_CORNER_RADIUS
-        cardFrontImageButton.layer.cornerRadius = CARD_CORNER_RADIUS
+        cardFrontImageButton.layer.cornerRadius = cardCornerRadius
         cardFrontImageButton.clipsToBounds = true
-        cardBackImageButton.layer.cornerRadius = CARD_CORNER_RADIUS
+        cardBackImageButton.layer.cornerRadius = cardCornerRadius
         cardBackImageButton.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(getImagesForCards), name: Notification.Name("coredata-updated"), object: nil)

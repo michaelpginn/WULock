@@ -11,6 +11,8 @@ import ARKit
 
 class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
     var currentPlane:SCNNode? = nil
     
@@ -56,6 +58,9 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
+    //MARK: User interaction
+    
+    
     //MARK: ARSCNView Delegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -66,9 +71,12 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             //figure out what we're seeing
             if refName.range(of: "gyms40") != nil{
                 currentInstructionListKey = "gym_s40"
+                
             }else if refName.range(of: "mailbox") != nil{
                 currentInstructionListKey = "mailbox"
             }
+            currentInstructionListIndex = 0
+            pageControl.numberOfPages = currentInstructionList?.count ?? 0
             
             //get the plane of the anchor
             let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
@@ -97,6 +105,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             //create text node
             self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text))
         }
+        self.pageControl.currentPage = theIndex
     }
     
     

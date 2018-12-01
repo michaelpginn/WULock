@@ -10,22 +10,29 @@ import UIKit
 
 class IDDetailedViewController: UIViewController {
 
-    @IBOutlet weak var cardImg: UIImageView!
+    @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var retakeButton: UIButton!
     var imgCard: UIImage?
 //    @IBOutlet weak var closeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cardImg.image = imgCard
-        cardImg.transform = CGAffineTransform(rotationAngle: (90.0 * .pi) / 180.0)
+        
+        //Tani i made some changes there were issues where the image was covered by the nav bar - MG
+        guard let img = imgCard else{return}
+        
+        let rotatedImage = UIImage(cgImage: img.cgImage!, scale: 1.0, orientation: .right)
+        cardImageView.image = rotatedImage
+        cardImageView.layer.cornerRadius = cardImageView.frame.height / 34.0
+        
+        //cardImg.transform = CGAffineTransform(rotationAngle: (90.0 * .pi) / 180.0)
 
         
         // Do any additional setup after loading the view.
     }
     
     @IBAction func cameraBtn(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
         
         let nc = NotificationCenter.default
         nc.post(Notification(name: Notification.Name(rawValue: "show-camera")))
@@ -35,6 +42,9 @@ class IDDetailedViewController: UIViewController {
 //        }
     }
 
+    @IBAction func close(_ sender: Any){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     //hello
 

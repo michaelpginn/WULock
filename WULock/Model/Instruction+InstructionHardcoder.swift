@@ -87,5 +87,10 @@ extension Instruction{
         return instructions
     }
     
+    class func createMailboxInstructionList(combo:[String])->InstructionList{
+        var instructions:InstructionList = []
+        
+        return instructions
+    }
     
 }
