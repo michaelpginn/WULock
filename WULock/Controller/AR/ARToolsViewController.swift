@@ -26,6 +26,23 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    var planes:[UUID:Plane] = [:]
+    
+    enum SessionType{
+        case automatic
+        case manual
+    }
+    
+    var currentSessionType:SessionType{
+        get{
+            if segmentControl.selectedSegmentIndex == 0{
+                return .automatic
+            }else{
+                return .manual
+            }
+        }
+    }
+    
     var instructionShown = false
     
 
@@ -43,6 +60,47 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         reloadInstructions()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadInstructions), name: Notification.Name("codes_changed"), object: nil)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Create a session configuration
+        
+        createSession(type: currentSessionType)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Pause the view's session
+        sceneView.session.pause()
+    }
+    
+    private func createSession(type:SessionType){
+        let queue = DispatchQueue(label: "background")
+        queue.async {
+            if type == .automatic{
+                let configuration = ARImageTrackingConfiguration()
+                if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
+                    configuration.trackingImages = referenceImages
+                }
+
+                self.sceneView.session.run(configuration)
+                self.hideNotification()
+            }else if type == .manual{
+                let configuration = ARWorldTrackingConfiguration()
+                self.sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+                configuration.planeDetection = .vertical
+                configuration.isLightEstimationEnabled = true
+                
+                self.sceneView.session.run(configuration)
+                self.showNotification(text: "Tap the center of the lock")
+                self.planes = [:]
+                print(self.sceneView.session.configuration)
+            }
+        }
     }
     
     @objc private func reloadInstructions(){
@@ -64,64 +122,81 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        
-        let queue = DispatchQueue(label: "background")
-        queue.async {
-            let configuration = ARImageTrackingConfiguration()
-            if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
-                configuration.trackingImages = referenceImages
-            }
-            self.sceneView.session.run(configuration)
-        }
-        
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Pause the view's session
-        sceneView.session.pause()
-    }
-    
     //MARK: User interaction
+    @IBAction func swipedLeft(_ sender: Any) {
+        hideNotification()
+        currentInstructionList?.increment()
+        displayInstruction()
+    }
     
+    @IBAction func swipedRight(_ sender: Any) {
+        currentInstructionList?.decrement()
+        displayInstruction()
+    }
+    
+    @IBAction func segmentChanged(_ sender:UISegmentedControl){
+        if sender.selectedSegmentIndex == 0{
+            createSession(type: .automatic)
+        }else{
+            createSession(type: .manual)
+        }
+    }
     
     //MARK: ARSCNView Delegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if !instructionShown{
-            self.showNotification(text: "Swipe left to go to the next step")
-            instructionShown = true
-        }
+        
         print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
-        if let imageAnchor = anchor as? ARImageAnchor{
-            let referenceImage = imageAnchor.referenceImage
-            guard let refName = referenceImage.name else{return}
-            //figure out what we're seeing
-            if refName.range(of: "gyms40") != nil{
-                currentInstructionListKey = "gym_s40"
+        if currentSessionType == .automatic{
+            if let imageAnchor = anchor as? ARImageAnchor{
+                if !instructionShown{
+                    self.showNotification(text: "Swipe left to go to the next step")
+                    instructionShown = true
+                }
+                let referenceImage = imageAnchor.referenceImage
+                guard let refName = referenceImage.name else{return}
+                //figure out what we're seeing
+                if refName.range(of: "gyms40") != nil{
+                    currentInstructionListKey = "gym_s40"
+                    
+                }else if refName.range(of: "mailbox") != nil{
+                    currentInstructionListKey = "mailbox"
+                }
                 
-            }else if refName.range(of: "mailbox") != nil{
-                currentInstructionListKey = "mailbox"
+                
+                DispatchQueue.main.async {
+                    self.pageControl.numberOfPages = self.currentInstructionList?.count ?? 0
+                }
+                
+                
+                //get the plane of the anchor
+                let planeNode = NodeCreationManager.createPlaneNode(size: referenceImage.physicalSize)
+                node.addChildNode(planeNode)
+                self.currentPlane = planeNode
+                displayInstruction()
+            }}
+        else{
+            if let planeAnchor = anchor as? ARPlaneAnchor{
+                print("Found plane")
+                let plane = Plane(anchor: planeAnchor)
+                self.planes[anchor.identifier] = plane
+                node.addChildNode(plane)
             }
-            
-            
-            DispatchQueue.main.async {
-                self.pageControl.numberOfPages = self.currentInstructionList?.count ?? 0
-            }
-            
-            
-            //get the plane of the anchor
-            let planeNode = NodeCreationManager.createPlaneNode(size: referenceImage.physicalSize)
-            node.addChildNode(planeNode)
-            self.currentPlane = planeNode
-            displayInstruction()
         }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        //From https://collectiveidea.com/blog/archives/2018/05/08/part-2-arkit-wall-and-plane-detection-for-ios-11.3
+        
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        if let plane = planes[planeAnchor.identifier] {
+            plane.updateWith(anchor: planeAnchor)
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        self.currentInstructionListKey = ""
+        self.pageControl.numberOfPages = 0
     }
     
     func displayInstruction(index:Int = -1){
@@ -163,16 +238,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-    @IBAction func swipedLeft(_ sender: Any) {
-        hideNotification()
-        currentInstructionList?.increment()
-        displayInstruction()
-    }
-    
-    @IBAction func swipedRight(_ sender: Any) {
-        currentInstructionList?.decrement()
-        displayInstruction()
-    }
+    //MARK: Notifications
     
     
     func showNotification(text:String){

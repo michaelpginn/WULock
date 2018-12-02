@@ -26,13 +26,13 @@
                                     <outletCollection property="gestureRecognizers" destination="P5J-zC-QTV" appends="YES" id="d1C-ZR-t12"/>
                                 </connections>
                             </arscnView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-Hj-Vu3">
-                                <rect key="frame" x="176" y="578" width="23" height="40"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-Hj-Vu3">
+                                <rect key="frame" x="187.5" y="578" width="0.0" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KId-3d-CtR"/>
                                 </constraints>
                             </pageControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vCw-4A-HHK">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="vCw-4A-HHK">
                                 <rect key="frame" x="219" y="28" width="140" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="750" constant="140" id="g3D-WB-6gG"/>
@@ -42,6 +42,9 @@
                                     <segment title="Manual"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="jtb-iB-7MU" eventType="valueChanged" id="MMx-gW-Dac"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfs-Cl-QRh">
                                 <rect key="frame" x="16" y="28" width="89" height="30"/>
@@ -245,7 +248,10 @@
                                 <connections>
                                     <outlet property="iconImageView" destination="nMZ-AG-rNW" id="Qhb-jt-oQc"/>
                                     <outlet property="label" destination="fis-11-90u" id="bV1-6W-fGn"/>
-                                    <segue destination="5B6-YE-OeH" kind="show" identifier="showDetail" id="Os8-Kt-Eji"/>
+                                    <segue destination="5B6-YE-OeH" kind="show" identifier="showDetail" id="Os8-Kt-Eji">
+                                        <segue key="commit" inheritsFrom="parent" id="oCa-to-El3"/>
+                                        <segue key="preview" inheritsFrom="commit" id="JMF-3j-rR5"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -682,6 +688,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HZi-Cf-izx"/>
+        <segue reference="Os8-Kt-Eji"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6470588235294118" green="0.078431372549019607" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

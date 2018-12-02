@@ -27,6 +27,10 @@ class FieldTableViewCell: UITableViewCell, UITextFieldDelegate {
             descLabel?.text = desc
         }
     }
+    
+    public func setPlaceholder(_ text:String){
+        valueTextField?.placeholder = text
+    }
 
     @IBAction func textChanged(_ sender: Any){
 //        if valueTextField.text == ""{

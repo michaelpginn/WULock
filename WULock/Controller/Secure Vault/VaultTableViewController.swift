@@ -14,19 +14,23 @@ class VaultTableViewController: UITableViewController {
     var items:[VaultItem] = []
     let defaults = UserDefaults.standard
     
+    var lockScreenShown = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginVCNav = storyboard.instantiateViewController(withIdentifier: "loginVCNav")
-        self.tabBarController?.present(loginVCNav, animated: false, completion: nil)
-        
-        
-
         loadItems()
         NotificationCenter.default.addObserver(self, selector: #selector(loadItems), name: Notification.Name("vault_changed"), object: nil)
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !lockScreenShown {
+            lockScreenShown = true
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVCNav = storyboard.instantiateViewController(withIdentifier: "loginVCNav")
+            self.tabBarController?.present(loginVCNav, animated: false, completion: nil)
+        }
     }
 
     

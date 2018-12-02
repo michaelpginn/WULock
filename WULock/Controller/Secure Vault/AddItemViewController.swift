@@ -33,6 +33,10 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             pickerController.view.topAnchor.constraint(equalTo: containerView.topAnchor),
             pickerController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
             ])
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
     // MARK: ItemTypePickerControllerDelegate method
@@ -61,7 +65,19 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         
+        
         let newItem = VaultItem(type: currentSelectedType, fields: fields)
+        
+        if currentSelectedType == .mailbox || currentSelectedType == .gymLocker{
+            guard newItem.canParse() else{
+                let alert = UIAlertController(title: "Error", message: "The combination value could not be parsed, use the suggested format.", preferredStyle: .alert)
+                let accept = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alert.addAction(accept)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        }
+        
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate{
             let context = appDelegate.managedObjectContext
             _ = newItem.getManagedObject(context: context)
@@ -135,9 +151,24 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? FieldTableViewCell else{return UITableViewCell()}
         
+        
+        
         if indexPath.section == 0{
-            cell.setDescription(defaultFields[indexPath.row].fieldDescription)
+            let field = defaultFields[indexPath.row]
+            cell.setDescription(field.fieldDescription)
+            
+            //Set placeholders for values that need parsing
+            if field.fieldDescription == "Combination"{
+                if currentSelectedType == .gymLocker{
+                    cell.setPlaceholder("####")
+                }else if currentSelectedType == .mailbox{
+                    cell.setPlaceholder("##-##-##")
+                }
+                
+            }
         }
+        
+        
         
         cell.valueTextField.delegate = self
         cell.descTextField?.delegate = self
@@ -148,5 +179,24 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func addCell(){
         userFields.append(ItemField(fieldDescription: "", fieldValue: ""))
         tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+    }
+    
+    // MARK: ScrollView Management
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    @objc func adjustForKeyboard(notification:Notification){
+        //Adapted from https://www.hackingwithswift.com/example-code/uikit/how-to-adjust-a-uiscrollview-to-fit-the-keyboard
+        guard let userInfo = notification.userInfo,
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else{return}
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification{
+            tableView.contentInset = UIEdgeInsets.zero
+        }else{
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
     }
 }

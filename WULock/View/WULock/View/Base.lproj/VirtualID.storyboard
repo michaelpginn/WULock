@@ -57,7 +57,7 @@
                         <outlet property="cardBackImageButton" destination="5Qo-kG-57D" id="g8F-yG-4ai"/>
                         <outlet property="cardFrontImageButton" destination="fSL-jr-2ty" id="dCm-bb-mlK"/>
                         <segue destination="tLN-6g-Et4" kind="presentation" identifier="showCamera" id="Gjy-wf-xMI"/>
-                        <segue destination="f5R-84-4Ym" kind="showDetail" identifier="showDetail" id="Hcg-pu-fxm"/>
+                        <segue destination="f5R-84-4Ym" kind="presentation" identifier="showDetail" modalTransitionStyle="crossDissolve" id="Hcg-pu-fxm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VD-Ou-kOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
