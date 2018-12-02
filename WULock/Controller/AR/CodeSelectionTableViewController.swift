@@ -17,8 +17,8 @@ class CodeSelectionTableViewController: UITableViewController {
     var selectedMailboxIndex:IndexPath?
     
     var defaults = UserDefaults.standard
-    let GYM_LOCKER_DEFAULTS_KEY = "current_gym_locker_item"
-    let MAILBOX_DEFAULTS_KEY = "current_mailbox_item"
+    static let GYM_LOCKER_DEFAULTS_KEY = "current_gym_locker_item"
+    static let MAILBOX_DEFAULTS_KEY = "current_mailbox_item"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,12 +90,11 @@ class CodeSelectionTableViewController: UITableViewController {
             
             cell.accessoryType = .none
             
-            if code.coreDataID?.uriRepresentation() == defaults.url(forKey: GYM_LOCKER_DEFAULTS_KEY){
+            if code.coreDataID?.uriRepresentation() == defaults.url(forKey: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY){
                 cell.accessoryType = .checkmark
                 selectedGymLockerIndex = indexPath
             }
-            
-            
+
             return cell
         }else if indexPath.section == 1{
             let code = mailboxCodes[indexPath.row]
@@ -109,9 +108,9 @@ class CodeSelectionTableViewController: UITableViewController {
             }
             
             cell.accessoryType = .none
-            if code.coreDataID?.uriRepresentation() == defaults.url(forKey: MAILBOX_DEFAULTS_KEY){
+            if code.coreDataID?.uriRepresentation() == defaults.url(forKey: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY){
                 cell.accessoryType = .checkmark
-                selectedGymLockerIndex = indexPath
+                selectedMailboxIndex = indexPath
             }
             return cell
         }else{
@@ -131,15 +130,13 @@ class CodeSelectionTableViewController: UITableViewController {
         let defaultsKey:String
         let itemsArray:[VaultItem]
         
-        if indexPath.section == 0{
-            indexToCheck = selectedGymLockerIndex
-            defaultsKey = GYM_LOCKER_DEFAULTS_KEY
-            itemsArray = gymLockerCodes
-        }else{
-            indexToCheck = selectedMailboxIndex
-            defaultsKey = MAILBOX_DEFAULTS_KEY
-            itemsArray = mailboxCodes
-        }
+        let firstSection = indexPath.section == 0
+        
+        indexToCheck = firstSection ? selectedGymLockerIndex : selectedMailboxIndex
+        defaultsKey = firstSection ? CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY : CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY
+        itemsArray = firstSection ? gymLockerCodes : mailboxCodes
+        
+        let newSelectedIndex:IndexPath?
         
         if indexPath != indexToCheck{
             let item = itemsArray[indexPath.row]
@@ -147,46 +144,20 @@ class CodeSelectionTableViewController: UITableViewController {
             if let index = indexToCheck{
                 previousCell = tableView.cellForRow(at: index)
             }
-            indexToCheck = indexPath
+            newSelectedIndex = indexPath
         }else{
-            
+            VaultItem.clearDefaultsForKey(key: defaultsKey)
+            cell.accessoryType = .none
+            newSelectedIndex = nil
         }
         
         if indexPath.section == 0{
-            //Gym lockers
-            if indexPath != selectedGymLockerIndex{
-                //Item is not already selected
-                let item = gymLockerCodes[indexPath.row]
-                VaultItem.setToDefaults(key: GYM_LOCKER_DEFAULTS_KEY, item: item)
-                if let index = selectedGymLockerIndex{
-                    previousCell = tableView.cellForRow(at: index)
-                }
-                selectedGymLockerIndex = indexPath
-            }else{
-                //Item is already selected
-                VaultItem.clearDefaultsForKey(key: GYM_LOCKER_DEFAULTS_KEY)
-                cell.accessoryType = .none
-                selectedGymLockerIndex = nil
-            }
-        }else if indexPath.section == 1{
-            //Mailboxes
-            if indexPath != selectedMailboxIndex{
-                let item = gymLockerCodes[indexPath.row]
-                VaultItem.setToDefaults(key: MAILBOX_DEFAULTS_KEY, item: item)
-                if let index = selectedMailboxIndex{
-                    previousCell = tableView.cellForRow(at: index)
-                }
-                selectedMailboxIndex = indexPath
-            }else{
-                VaultItem.clearDefaultsForKey(key: MAILBOX_DEFAULTS_KEY)
-                cell.accessoryType = .none
-                selectedMailboxIndex = nil
-            }
+            selectedGymLockerIndex = newSelectedIndex
+        }else{
+            selectedMailboxIndex = newSelectedIndex
         }
         
         previousCell?.accessoryType = .none
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -202,6 +173,11 @@ class CodeSelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        let nc = NotificationCenter.default
+        nc.post(Notification(name: Notification.Name("codes_changed")))
     }
 
 }

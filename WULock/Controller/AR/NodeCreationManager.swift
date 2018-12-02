@@ -53,21 +53,41 @@ class NodeCreationManager: NSObject {
         
     }
     
-    public class func createTextNode(text:String)->SCNNode{
+    public class func createTextNode(text:String, height:Float = 0.07, fontSize:CGFloat = 10.0)->SCNNode{
         let scnText = SCNText(string: text, extrusionDepth: 1)
         scnText.flatness = 0.1
-        scnText.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        scnText.font = UIFont.systemFont(ofSize: fontSize, weight: .regular)
         
         let textNode = SCNNode(geometry: scnText)
-        //textNode.eulerAngles.x = -.pi / 2
         let SCALE_FACTOR: Float = 0.0008
         textNode.scale = SCNVector3(SCALE_FACTOR, SCALE_FACTOR, SCALE_FACTOR)
         textNode.position.x = -textNode.boundingBox.max.x * 0.5 * SCALE_FACTOR
         textNode.position.z = 0.01
-        textNode.position.y = 0.07
+        textNode.position.y = height
         
         return textNode
     }
     
+    enum ClockDirection{
+        case clockwise
+        case counterclockwise
+    }
+    
+    public class func createCurvedArrowNode(xyPos: (Float, Float), direction: ClockDirection)->SCNNode{
+        let arrowPlane = SCNPlane(width: 0.036, height: 0.012)
+        let arrowMaterial = SCNMaterial()
+        
+        if direction == .clockwise{
+            arrowMaterial.diffuse.contents = UIImage(named: "cwArrow")
+        }else{
+            arrowMaterial.diffuse.contents = UIImage(named: "ccwArrow")
+        }
+        arrowPlane.materials = [arrowMaterial]
+        let arrow = SCNNode(geometry: arrowPlane)
+        arrow.position.z = 0.01
+        arrow.position.x = xyPos.0
+        arrow.position.y = xyPos.1
+        return arrow
+    }
     
 }

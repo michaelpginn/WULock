@@ -16,12 +16,17 @@ class InstructionList{
     private var instructions:[Instruction]
     private(set) var index:Int = 0
     
+    public var fontSize:CGFloat = 10.0
+    public var height:Float = 0.07
+    
     init(){
         self.instructions = []
     }
     
-    init(instructions:[Instruction]){
+    init(instructions:[Instruction], fontSize:CGFloat = 10.0, height:Float = 0.7){
         self.instructions = instructions
+        self.fontSize = fontSize
+        self.height = height
     }
     
     func append(_ inst:Instruction){

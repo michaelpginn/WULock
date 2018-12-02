@@ -17,7 +17,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     var currentPlane:SCNNode? = nil
     
     var instructionLists: [String: InstructionList] = [:]
-    var currentInstructionListKey:String = "gym_s40" // TODO: Change this
+    var currentInstructionListKey:String = "" 
     var currentInstructionList:InstructionList? {
         get{
             return instructionLists[currentInstructionListKey]
@@ -34,7 +34,26 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         sceneView.scene = scene
         
-        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: ["1","2","3","4"]) //should come from record
+        reloadInstructions()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadInstructions), name: Notification.Name("codes_changed"), object: nil)
+    }
+    
+    @objc private func reloadInstructions(){
+        //get saved codes, if there aren't any, cry
+        if let gymLockerItem = VaultItem.getObjectForKey(key: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY), let code = gymLockerItem.parse(){
+            let codeStrings = code.map { (num) -> String in
+                return "\(num)"
+            }
+            instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: codeStrings) //should come from record
+        }
+        
+        if let mailboxItem = VaultItem.getObjectForKey(key: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY), let code = mailboxItem.parse(){
+            let codeStrings = code.map { (num) -> String in
+                return "\(num)"
+            }
+            instructionLists["mailbox"] = Instruction.createMailboxInstructionList(combo: codeStrings)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +123,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             let instruction = index == -1 ? current.getInstruction() : current.getInstruction(index: index)
             self.currentPlane?.addChildNode(instruction.node)
             //create text node
-            self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text))
+            self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text, height: current.height, fontSize: current.fontSize))
             
             DispatchQueue.main.async {
                 self.pageControl.currentPage = current.index
@@ -112,24 +131,6 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         }
         
     }
-    
-    
-    
-    // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
-    // TODO: If the user has saved a locker or mail combo, display choice somewhere
-    /* Plan:
-     - Search for records of type gym locker or mail
-     - Display a button somewhere on ARKit, "Choose combination"
-     - When clicked, show a little popup that has, separated into two categories, mail room and gym
-     - For each, show all records matching, with selection indicator
-     - When one is selected, dismiss
-     - Detect reference image, check against known images
-     - If mail room: show mail room steps using curved arrows (animated?)
-     - If gym: show buttons using arrows
-     - User can advance to next step by tapping right side of screen, go back by tapping left side
-        *how to indicate?
-     - when done, show restart button
-     */
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
