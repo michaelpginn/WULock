@@ -44,6 +44,14 @@ class VaultItemDetailViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
+        imgView.contentMode = .scaleAspectFit
+        let img = item.type.getImage()
+        imgView.image = img
+        self.navigationItem.titleView = imgView
+    }
+    
     
     
 }
