@@ -15,20 +15,20 @@ import Foundation
  
  - AR Tools:
     (x) get good reference images
-    ( ) let user select combinations to use
-    ( ) display instructions
-    ( ) allow instruction navigation
+    (x) let user select combinations to use
+    (x) display instructions
+    (x) allow instruction navigation
  - Vault:
-    ( ) show detail view for item when tapped
+    (x) show detail view for item when tapped
     ( ) for mail combo and gym combo, enforce rules for entry
     ( ) sorting and filtering
     ( ) display "No items message"
     ( ) don't cover fields with keyboard, slide table up
-    ( ) delete/edit items
+    (x) delete/edit items
     ( ) let online items link to browser
  - ID Scanner:
-    ( ) display bigger version when card is tapped
-    ( ) allow replacement of image (could be same view)
+    (x) display bigger version when card is tapped
+    (x) allow replacement of image (could be same view)
     ( ) display overlay while taking picture so user knows what rectangle is being selected
     ( ) maybe link with vault? so id type record could have image?
  - General/Misc:

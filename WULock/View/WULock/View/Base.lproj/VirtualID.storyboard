@@ -57,7 +57,7 @@
                         <outlet property="cardBackImageButton" destination="5Qo-kG-57D" id="g8F-yG-4ai"/>
                         <outlet property="cardFrontImageButton" destination="fSL-jr-2ty" id="dCm-bb-mlK"/>
                         <segue destination="tLN-6g-Et4" kind="presentation" identifier="showCamera" id="Gjy-wf-xMI"/>
-                        <segue destination="f5R-84-4Ym" kind="show" identifier="showDetail" id="Hcg-pu-fxm"/>
+                        <segue destination="f5R-84-4Ym" kind="showDetail" identifier="showDetail" id="Hcg-pu-fxm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VD-Ou-kOC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,45 +69,62 @@
             <objects>
                 <viewController id="f5R-84-4Ym" customClass="IDDetailedViewController" customModule="WULock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t05-KW-VRs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-jr-z6c">
-                                <rect key="frame" x="-60" y="69.5" width="495" height="283"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWK-jr-z6c">
+                                <rect key="frame" x="32.5" y="66" width="310" height="543"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="LWK-jr-z6c" secondAttribute="height" multiplier="7:4" id="gHB-IX-fWg"/>
+                                    <constraint firstAttribute="width" secondItem="LWK-jr-z6c" secondAttribute="height" multiplier="4:7" id="gHB-IX-fWg"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIU-qW-Axv">
-                                <rect key="frame" x="164" y="452" width="47" height="30"/>
+                                <rect key="frame" x="164" y="621" width="47" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1L9-YK-tc4"/>
                                 </constraints>
-                                <state key="normal" title="Retake"/>
+                                <state key="normal" title="Retake">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="cameraBtn:" destination="f5R-84-4Ym" eventType="touchUpInside" id="oG5-Hl-uSE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Xj-xT-L9Y">
+                                <rect key="frame" x="32.5" y="28" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="M2p-2A-rum"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="f5R-84-4Ym" eventType="touchUpInside" id="2xZ-es-uJL"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.19198748469352722" green="0.19588279724121094" blue="0.20832499861717224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Tmg-ZU-dc4" firstAttribute="bottom" secondItem="PIU-qW-Axv" secondAttribute="bottom" constant="20" id="9Zg-qo-4xa"/>
-                            <constraint firstItem="LWK-jr-z6c" firstAttribute="centerY" secondItem="t05-KW-VRs" secondAttribute="centerY" constant="-64.5" id="KHg-Tv-IIF"/>
+                            <constraint firstItem="Tmg-ZU-dc4" firstAttribute="bottom" secondItem="PIU-qW-Axv" secondAttribute="bottom" constant="16" id="9Zg-qo-4xa"/>
+                            <constraint firstItem="1Xj-xT-L9Y" firstAttribute="top" secondItem="Tmg-ZU-dc4" secondAttribute="top" constant="8" id="Dcn-rA-RkC"/>
                             <constraint firstItem="PIU-qW-Axv" firstAttribute="centerX" secondItem="LWK-jr-z6c" secondAttribute="centerX" id="NVU-Ms-jOC"/>
                             <constraint firstItem="PIU-qW-Axv" firstAttribute="centerX" secondItem="t05-KW-VRs" secondAttribute="centerX" id="i1f-WN-Z6w"/>
+                            <constraint firstItem="LWK-jr-z6c" firstAttribute="leading" secondItem="1Xj-xT-L9Y" secondAttribute="leading" id="kXM-1I-AhG"/>
                             <constraint firstItem="LWK-jr-z6c" firstAttribute="centerX" secondItem="t05-KW-VRs" secondAttribute="centerX" id="lQ8-rG-cc1"/>
-                            <constraint firstItem="LWK-jr-z6c" firstAttribute="leading" secondItem="Tmg-ZU-dc4" secondAttribute="leading" constant="-60" id="od6-dj-r8q"/>
+                            <constraint firstItem="LWK-jr-z6c" firstAttribute="top" secondItem="1Xj-xT-L9Y" secondAttribute="bottom" constant="8" id="mgg-6u-eOw"/>
+                            <constraint firstItem="PIU-qW-Axv" firstAttribute="top" secondItem="LWK-jr-z6c" secondAttribute="bottom" constant="12" id="xbt-tJ-QiH"/>
+                            <constraint firstAttribute="trailing" secondItem="LWK-jr-z6c" secondAttribute="trailing" priority="750" constant="8" id="zCs-vZ-XcQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tmg-ZU-dc4"/>
                     </view>
                     <connections>
-                        <outlet property="cardImg" destination="LWK-jr-z6c" id="o6b-G8-uHD"/>
+                        <outlet property="cardImageView" destination="LWK-jr-z6c" id="o6b-G8-uHD"/>
                         <outlet property="retakeButton" destination="PIU-qW-Axv" id="7yp-ri-pGl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zih-mT-3zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="413.60000000000002" y="1479.3103448275863"/>
+            <point key="canvasLocation" x="390" y="1470"/>
         </scene>
         <!--Item-->
         <scene sceneID="JRP-4h-tum">

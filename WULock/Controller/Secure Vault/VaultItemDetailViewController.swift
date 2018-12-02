@@ -15,11 +15,19 @@ class VaultItemDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.largeTitleDisplayMode = .never
+        
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 65, height: 65))
+        imgView.contentMode = .scaleAspectFit
+        let img = item.type.getImage()
+        imgView.image = img
+        self.navigationItem.titleView = imgView
     
     }
     func setData(i: VaultItem) {
         self.item = i
-        self.descriptions = i.getWithoutDescription()
+        self.descriptions = i.getAllFields()
     }
     
     
@@ -36,12 +44,14 @@ class VaultItemDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let thisItem = descriptions[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "vaultDetailCell", for: indexPath) as? VaultItemDetailCell{
-            cell.label.text = thisItem.fieldDescription + ": " + thisItem.fieldValue
-            return cell
-        }else{
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "vaultDetailCell", for: indexPath)
+        cell.textLabel?.text = thisItem.fieldDescription
+        cell.detailTextLabel?.text = thisItem.fieldValue + " "
+        return cell
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     

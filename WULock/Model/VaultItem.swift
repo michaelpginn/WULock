@@ -11,9 +11,12 @@ import CoreData
 
 
 
-class VaultItem: NSObject {
+class VaultItem: NSObject , NSCoding{
+    
+    
     var type:ItemType
     private var fields:[ItemField]
+    var coreDataID: NSManagedObjectID?
     
     static let ITEM_DESCRIPTION_KEY = "Item description"
     
@@ -53,6 +56,8 @@ class VaultItem: NSObject {
         }else{
             self.fields = []
         }
+        
+        self.coreDataID = managedObject.objectID
     }
     
     /**
@@ -99,7 +104,136 @@ class VaultItem: NSObject {
         }
         return nil
     }
-    func getWithoutDescription()-> [ItemField]{
+    
+    func getAllFields()-> [ItemField]{
         return fields
+    }
+    
+    //MARK: Parsing functionality
+    
+    func canParse()->Bool{
+        if type == .gymLocker{
+            guard let code = get(desc: "Combination") else{return false}
+            guard code.count == 4 else{return false}
+            guard CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: code)) else{return false}
+            return true
+        }else if type == .mailbox{
+            guard let code = get(desc: "Combination") else{return false}
+            let count = code.count
+            guard count >= 5 && count <= 8 else{return false}
+            
+            //first thing better be a number
+            //last thing better be a number
+            //no number can be >2 digits
+            let decimals = CharacterSet.decimalDigits
+            let characters = Array(code.unicodeScalars)
+            var letterCount:Int = 0
+            var separatorCount:Int = 0
+            for index in 0..<characters.count{
+                if (index == 0 || index == characters.count - 1) && !decimals.contains(characters[index]){
+                    return false
+                }
+                if decimals.contains(characters[index]){
+                    letterCount += 1
+                    if letterCount > 2 {return false}
+                }else{
+                    letterCount = 0
+                    separatorCount += 1
+                }
+            }
+            if separatorCount > 2 {return false}
+            return true
+        }else{
+            return false
+        }
+    }
+    
+
+    func parse()->[Int]?{
+        guard canParse()  else {return nil}
+        
+        
+        if type == .gymLocker{
+            //should be a four digit code
+            if let code = get(desc: "Combination"){
+                var numbers:[Int] = []
+                for digit in code{
+                    guard let num = Int(String(digit)) else{return nil}
+                    numbers.append(num)
+                }
+                return numbers
+            }else{return nil}
+            
+        }else if type == .mailbox{
+            if let code = get(desc: "Combination"){
+                var numbers:[Int] = []
+                let decimals = CharacterSet.decimalDigits
+                numbers = [0, 0, 0]
+                var currentIndex = 0
+                for digit in code.unicodeScalars{
+                    if decimals.contains(digit){
+                        guard let num = Int(String(digit)) else{return nil}
+                        numbers[currentIndex] = (numbers[currentIndex] * 10) + num
+                    }else{
+                        currentIndex += 1
+                    }
+                }
+                return numbers
+            }else{return nil}
+            
+        }else{
+            return nil
+        }
+    }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.type.rawValue, forKey: "type")
+        aCoder.encode(self.fields, forKey: "fields")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.type = ItemType(rawValue: (aDecoder.decodeObject(forKey: "type") as? String) ?? "") ?? .none
+        self.fields = aDecoder.decodeObject(forKey: "fields") as? [ItemField] ?? []
+    }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let item = object as? VaultItem{
+            return type == item.type && fields == item.fields
+        }else{
+            return false
+        }
+    }
+    
+    class func setToDefaults(key:String, item: VaultItem){
+        if let cdID = item.coreDataID{
+            UserDefaults.standard.set(cdID.uriRepresentation(), forKey: key)
+        }
+    }
+    
+    class func clearDefaultsForKey(key:String){
+        UserDefaults.standard.set(nil, forKey: key)
+    }
+    
+    class func getVaultObject(key:String)->VaultItem?{
+        if let mo = getObject(key: key){
+            return VaultItem(managedObject: mo)
+        }else{
+            return nil
+        }
+    }
+    
+    /**
+     Returns a managed object given a key, which corresponds to a url object in the UserDefaults
+     */
+    class func getObject(key:String)->NSManagedObject?{
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return nil}
+        let context = appDelegate.managedObjectContext
+        
+        if let url = UserDefaults.standard.url(forKey: key), let oid = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url), let object = try? context.existingObject(with: oid){
+            return object
+        }else{
+            return nil
+        }
     }
 }
