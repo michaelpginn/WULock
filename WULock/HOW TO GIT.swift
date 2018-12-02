@@ -14,5 +14,4 @@ import Foundation
  Checkout - Loads the files from a given commit
  Push - Send your changes to a remote repository
  Pull - Get changes from a remote repository
- Branch - 
  */
