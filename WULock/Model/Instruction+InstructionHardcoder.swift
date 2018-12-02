@@ -67,7 +67,7 @@ extension Instruction{
     }
     
     class func createS40InstructionList(numbers:[String])->InstructionList{
-        var instructions:InstructionList = []
+        var instructions:InstructionList = InstructionList()
         
         let inst_c = Instruction(node: NodeCreationManager.createArrowNode(xyPos: Button.cButton.s40Pos(), facingRight: true), text: "Press the c button")
         instructions.append(inst_c)
@@ -88,7 +88,7 @@ extension Instruction{
     }
     
     class func createMailboxInstructionList(combo:[String])->InstructionList{
-        var instructions:InstructionList = []
+        var instructions:InstructionList = InstructionList()
         
         return instructions
     }

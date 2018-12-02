@@ -10,6 +10,18 @@ import UIKit
 import SceneKit
 
 class NodeCreationManager: NSObject {
+    
+    class func createPlaneNode(size:CGSize)->SCNNode{
+        let plane = SCNPlane(width: size.width, height: size.height)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.clear
+        plane.materials = [material]
+        let planeNode = SCNNode(geometry: plane)
+        planeNode.opacity = 1.0
+        planeNode.eulerAngles.x = -.pi / 2
+        return planeNode
+    }
+    
     class func createArrowNode(xyPos: (Float, Float), facingRight:Bool)->SCNNode{
         let rightArrowPlane = SCNPlane(width: 0.02, height: 0.02)
         let arrowMaterial = SCNMaterial()
@@ -56,4 +68,6 @@ class NodeCreationManager: NSObject {
         
         return textNode
     }
+    
+    
 }

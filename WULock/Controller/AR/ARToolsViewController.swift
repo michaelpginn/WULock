@@ -23,7 +23,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             return instructionLists[currentInstructionListKey]
         }
     }
-    var currentInstructionListIndex = 0
+    
     
     
     override func viewDidLoad() {
@@ -42,12 +42,15 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         
-        
-        let configuration = ARImageTrackingConfiguration()
-        if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
-           configuration.trackingImages = referenceImages
+        let queue = DispatchQueue(label: "background")
+        queue.async {
+            let configuration = ARImageTrackingConfiguration()
+            if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
+                configuration.trackingImages = referenceImages
+            }
+            self.sceneView.session.run(configuration)
         }
-        sceneView.session.run(configuration)
+        
 
     }
     
@@ -75,17 +78,15 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             }else if refName.range(of: "mailbox") != nil{
                 currentInstructionListKey = "mailbox"
             }
-            currentInstructionListIndex = 0
-            pageControl.numberOfPages = currentInstructionList?.count ?? 0
+            
+            
+            DispatchQueue.main.async {
+                self.pageControl.numberOfPages = self.currentInstructionList?.count ?? 0
+            }
+            
             
             //get the plane of the anchor
-            let plane = SCNPlane(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height)
-            let material = SCNMaterial()
-            //material.diffuse.contents = UIColor.clear
-            plane.materials = [material]
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 1.0
-            planeNode.eulerAngles.x = -.pi / 2
+            let planeNode = NodeCreationManager.createPlaneNode(size: referenceImage.physicalSize)
             node.addChildNode(planeNode)
             self.currentPlane = planeNode
             displayInstruction()
@@ -98,14 +99,18 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             node.removeFromParentNode()
         })
         
-        let theIndex = index == -1 ? currentInstructionListIndex : index
+        
         if let current = currentInstructionList{
-            let instruction = current[theIndex]
+            let instruction = index == -1 ? current.getInstruction() : current.getInstruction(index: index)
             self.currentPlane?.addChildNode(instruction.node)
             //create text node
             self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text))
+            
+            DispatchQueue.main.async {
+                self.pageControl.currentPage = current.index
+            }
         }
-        self.pageControl.currentPage = theIndex
+        
     }
     
     
@@ -145,10 +150,10 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         if let currentList = currentInstructionList{
             guard let touch = touches.first else{return}
             let location = touch.location(in: self.view)
-            if location.x > view.bounds.width / 2 && currentInstructionListIndex < currentList.count - 1{
-                currentInstructionListIndex += 1
-            }else if location.x < view.bounds.width / 2 && currentInstructionListIndex > 0{
-                currentInstructionListIndex -= 1
+            if location.x > view.bounds.width / 2{
+                currentInstructionList?.increment()
+            }else if location.x < view.bounds.width / 2{
+                currentInstructionList?.decrement()
             }
             displayInstruction()
         }

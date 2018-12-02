@@ -102,4 +102,78 @@ class VaultItem: NSObject {
     func getWithoutDescription()-> [ItemField]{
         return fields
     }
+    
+    func canParse()->Bool{
+        if type == .gymLocker{
+            guard let code = get(desc: "Combination") else{return false}
+            guard code.count == 4 else{return false}
+            guard CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: code)) else{return false}
+            return true
+        }else if type == .mailbox{
+            guard let code = get(desc: "Combination") else{return false}
+            let count = code.count
+            guard count >= 5 && count <= 8 else{return false}
+            
+            //first thing better be a number
+            //last thing better be a number
+            //no number can be >2 digits
+            let decimals = CharacterSet.decimalDigits
+            let characters = Array(code.unicodeScalars)
+            var letterCount:Int = 0
+            var separatorCount:Int = 0
+            for index in 0..<characters.count{
+                if (index == 0 || index == characters.count - 1) && !decimals.contains(characters[index]){
+                    return false
+                }
+                if decimals.contains(characters[index]){
+                    letterCount += 1
+                    if letterCount > 2 {return false}
+                }else{
+                    letterCount = 0
+                    separatorCount += 1
+                }
+            }
+            if separatorCount > 2 {return false}
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func parse()->[Int]?{
+        guard canParse()  else {return nil}
+        
+        
+        if type == .gymLocker{
+            //should be a four digit code
+            if let code = get(desc: "Combination"){
+                var numbers:[Int] = []
+                for digit in code{
+                    guard let num = Int(String(digit)) else{return nil}
+                    numbers.append(num)
+                }
+                return numbers
+            }else{return nil}
+            
+        }else if type == .mailbox{
+            if let code = get(desc: "Combination"){
+                var numbers:[Int] = []
+                let decimals = CharacterSet.decimalDigits
+                numbers = [0, 0, 0]
+                var currentIndex = 0
+                for digit in code.unicodeScalars{
+                    if decimals.contains(digit){
+                        guard let num = Int(String(digit)) else{return nil}
+                        numbers[currentIndex] = (numbers[currentIndex] * 10) + num
+                    }else{
+                        currentIndex += 1
+                    }
+                }
+                return numbers
+            }else{return nil}
+            
+        }else{
+            return nil
+        }
+    }
 }
