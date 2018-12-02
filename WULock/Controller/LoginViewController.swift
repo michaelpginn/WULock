@@ -15,11 +15,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
         authenticateUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
+    }
+    @IBAction func authenticate(_ sender: Any) {
+        authenticateUser()
+
     }
     
     private func authenticateUser(){
@@ -41,5 +46,4 @@ class LoginViewController: UIViewController {
         }
     }
     
-
 }
