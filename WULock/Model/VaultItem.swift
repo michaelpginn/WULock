@@ -16,6 +16,7 @@ class VaultItem: NSObject , NSCoding{
     
     var type:ItemType
     private var fields:[ItemField]
+    var coreDataID: NSManagedObjectID?
     
     static let ITEM_DESCRIPTION_KEY = "Item description"
     
@@ -55,6 +56,8 @@ class VaultItem: NSObject , NSCoding{
         }else{
             self.fields = []
         }
+        
+        self.coreDataID = managedObject.objectID
     }
     
     /**
@@ -194,5 +197,32 @@ class VaultItem: NSObject , NSCoding{
         self.fields = aDecoder.decodeObject(forKey: "fields") as? [ItemField] ?? []
     }
     
+    override func isEqual(_ object: Any?) -> Bool {
+        if let item = object as? VaultItem{
+            return type == item.type && fields == item.fields
+        }else{
+            return false
+        }
+    }
     
+    class func setToDefaults(key:String, item: VaultItem){
+        if let cdID = item.coreDataID{
+            UserDefaults.standard.set(cdID.uriRepresentation(), forKey: key)
+        }
+    }
+    
+    class func clearDefaultsForKey(key:String){
+        UserDefaults.standard.set(nil, forKey: key)
+    }
+    
+    class func getObjectForKey(key:String)->VaultItem?{
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return nil}
+        let context = appDelegate.managedObjectContext
+        
+        if let url = UserDefaults.standard.url(forKey: key), let oid = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url), let object = try? context.existingObject(with: oid){
+            return VaultItem(managedObject: object)
+        }else{
+            return nil
+        }
+    }
 }

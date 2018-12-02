@@ -33,10 +33,13 @@
                                     <segment title="Auto"/>
                                     <segment title="Manual"/>
                                 </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jfs-Cl-QRh">
                                 <rect key="frame" x="16" y="28" width="89" height="30"/>
-                                <state key="normal" title="Select codes"/>
+                                <state key="normal" title="Select codes">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="MVl-u8-bIb" kind="popoverPresentation" popoverAnchorView="Jfs-Cl-QRh" id="HZi-Cf-izx">
                                         <segue key="commit" inheritsFrom="parent" id="qd6-3K-xBc"/>
