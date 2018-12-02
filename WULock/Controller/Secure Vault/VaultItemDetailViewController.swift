@@ -44,12 +44,10 @@ class VaultItemDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let thisItem = descriptions[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "vaultDetailCell", for: indexPath) as? VaultItemDetailCell{
-            cell.label.text = thisItem.fieldDescription + ": " + thisItem.fieldValue
-            return cell
-        }else{
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "vaultDetailCell", for: indexPath)
+        cell.textLabel?.text = thisItem.fieldDescription
+        cell.detailTextLabel?.text = thisItem.fieldValue + " "
+        return cell
     }
     
     override func viewDidAppear(_ animated: Bool) {

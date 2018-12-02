@@ -13,6 +13,8 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var notificationView: UIVisualEffectView!
+    @IBOutlet weak var notificationLabel: UILabel!
     
     var currentPlane:SCNNode? = nil
     
@@ -24,8 +26,9 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    var instructionShown = false
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,9 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         sceneView.scene = scene
         
+        notificationView.alpha = 0.0
+        notificationView.layer.cornerRadius = 5.0
+        
         reloadInstructions()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadInstructions), name: Notification.Name("codes_changed"), object: nil)
@@ -41,14 +47,16 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     
     @objc private func reloadInstructions(){
         //get saved codes, if there aren't any, cry
-        if let gymLockerItem = VaultItem.getObjectForKey(key: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY), let code = gymLockerItem.parse(){
+        instructionLists.removeValue(forKey: "gym_s40")
+        instructionLists.removeValue(forKey: "mailbox")
+        if let gymLockerItem = VaultItem.getVaultObject(key: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY), let code = gymLockerItem.parse(){
             let codeStrings = code.map { (num) -> String in
                 return "\(num)"
             }
             instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: codeStrings) //should come from record
         }
         
-        if let mailboxItem = VaultItem.getObjectForKey(key: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY), let code = mailboxItem.parse(){
+        if let mailboxItem = VaultItem.getVaultObject(key: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY), let code = mailboxItem.parse(){
             let codeStrings = code.map { (num) -> String in
                 return "\(num)"
             }
@@ -86,6 +94,10 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     //MARK: ARSCNView Delegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if !instructionShown{
+            self.showNotification(text: "Swipe left to go to the next step")
+            instructionShown = true
+        }
         print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
         if let imageAnchor = anchor as? ARImageAnchor{
             let referenceImage = imageAnchor.referenceImage
@@ -120,6 +132,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         
         
         if let current = currentInstructionList{
+            hideNotification()
             let instruction = index == -1 ? current.getInstruction() : current.getInstruction(index: index)
             self.currentPlane?.addChildNode(instruction.node)
             //create text node
@@ -128,6 +141,9 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
             DispatchQueue.main.async {
                 self.pageControl.currentPage = current.index
             }
+        }else{
+            //No instruction list, display an error message
+            showNotification(text: "No combination selected, click select codes")
         }
         
     }
@@ -146,17 +162,33 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if currentInstructionList != nil{
-            guard let touch = touches.first else{return}
-            let location = touch.location(in: self.view)
-            if location.x > view.bounds.width / 2{
-                currentInstructionList?.increment()
-            }else if location.x < view.bounds.width / 2{
-                currentInstructionList?.decrement()
+    
+    @IBAction func swipedLeft(_ sender: Any) {
+        hideNotification()
+        currentInstructionList?.increment()
+        displayInstruction()
+    }
+    
+    @IBAction func swipedRight(_ sender: Any) {
+        currentInstructionList?.decrement()
+        displayInstruction()
+    }
+    
+    
+    func showNotification(text:String){
+        DispatchQueue.main.async {
+            self.notificationLabel.text = text
+            UIView.animate(withDuration: 0.4) {
+                self.notificationView.alpha = 1.0
             }
-            displayInstruction()
+        }
+    }
+    
+    func hideNotification(){
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.4) {
+                self.notificationView.alpha = 0.0
+            }
         }
     }
 }

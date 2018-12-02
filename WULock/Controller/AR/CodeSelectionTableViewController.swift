@@ -79,7 +79,7 @@ class CodeSelectionTableViewController: UITableViewController {
         
         if indexPath.section == 0{
             let code = gymLockerCodes[indexPath.row]
-            cell.textLabel?.text = "Locker number: " + (code.get(desc: "Locker number") ?? "")
+            cell.textLabel?.text = "Locker Number: " + (code.get(desc: "Locker Number") ?? "")
             if let nums = code.parse(){
                 var codeString = ""
                 for num in nums{
@@ -98,7 +98,7 @@ class CodeSelectionTableViewController: UITableViewController {
             return cell
         }else if indexPath.section == 1{
             let code = mailboxCodes[indexPath.row]
-            cell.textLabel?.text = "Mailbox number: " + (code.get(desc: "Mailbox number") ?? "")
+            cell.textLabel?.text = "Mailbox Number: " + (code.get(desc: "Mailbox Number") ?? "")
             if let nums = code.parse(){
                 var codeString = ""
                 codeString.append("\(nums[0])")
