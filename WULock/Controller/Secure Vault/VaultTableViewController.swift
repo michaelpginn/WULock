@@ -25,6 +25,7 @@ class VaultTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if !lockScreenShown {
             lockScreenShown = true
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

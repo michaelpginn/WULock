@@ -24,6 +24,7 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="447-Ac-beK" appends="YES" id="hxo-iw-o8x"/>
                                     <outletCollection property="gestureRecognizers" destination="P5J-zC-QTV" appends="YES" id="d1C-ZR-t12"/>
+                                    <outletCollection property="gestureRecognizers" destination="QlG-m0-hNT" appends="YES" id="QIs-6Z-1X5"/>
                                 </connections>
                             </arscnView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-Hj-Vu3">
@@ -32,7 +33,7 @@
                                     <constraint firstAttribute="height" constant="40" id="KId-3d-CtR"/>
                                 </constraints>
                             </pageControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="vCw-4A-HHK">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vCw-4A-HHK">
                                 <rect key="frame" x="219" y="28" width="140" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="750" constant="140" id="g3D-WB-6gG"/>
@@ -124,6 +125,11 @@
                         <action selector="swipedRight:" destination="jtb-iB-7MU" id="AGO-7k-PUH"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="QlG-m0-hNT">
+                    <connections>
+                        <action selector="sceneTapped:" destination="jtb-iB-7MU" id="gwB-fh-1Ut"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="389.60000000000002" y="47.226386806596707"/>
         </scene>

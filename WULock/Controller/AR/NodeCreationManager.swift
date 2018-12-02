@@ -8,6 +8,7 @@
 
 import UIKit
 import SceneKit
+import ARKit
 
 class NodeCreationManager: NSObject {
     
@@ -19,6 +20,26 @@ class NodeCreationManager: NSObject {
         let planeNode = SCNNode(geometry: plane)
         planeNode.opacity = 1.0
         planeNode.eulerAngles.x = -.pi / 2
+        return planeNode
+    }
+    
+    class func createMailboxPlaneNode(hit:ARHitTestResult)->SCNNode{
+        let size = CGSize(width: 0.048*4, height: 0.0889*4)
+        let plane = SCNPlane(width: size.width, height: size.height)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.gray
+        plane.materials = [material]
+        let planeNode = SCNNode(geometry: plane)
+        planeNode.opacity = 1.0
+        
+        planeNode.transform = SCNMatrix4(hit.anchor!.transform)
+
+        //Align the plane
+        planeNode.eulerAngles = SCNVector3Make(planeNode.eulerAngles.x + (3 * Float.pi / 2), planeNode.eulerAngles.y + Float.pi, planeNode.eulerAngles.z)
+        
+        let position = SCNVector3Make(hit.worldTransform.columns.3.x + planeNode.geometry!.boundingBox.min.z, hit.worldTransform.columns.3.y, hit.worldTransform.columns.3.z)
+        planeNode.position = position
+        
         return planeNode
     }
     

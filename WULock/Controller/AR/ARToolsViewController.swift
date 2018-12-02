@@ -98,7 +98,8 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
                 self.sceneView.session.run(configuration)
                 self.showNotification(text: "Tap the center of the lock")
                 self.planes = [:]
-                print(self.sceneView.session.configuration)
+                self.currentPlane = nil
+                self.currentInstructionListKey = "mailbox"
             }
         }
     }
@@ -142,6 +143,25 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    
+    @IBAction func sceneTapped(_ sender: UITapGestureRecognizer) {
+        if currentSessionType == .manual, sender.state == .ended{
+            let location = sender.location(ofTouch: 0, in: sceneView)
+            let hits = sceneView.hitTest(location, types: .existingPlaneUsingGeometry)
+            if let hit = hits.first{
+                let plane = NodeCreationManager.createMailboxPlaneNode(hit: hit)
+                if let uuid = hit.anchor?.identifier, let superPlane = planes[uuid]{
+                    superPlane.addChildNode(plane)
+                }
+                currentPlane = plane
+                displayInstruction()
+                
+            }
+        }
+    }
+    
+    
+    
     //MARK: ARSCNView Delegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -158,7 +178,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
                 //figure out what we're seeing
                 if refName.range(of: "gyms40") != nil{
                     currentInstructionListKey = "gym_s40"
-                    
+            
                 }else if refName.range(of: "mailbox") != nil{
                     currentInstructionListKey = "mailbox"
                 }
@@ -196,7 +216,10 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         self.currentInstructionListKey = ""
-        self.pageControl.numberOfPages = 0
+        DispatchQueue.main.async {
+            self.pageControl.numberOfPages = 0
+        }
+        
     }
     
     func displayInstruction(index:Int = -1){
