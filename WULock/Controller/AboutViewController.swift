@@ -14,6 +14,8 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let passEnabled = UserDefaults.standard.object(forKey: "passwordEnabled") as? Bool ?? true
+        passwordSwitch.isOn = passEnabled
 
         // Do any additional setup after loading the view.
     }
