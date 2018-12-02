@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		858CD91C21B46C0B00730F6E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858CD91B21B46C0B00730F6E /* AboutViewController.swift */; };
 		85D4BAC221B0A951001495F9 /* IDDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D4BAC121B0A951001495F9 /* IDDetailedViewController.swift */; };
 		9507AFEE21A48CB50043B924 /* VirtualID.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9507AFEC21A48CB50043B924 /* VirtualID.storyboard */; };
 		9507AFF021A48EEA0043B924 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507AFEF21A48EEA0043B924 /* CameraButton.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		858CD91B21B46C0B00730F6E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		85D4BAC121B0A951001495F9 /* IDDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDDetailedViewController.swift; sourceTree = "<group>"; };
 		9507AFED21A48CB50043B924 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WULock/View/Base.lproj/VirtualID.storyboard; sourceTree = "<group>"; };
 		9507AFEF21A48EEA0043B924 /* CameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				95F2F5C721B3B92200E7AFA2 /* LoginViewController.swift */,
+				858CD91B21B46C0B00730F6E /* AboutViewController.swift */,
 				95F2F5C221B3596000E7AFA2 /* AR */,
 				95B83F9121ACA5A10088FC3E /* Secure Vault */,
 				95F9B3F9219B75B000F61CE7 /* Virtual ID */,
@@ -319,6 +322,7 @@
 				95B3F6E821AC765C005AAC06 /* AddItemViewController.swift in Sources */,
 				95F9B3F6219A459D00F61CE7 /* IDScannerAlertViewController.swift in Sources */,
 				953E01B021B115AB0013D49A /* NodeCreationManager.swift in Sources */,
+				858CD91C21B46C0B00730F6E /* AboutViewController.swift in Sources */,
 				EC0AE19521B0B0D800AC302C /* VaultItemDetailCell.swift in Sources */,
 				95F9B3EE219A40F400F61CE7 /* IDScannerViewController.swift in Sources */,
 			);
@@ -476,7 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_WARNINGS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9GVS3YU4CR;
+				DEVELOPMENT_TEAM = HPDR8259LK;
 				INFOPLIST_FILE = WULock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -495,7 +499,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_WARNINGS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9GVS3YU4CR;
+				DEVELOPMENT_TEAM = HPDR8259LK;
 				INFOPLIST_FILE = WULock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
