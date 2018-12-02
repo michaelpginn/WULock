@@ -215,12 +215,23 @@ class VaultItem: NSObject , NSCoding{
         UserDefaults.standard.set(nil, forKey: key)
     }
     
-    class func getObjectForKey(key:String)->VaultItem?{
+    class func getVaultObject(key:String)->VaultItem?{
+        if let mo = getObject(key: key){
+            return VaultItem(managedObject: mo)
+        }else{
+            return nil
+        }
+    }
+    
+    /**
+     Returns a managed object given a key, which corresponds to a url object in the UserDefaults
+     */
+    class func getObject(key:String)->NSManagedObject?{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return nil}
         let context = appDelegate.managedObjectContext
         
         if let url = UserDefaults.standard.url(forKey: key), let oid = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: url), let object = try? context.existingObject(with: oid){
-            return VaultItem(managedObject: object)
+            return object
         }else{
             return nil
         }

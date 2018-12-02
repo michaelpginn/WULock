@@ -89,6 +89,22 @@ extension Instruction{
     
     class func createMailboxInstructionList(combo:[String])->InstructionList{
         let instructions:InstructionList = InstructionList()
+        instructions.fontSize = 6.0
+        instructions.height = 0.03
+        
+        let arrowPos:(Float, Float) = (0.0, 0.02)
+        
+        let inst_1 = Instruction(node: NodeCreationManager.createCurvedArrowNode(xyPos: arrowPos, direction: .counterclockwise), text: "Turn four times and stop on " + combo[0])
+        instructions.append(inst_1)
+        
+        let inst_2 = Instruction(node: NodeCreationManager.createCurvedArrowNode(xyPos: arrowPos, direction: .clockwise), text: "Turn past " + combo[1] + " once, then stop on it")
+        instructions.append(inst_2)
+        
+        let inst_3 = Instruction(node: NodeCreationManager.createCurvedArrowNode(xyPos: arrowPos, direction: .counterclockwise), text: "Turn to " + combo[2])
+        instructions.append(inst_3)
+        
+        let inst_4 = Instruction(node: NodeCreationManager.createCurvedArrowNode(xyPos: arrowPos, direction: .clockwise), text: "Turn slightly and pull open")
+        instructions.append(inst_4)
         
         return instructions
     }

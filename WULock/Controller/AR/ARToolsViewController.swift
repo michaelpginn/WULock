@@ -13,19 +13,22 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var notificationView: UIVisualEffectView!
+    @IBOutlet weak var notificationLabel: UILabel!
     
     var currentPlane:SCNNode? = nil
     
     var instructionLists: [String: InstructionList] = [:]
-    var currentInstructionListKey:String = "gym_s40" // TODO: Change this
+    var currentInstructionListKey:String = "" 
     var currentInstructionList:InstructionList? {
         get{
             return instructionLists[currentInstructionListKey]
         }
     }
     
+    var instructionShown = false
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +37,31 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         sceneView.scene = scene
         
-        instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: ["1","2","3","4"]) //should come from record
+        notificationView.alpha = 0.0
+        notificationView.layer.cornerRadius = 5.0
+        
+        reloadInstructions()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadInstructions), name: Notification.Name("codes_changed"), object: nil)
+    }
+    
+    @objc private func reloadInstructions(){
+        //get saved codes, if there aren't any, cry
+        instructionLists.removeValue(forKey: "gym_s40")
+        instructionLists.removeValue(forKey: "mailbox")
+        if let gymLockerItem = VaultItem.getVaultObject(key: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY), let code = gymLockerItem.parse(){
+            let codeStrings = code.map { (num) -> String in
+                return "\(num)"
+            }
+            instructionLists["gym_s40"] = Instruction.createS40InstructionList(numbers: codeStrings) //should come from record
+        }
+        
+        if let mailboxItem = VaultItem.getVaultObject(key: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY), let code = mailboxItem.parse(){
+            let codeStrings = code.map { (num) -> String in
+                return "\(num)"
+            }
+            instructionLists["mailbox"] = Instruction.createMailboxInstructionList(combo: codeStrings)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +94,10 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     //MARK: ARSCNView Delegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        if !instructionShown{
+            self.showNotification(text: "Swipe left to go to the next step")
+            instructionShown = true
+        }
         print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
         if let imageAnchor = anchor as? ARImageAnchor{
             let referenceImage = imageAnchor.referenceImage
@@ -101,35 +132,21 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         
         
         if let current = currentInstructionList{
+            hideNotification()
             let instruction = index == -1 ? current.getInstruction() : current.getInstruction(index: index)
             self.currentPlane?.addChildNode(instruction.node)
             //create text node
-            self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text))
+            self.currentPlane?.addChildNode(NodeCreationManager.createTextNode(text: instruction.text, height: current.height, fontSize: current.fontSize))
             
             DispatchQueue.main.async {
                 self.pageControl.currentPage = current.index
             }
+        }else{
+            //No instruction list, display an error message
+            showNotification(text: "No combination selected, click select codes")
         }
         
     }
-    
-    
-    
-    // TODO: Overlay instructions either for lock, gym locker (estrogym), or gym locker (rec center)
-    // TODO: If the user has saved a locker or mail combo, display choice somewhere
-    /* Plan:
-     - Search for records of type gym locker or mail
-     - Display a button somewhere on ARKit, "Choose combination"
-     - When clicked, show a little popup that has, separated into two categories, mail room and gym
-     - For each, show all records matching, with selection indicator
-     - When one is selected, dismiss
-     - Detect reference image, check against known images
-     - If mail room: show mail room steps using curved arrows (animated?)
-     - If gym: show buttons using arrows
-     - User can advance to next step by tapping right side of screen, go back by tapping left side
-        *how to indicate?
-     - when done, show restart button
-     */
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
@@ -145,17 +162,33 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if currentInstructionList != nil{
-            guard let touch = touches.first else{return}
-            let location = touch.location(in: self.view)
-            if location.x > view.bounds.width / 2{
-                currentInstructionList?.increment()
-            }else if location.x < view.bounds.width / 2{
-                currentInstructionList?.decrement()
+    
+    @IBAction func swipedLeft(_ sender: Any) {
+        hideNotification()
+        currentInstructionList?.increment()
+        displayInstruction()
+    }
+    
+    @IBAction func swipedRight(_ sender: Any) {
+        currentInstructionList?.decrement()
+        displayInstruction()
+    }
+    
+    
+    func showNotification(text:String){
+        DispatchQueue.main.async {
+            self.notificationLabel.text = text
+            UIView.animate(withDuration: 0.4) {
+                self.notificationView.alpha = 1.0
             }
-            displayInstruction()
+        }
+    }
+    
+    func hideNotification(){
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.4) {
+                self.notificationView.alpha = 0.0
+            }
         }
     }
 }

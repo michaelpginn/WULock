@@ -12,10 +12,16 @@ import CoreData
 
 class VaultTableViewController: UITableViewController {
     var items:[VaultItem] = []
-    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVCNav = storyboard.instantiateViewController(withIdentifier: "loginVCNav")
+        self.tabBarController?.present(loginVCNav, animated: false, completion: nil)
+        
+        
 
         loadItems()
         NotificationCenter.default.addObserver(self, selector: #selector(loadItems), name: Notification.Name("vault_changed"), object: nil)
@@ -23,8 +29,6 @@ class VaultTableViewController: UITableViewController {
         
     }
 
-    
-    
     
     @objc private func loadItems(){
         items = []
@@ -76,4 +80,30 @@ class VaultTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            //delete the record
+            guard let delegate = UIApplication.shared.delegate as? AppDelegate else{return}
+            let context = delegate.managedObjectContext
+            
+            do{
+            if let oid = items[indexPath.row].coreDataID, let managedObject = try? context.existingObject(with: oid){
+                context.delete(managedObject)
+                try context.save()
+                items.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+                if oid.uriRepresentation() == defaults.url(forKey: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY){
+                    defaults.set(nil, forKey: CodeSelectionTableViewController.GYM_LOCKER_DEFAULTS_KEY)
+                }else if oid.uriRepresentation() == defaults.url(forKey: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY){
+                    defaults.set(nil, forKey: CodeSelectionTableViewController.MAILBOX_DEFAULTS_KEY)
+                }
+            }
+            }catch let e{
+                print(e.localizedDescription)
+            }
+            
+        }
+    }
 }

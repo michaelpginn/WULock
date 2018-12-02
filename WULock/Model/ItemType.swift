@@ -55,7 +55,7 @@ enum ItemType:String{
                 "Mailbox Number", "Combination"]
         case .gymLocker:
             return [
-                "Locker number", "Combination"]
+                "Locker Number", "Combination"]
         case .housing:
             return [
                 "Dorm", "Room number"]
