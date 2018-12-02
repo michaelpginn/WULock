@@ -11,7 +11,9 @@ import CoreData
 
 
 
-class VaultItem: NSObject {
+class VaultItem: NSObject , NSCoding{
+    
+    
     var type:ItemType
     private var fields:[ItemField]
     
@@ -99,9 +101,12 @@ class VaultItem: NSObject {
         }
         return nil
     }
-    func getWithoutDescription()-> [ItemField]{
+    
+    func getAllFields()-> [ItemField]{
         return fields
     }
+    
+    //MARK: Parsing functionality
     
     func canParse()->Bool{
         if type == .gymLocker{
@@ -140,6 +145,7 @@ class VaultItem: NSObject {
         }
     }
     
+
     func parse()->[Int]?{
         guard canParse()  else {return nil}
         
@@ -176,4 +182,17 @@ class VaultItem: NSObject {
             return nil
         }
     }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.type.rawValue, forKey: "type")
+        aCoder.encode(self.fields, forKey: "fields")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.type = ItemType(rawValue: (aDecoder.decodeObject(forKey: "type") as? String) ?? "") ?? .none
+        self.fields = aDecoder.decodeObject(forKey: "fields") as? [ItemField] ?? []
+    }
+    
+    
 }

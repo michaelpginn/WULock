@@ -147,7 +147,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let currentList = currentInstructionList{
+        if currentInstructionList != nil{
             guard let touch = touches.first else{return}
             let location = touch.location(in: self.view)
             if location.x > view.bounds.width / 2{

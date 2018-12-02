@@ -13,6 +13,9 @@ class CodeSelectionTableViewController: UITableViewController {
     var gymLockerCodes:[VaultItem] = []
     var mailboxCodes:[VaultItem] = []
     
+    var selectedGymLockerIndex:Int?
+    var selectedMailboxIndex:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +24,7 @@ class CodeSelectionTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadFromCoreData()
     }
     
     private func loadFromCoreData(){
@@ -52,7 +56,8 @@ class CodeSelectionTableViewController: UITableViewController {
     
     
     @IBAction func close(sender: Any){
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion:nil)
+        //self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -76,14 +81,50 @@ class CodeSelectionTableViewController: UITableViewController {
         
         if indexPath.section == 0{
             let code = gymLockerCodes[indexPath.row]
-            cell.textLabel?.text = code.get(desc: "Locker number")
+            cell.textLabel?.text = "Locker number: " + (code.get(desc: "Locker number") ?? "")
+            if let nums = code.parse(){
+                var codeString = ""
+                for num in nums{
+                    codeString.append(String(num))
+                }
+                cell.detailTextLabel?.text = "Code: " + codeString
+            }
             return cell
         }else if indexPath.section == 1{
-            return UITableViewCell()
+            let code = mailboxCodes[indexPath.row]
+            cell.textLabel?.text = "Mailbox number: " + (code.get(desc: "Mailbox number") ?? "")
+            if let nums = code.parse(){
+                var codeString = ""
+                codeString.append("\(nums[0])")
+                codeString.append("-\(nums[1])")
+                codeString.append("-\(nums[2])")
+                cell.detailTextLabel?.text = "Code: " + codeString
+            }
+            return cell
         }else{
             return UITableViewCell()
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else{return}
+        cell.accessoryType = .checkmark
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section{
+        case 0:
+            return "Locker combos"
+        case 1:
+            return "Mailbox combos"
+        default:
+            return ""
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
 
 }
