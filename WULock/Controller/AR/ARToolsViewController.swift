@@ -78,9 +78,12 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    func reset(){
+    
+    
+    @IBAction func reset(_ sender:Any){
         let scene = SCNScene()
         sceneView.scene = scene
+        createSession(type: currentSessionType)
         reloadInstructions()
     }
     
@@ -161,7 +164,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func sceneTapped(_ sender: UITapGestureRecognizer) {
         
-        if currentSessionType == .manual, sender.state == .ended{
+        if currentSessionType == .manual, sender.state == .ended, planes.count != 0{
             hideNotification()
             currentPlane?.removeFromParentNode()
             self.sceneView.debugOptions = SCNDebugOptions(arrayLiteral: [])
@@ -285,7 +288,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+        reset(self)
     }
     
     //MARK: Notifications
