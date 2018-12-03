@@ -24,18 +24,18 @@ class NodeCreationManager: NSObject {
     }
     
     class func createMailboxPlaneNode(hit:ARHitTestResult)->SCNNode{
-        let size = CGSize(width: 0.048*4, height: 0.0889*4)
+        let size = CGSize(width: 0.048 * 2, height: 0.0889 * 1.5)
         let plane = SCNPlane(width: size.width, height: size.height)
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.gray
+        material.diffuse.contents = UIColor.clear
         plane.materials = [material]
         let planeNode = SCNNode(geometry: plane)
         planeNode.opacity = 1.0
         
         planeNode.transform = SCNMatrix4(hit.anchor!.transform)
-
+        planeNode.position.y += 0.007
         //Align the plane
-        planeNode.eulerAngles = SCNVector3Make(planeNode.eulerAngles.x + (3 * Float.pi / 2), planeNode.eulerAngles.y + Float.pi, planeNode.eulerAngles.z)
+        planeNode.eulerAngles = SCNVector3Make(planeNode.eulerAngles.x - (.pi / 2), planeNode.eulerAngles.y , planeNode.eulerAngles.z )
         
         let position = SCNVector3Make(hit.worldTransform.columns.3.x + planeNode.geometry!.boundingBox.min.z, hit.worldTransform.columns.3.y, hit.worldTransform.columns.3.z)
         planeNode.position = position

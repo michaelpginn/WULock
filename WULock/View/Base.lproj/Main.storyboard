@@ -125,7 +125,7 @@
                         <action selector="swipedRight:" destination="jtb-iB-7MU" id="AGO-7k-PUH"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <tapGestureRecognizer id="QlG-m0-hNT">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="QlG-m0-hNT">
                     <connections>
                         <action selector="sceneTapped:" destination="jtb-iB-7MU" id="gwB-fh-1Ut"/>
                     </connections>

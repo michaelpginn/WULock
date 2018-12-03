@@ -78,7 +78,17 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
+    func reset(){
+        let scene = SCNScene()
+        sceneView.scene = scene
+        reloadInstructions()
+    }
+    
     private func createSession(type:SessionType){
+        sceneView.session.pause()
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode() }
+        
         let queue = DispatchQueue(label: "background")
         queue.async {
             if type == .automatic{
@@ -86,17 +96,22 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
                 if let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) {
                     configuration.trackingImages = referenceImages
                 }
-
-                self.sceneView.session.run(configuration)
-                self.hideNotification()
+                DispatchQueue.main.async {
+                    self.sceneView.session.run(configuration, options: [ARSession.RunOptions.resetTracking, ARSession.RunOptions.removeExistingAnchors])
+                    self.hideNotification()
+                }
+                
             }else if type == .manual{
                 let configuration = ARWorldTrackingConfiguration()
                 self.sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
                 configuration.planeDetection = .vertical
                 configuration.isLightEstimationEnabled = true
                 
-                self.sceneView.session.run(configuration)
-                self.showNotification(text: "Tap the center of the lock")
+                DispatchQueue.main.async {
+                    self.sceneView.session.run(configuration, options: [ARSession.RunOptions.resetTracking, ARSession.RunOptions.removeExistingAnchors])
+                    self.showNotification(text: "Look around to calibrate")
+                }
+                
                 self.planes = [:]
                 self.currentPlane = nil
                 self.currentInstructionListKey = "mailbox"
@@ -145,16 +160,20 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
     
     
     @IBAction func sceneTapped(_ sender: UITapGestureRecognizer) {
+        
         if currentSessionType == .manual, sender.state == .ended{
+            hideNotification()
+            currentPlane?.removeFromParentNode()
+            self.sceneView.debugOptions = SCNDebugOptions(arrayLiteral: [])
             let location = sender.location(ofTouch: 0, in: sceneView)
             let hits = sceneView.hitTest(location, types: .existingPlaneUsingGeometry)
             if let hit = hits.first{
                 let plane = NodeCreationManager.createMailboxPlaneNode(hit: hit)
-                if let uuid = hit.anchor?.identifier, let superPlane = planes[uuid]{
-                    superPlane.addChildNode(plane)
-                }
+                sceneView.scene.rootNode.addChildNode(plane)
                 currentPlane = plane
-                displayInstruction()
+                
+                self.currentInstructionListKey = "mailbox"
+                startInstructionList()
                 
             }
         }
@@ -169,10 +188,7 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
         print("Seeing \((anchor as? ARImageAnchor)?.referenceImage.name ?? "")")
         if currentSessionType == .automatic{
             if let imageAnchor = anchor as? ARImageAnchor{
-                if !instructionShown{
-                    self.showNotification(text: "Swipe left to go to the next step")
-                    instructionShown = true
-                }
+                
                 let referenceImage = imageAnchor.referenceImage
                 guard let refName = referenceImage.name else{return}
                 //figure out what we're seeing
@@ -182,18 +198,13 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
                 }else if refName.range(of: "mailbox") != nil{
                     currentInstructionListKey = "mailbox"
                 }
-                
-                
-                DispatchQueue.main.async {
-                    self.pageControl.numberOfPages = self.currentInstructionList?.count ?? 0
-                }
-                
-                
+
                 //get the plane of the anchor
                 let planeNode = NodeCreationManager.createPlaneNode(size: referenceImage.physicalSize)
                 node.addChildNode(planeNode)
                 self.currentPlane = planeNode
-                displayInstruction()
+                
+                startInstructionList()
             }}
         else{
             if let planeAnchor = anchor as? ARPlaneAnchor{
@@ -201,8 +212,24 @@ class ARToolsViewController: UIViewController, ARSCNViewDelegate {
                 let plane = Plane(anchor: planeAnchor)
                 self.planes[anchor.identifier] = plane
                 node.addChildNode(plane)
+                DispatchQueue.main.async {
+                    self.showNotification(text: "Double tap the middle of the lock")
+                }
             }
         }
+    }
+    
+    private func startInstructionList(){
+        if !instructionShown{
+            self.showNotification(text: "Swipe left to go to the next step")
+            instructionShown = true
+        }
+        
+        DispatchQueue.main.async {
+            self.pageControl.numberOfPages = self.currentInstructionList?.count ?? 0
+        }
+        
+        displayInstruction()
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {

@@ -16,12 +16,14 @@ class Plane: SCNNode {
     init(anchor: ARPlaneAnchor){
         plane = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         super.init()
-        plane.cornerRadius = 0.005
+        plane.cornerRadius = 0.05
         
         let planeNode = SCNNode(geometry: plane)
         planeNode.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
         planeNode.eulerAngles.x = -.pi / 2
-        planeNode.opacity = 0.15
+        
+        planeNode.opacity = 0.0
+        
         addChildNode(planeNode)
     }
     required init?(coder aDecoder: NSCoder) {
