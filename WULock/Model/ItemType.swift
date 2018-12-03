@@ -18,6 +18,9 @@ enum ItemType:String{
     case other = "Other"
     case none
     
+    /**
+     Gets the associated image for the given type
+     */
     func getImage()->UIImage{
         if let imageName = getImageName(){
             return UIImage(named: imageName) ?? UIImage()
@@ -45,6 +48,9 @@ enum ItemType:String{
         }
     }
     
+    /**
+     Gets the descriptions for the fields which must be included for the given type
+     */
     func getDefaultFields()->[String]{
         switch self{
         case .studentID:

@@ -16,7 +16,7 @@ class InstructionList{
     private var instructions:[Instruction]
     private(set) var index:Int = 0
     
-    public var fontSize:CGFloat = 10.0
+    public var fontSize:CGFloat = 10.0 //For text nodes being presented
     public var height:Float = 0.07
     
     init(){
@@ -29,10 +29,16 @@ class InstructionList{
         self.height = height
     }
     
+    /**
+     Adds an instruction to the end of the instruction list
+     */
     func append(_ inst:Instruction){
         self.instructions.append(inst)
     }
     
+    /**
+     Returns the instruction at the current index of the instruction list
+     */
     func getInstruction()->Instruction{
         return instructions[index]
     }
@@ -40,6 +46,9 @@ class InstructionList{
     func increment(){ if index < instructions.count - 1 {index += 1}}
     func decrement(){ if index > 0 {index -= 1}}
     
+    /**
+     Returns the instruction at a given index 
+     */
     func getInstruction(index:Int)->Instruction{
         return instructions[index]
     }

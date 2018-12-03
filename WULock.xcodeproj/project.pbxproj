@@ -46,6 +46,19 @@
 		EC0AE19521B0B0D800AC302C /* VaultItemDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AE19421B0B0D800AC302C /* VaultItemDetailCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		95F2F5E321B4B72300E7AFA2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		858CD91B21B46C0B00730F6E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		85D4BAC121B0A951001495F9 /* IDDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDDetailedViewController.swift; sourceTree = "<group>"; };
@@ -145,10 +158,18 @@
 			path = AR;
 			sourceTree = "<group>";
 		};
+		95F2F5D221B4B72300E7AFA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		95F9B3C9219A40C300F61CE7 = {
 			isa = PBXGroup;
 			children = (
 				95F9B3D4219A40C300F61CE7 /* WULock */,
+				95F2F5D221B4B72300E7AFA2 /* Frameworks */,
 				95F9B3D3219A40C300F61CE7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -234,6 +255,7 @@
 				95F9B3CE219A40C300F61CE7 /* Sources */,
 				95F9B3CF219A40C300F61CE7 /* Frameworks */,
 				95F9B3D0219A40C300F61CE7 /* Resources */,
+				95F2F5E321B4B72300E7AFA2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -256,6 +278,11 @@
 				TargetAttributes = {
 					95F9B3D1219A40C300F61CE7 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.AutoFillCredentialProvider = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

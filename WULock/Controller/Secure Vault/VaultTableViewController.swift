@@ -20,8 +20,6 @@ class VaultTableViewController: UITableViewController {
         super.viewDidLoad()
         loadItems()
         NotificationCenter.default.addObserver(self, selector: #selector(loadItems), name: Notification.Name("vault_changed"), object: nil)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +30,7 @@ class VaultTableViewController: UITableViewController {
             let loginVCNav = storyboard.instantiateViewController(withIdentifier: "loginVCNav")
             self.tabBarController?.present(loginVCNav, animated: false, completion: nil)
         }
+        
     }
 
     
@@ -77,10 +76,12 @@ class VaultTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let cell = sender as! VaultTableViewCell
+            
             let itemTableViewController = segue.destination as! VaultItemDetailViewController
             guard let index = tableView.indexPath(for: cell) else {
                 return
             }
+            tableView.deselectRow(at: index, animated: true)
             itemTableViewController.setData(i: items[index.row])
         }
     }

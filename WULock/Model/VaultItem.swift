@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 
 
-
+/**
+ Represents a single item stored in the secure vault, consisting of a type and a list of fields.
+ */
 class VaultItem: NSObject , NSCoding{
-    
-    
     var type:ItemType
     private var fields:[ItemField]
     var coreDataID: NSManagedObjectID?
@@ -110,7 +110,9 @@ class VaultItem: NSObject , NSCoding{
     }
     
     //MARK: Parsing functionality
-    
+    /**
+     Returns true if the item has a field with description "Combination" which meets the requirement for either a locker or mailbox combination.
+     */
     func canParse()->Bool{
         if type == .gymLocker{
             guard let code = get(desc: "Combination") else{return false}
@@ -148,11 +150,12 @@ class VaultItem: NSObject , NSCoding{
         }
     }
     
-
+    /**
+     If the item can be parsed, the code is parsed into an array of integers.
+     */
     func parse()->[Int]?{
         guard canParse()  else {return nil}
-        
-        
+
         if type == .gymLocker{
             //should be a four digit code
             if let code = get(desc: "Combination"){
@@ -165,6 +168,7 @@ class VaultItem: NSObject , NSCoding{
             }else{return nil}
             
         }else if type == .mailbox{
+            //should be three numbers
             if let code = get(desc: "Combination"){
                 var numbers:[Int] = []
                 let decimals = CharacterSet.decimalDigits

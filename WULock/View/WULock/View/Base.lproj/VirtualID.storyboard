@@ -149,18 +149,41 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8Y-mP-abV">
                                 <rect key="frame" x="16" y="617" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="cancel:" destination="tLN-6g-Et4" eventType="touchUpInside" id="p1j-Re-4ub"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Re-2o-iHB">
+                                <rect key="frame" x="228" y="28" width="131" height="29"/>
+                                <segments>
+                                    <segment title="WU ID"/>
+                                    <segment title="Any rect"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="changedSegment:" destination="tLN-6g-Et4" eventType="valueChanged" id="TH4-F2-8bu"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detect:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNL-CH-QGd">
+                                <rect key="frame" x="164" y="32" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7ER-m0-RJg" firstAttribute="trailing" secondItem="4Re-2o-iHB" secondAttribute="trailing" constant="16" id="09S-1e-t56"/>
                             <constraint firstItem="7ER-m0-RJg" firstAttribute="trailing" secondItem="AgL-Qe-aiQ" secondAttribute="trailing" id="0kV-TQ-Dgn"/>
                             <constraint firstAttribute="bottom" secondItem="AgL-Qe-aiQ" secondAttribute="bottom" id="4c4-YT-MP3"/>
                             <constraint firstItem="a8Y-mP-abV" firstAttribute="bottom" secondItem="0MJ-Ea-8hl" secondAttribute="bottom" id="8am-9A-qdY"/>
+                            <constraint firstItem="4Re-2o-iHB" firstAttribute="leading" secondItem="fNL-CH-QGd" secondAttribute="trailing" constant="8" id="D21-qn-LX6"/>
                             <constraint firstItem="a8Y-mP-abV" firstAttribute="leading" secondItem="7ER-m0-RJg" secondAttribute="leading" constant="16" id="HNO-SF-xCG"/>
+                            <constraint firstItem="fNL-CH-QGd" firstAttribute="top" secondItem="7ER-m0-RJg" secondAttribute="top" constant="12" id="IGS-DQ-Y2D"/>
+                            <constraint firstItem="4Re-2o-iHB" firstAttribute="top" secondItem="7ER-m0-RJg" secondAttribute="top" constant="8" id="Laq-3b-dBe"/>
                             <constraint firstItem="0MJ-Ea-8hl" firstAttribute="centerX" secondItem="fcV-Ww-GnF" secondAttribute="centerX" id="OfJ-BM-GjG"/>
                             <constraint firstItem="0MJ-Ea-8hl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="a8Y-mP-abV" secondAttribute="trailing" id="cCy-pf-3S2"/>
                             <constraint firstItem="7ER-m0-RJg" firstAttribute="bottom" secondItem="0MJ-Ea-8hl" secondAttribute="bottom" constant="20" id="cLu-bi-niq"/>
@@ -173,6 +196,8 @@
                     <connections>
                         <outlet property="cameraButton" destination="0MJ-Ea-8hl" id="Zmw-xm-oLM"/>
                         <outlet property="cancelButton" destination="a8Y-mP-abV" id="yLJ-HF-IrS"/>
+                        <outlet property="detectLabel" destination="fNL-CH-QGd" id="N0R-VD-ix1"/>
+                        <outlet property="modeSegment" destination="4Re-2o-iHB" id="o37-2O-anp"/>
                         <outlet property="sceneView" destination="AgL-Qe-aiQ" id="m0J-51-Lyy"/>
                     </connections>
                 </viewController>

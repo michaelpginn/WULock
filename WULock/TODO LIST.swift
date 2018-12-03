@@ -20,10 +20,10 @@ import Foundation
     (x) allow instruction navigation
  - Vault:
     (x) show detail view for item when tapped
-    ( ) for mail combo and gym combo, enforce rules for entry
+    (x) for mail combo and gym combo, enforce rules for entry
     ( ) sorting and filtering
     ( ) display "No items message"
-    ( ) don't cover fields with keyboard, slide table up
+    (x) don't cover fields with keyboard, slide table up
     (x) delete/edit items
     ( ) let online items link to browser
  - ID Scanner:
@@ -32,7 +32,7 @@ import Foundation
     ( ) display overlay while taking picture so user knows what rectangle is being selected
     ( ) maybe link with vault? so id type record could have image?
  - General/Misc:
-    ( ) touch id or passcode to lock vault - setting to
+    (x) touch id or passcode to lock vault - setting to
     ( ) hide passwords
     ( ) maybe implement Password AutoFill API? https://developer.apple.com/documentation/security/password_autofill/
     ( ) sync vault with icloud (this is a last priority)

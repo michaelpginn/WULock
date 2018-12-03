@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 
 /**
- Adds the hardcoded instruction sets for the three ttypes included
+ Adds the hardcoded instruction sets for the two types included
  */
 extension Instruction{
 
@@ -66,6 +66,9 @@ extension Instruction{
         }
     }
     
+    /**
+    Creates the instruction list for a south 40 gym locker
+     */
     class func createS40InstructionList(numbers:[String])->InstructionList{
         let instructions:InstructionList = InstructionList()
         
