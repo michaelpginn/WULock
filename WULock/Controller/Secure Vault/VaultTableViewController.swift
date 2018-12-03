@@ -14,7 +14,7 @@ class VaultTableViewController: UITableViewController {
     var items:[VaultItem] = []
     let defaults = UserDefaults.standard
     
-    var lockScreenShown = false
+    var lockScreenShouldNotShow = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,9 @@ class VaultTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let passEnabled = UserDefaults.standard.object(forKey: "passwordEnabled") as? Bool ?? true
-        if !lockScreenShown && passEnabled{
-            lockScreenShown = true
+        if !passEnabled {lockScreenShouldNotShow = true}
+        if !lockScreenShouldNotShow {
+            lockScreenShouldNotShow = true
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginVCNav = storyboard.instantiateViewController(withIdentifier: "loginVCNav")
             self.tabBarController?.present(loginVCNav, animated: false, completion: nil)

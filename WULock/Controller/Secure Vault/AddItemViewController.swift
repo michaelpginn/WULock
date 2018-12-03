@@ -168,8 +168,6 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         
-        
-        
         cell.valueTextField.delegate = self
         cell.descTextField?.delegate = self
         
@@ -179,6 +177,16 @@ class AddItemViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc func addCell(){
         userFields.append(ItemField(fieldDescription: "", fieldValue: ""))
         tableView.reloadSections(IndexSet(integer: 1), with: .fade)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 1 && indexPath.row != userFields.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        userFields.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     // MARK: ScrollView Management
